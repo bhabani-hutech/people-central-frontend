@@ -1,0 +1,48 @@
+.site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:#000000;
+    font-weight: bold;
+}
+.tab2_heading{
+    color:#000000;
+    font-weight: bold;
+    font-size:15px;
+
+
+}
+.tab2_subheading{
+    color:#000000;
+    font-size:12px;
+    margin-left: 75%;
+}
+.span_heading{
+    color: red;
+}
+.wrapasterik{
+display: flex;
+
+}
+.asterik{
+  color: red;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+.tab2_header{
+  display: flex;
+}
