@@ -1,0 +1,54 @@
+.designationheader {
+  font-size: 20px;
+  margin-top: 5%;
+  margin-right: 78%;
+  // margin-left: 4%;
+}
+.tablestyle{
+  margin-left: 0%;
+  margin-right: 0%;
+}
+.addbtn {
+  margin-left: 68%;
+  margin-top: 5%;
+  border:2px solid  rgba(3, 73, 133, 1);
+  border-radius:5px;
+  /* background-color: $dark-blue-color; */
+}
+.ant-modal-header{
+background: rgba(3, 73, 133, 1);
+}
+.ant-modal-title{
+  color: #fff;
+}
+.ant-modal-close{
+  color: #fff;
+}
+.savebtn{
+  background: rgba(3, 73, 133, 1);
+  color: #fff;
+  border:0;
+   border-radius:5px;
+}
+.cancelbtn{
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius:5px;
+}
+.ant-modal-content{
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.wrapasterik{
+display: flex;
+
+}
+.asterik{
+  color: red;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+.degn_textarea{
+  font-size:10px;
+  margin-left: 8%;
+}

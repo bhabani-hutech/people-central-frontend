@@ -1,9 +1,13 @@
-.site-layout-content {
+.layout .site-layout-content {
   min-height: 280px;
   padding: 24px;
   background: #fff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
-
+.layout{
+  margin-top:10%;
+  margin-bottom:10%;
+}
 #components-layout-demo-top .logo {
   float: left;
   width: 120px;
@@ -18,31 +22,4 @@
 .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
     color:#000000;
     font-weight: bold;
-}
-.tab2_heading{
-    color:#000000;
-    font-weight: bold;
-    font-size:15px;
-
-
-}
-.tab2_subheading{
-    color:#000000;
-    font-size:12px;
-    margin-left: 75%;
-}
-.span_heading{
-    color: red;
-}
-.wrapasterik{
-display: flex;
-
-}
-.asterik{
-  color: red;
-  margin-top: 2%;
-  margin-right: 5%;
-}
-.tab2_header{
-  display: flex;
 }
