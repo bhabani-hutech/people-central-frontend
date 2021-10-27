@@ -13,7 +13,11 @@ import {
   Select,
 } from "antd";
 import "antd/dist/antd.css";
-import { UploadOutlined } from "@ant-design/icons";
+import {
+  UploadOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from "@ant-design/icons";
 import "./Emponboarding.scss";
 const props = {
   name: "file",
@@ -32,10 +36,10 @@ const props = {
     }
   },
 };
-const places = [
-  { label: "Bengaluru", value: "Bengaluru" },
-  { label: "Chennai", value: "Chennai" },
-];
+// const places = [
+//   { label: "Bengaluru", value: "Bengaluru" },
+//   { label: "Chennai", value: "Chennai" },
+// ];
 const emptype = [
   { label: "Part Time", value: "Part Time" },
   { label: "Full Time", value: "Full Time" },
@@ -75,9 +79,9 @@ const [form] = Form.useForm();
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
-  const handleChange = () => {
-    form.setFieldsValue();
-  };
+  // const handleChange = () => {
+  //   form.setFieldsValue();
+  // };
   const handleType = () => {
     form.setFieldsValue();
   };
@@ -165,9 +169,7 @@ const [form] = Form.useForm();
                 >
                   <div className="wrapasterik">
                     <span className="asterik">*</span>
-                    <Input
-                      placeholder="Phone Number"
-                    />
+                    <Input placeholder="Phone Number" />
                   </div>
                 </Form.Item>
                 <Form.Item
@@ -338,7 +340,7 @@ const [form] = Form.useForm();
                   </div>
                 </Form.Item>
 
-                <Form.Item
+                {/* <Form.Item
                   name="place"
                   label="Place of Businesss"
                   rules={[{ required: true, message: "Missing Place" }]}
@@ -351,7 +353,7 @@ const [form] = Form.useForm();
                       onChange={handleChange}
                     />
                   </div>
-                </Form.Item>
+                </Form.Item> */}
 
                 <Form.Item
                   name="emptype"
@@ -491,17 +493,21 @@ const [form] = Form.useForm();
                   </div>
                 </Form.Item>
               </Form>
-              <div className="Button">
-                <div className="cancelbtn">
-                  {" "}
-                  <Button>Cancel</Button>
-                </div>
-                <div className="savebtn">
-                  {" "}
-                  <Button type="primary">Save</Button>
-                </div>
-              </div>
             </Col>
+            <div className="Button">
+              <div>
+                {" "}
+                <Button className="cancelbtn" icon={<CloseOutlined />}>
+                  Cancel
+                </Button>
+              </div>
+              <div>
+                {" "}
+                <Button className="savebtn" icon={<CheckOutlined />}>
+                  Save
+                </Button>
+              </div>
+            </div>
           </Row>
         </div>
       </div>

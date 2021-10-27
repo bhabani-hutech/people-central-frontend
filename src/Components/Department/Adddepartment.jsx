@@ -1,15 +1,15 @@
 import React from "react";
-import { Form, Input} from "antd";
-import "../Designation/Designation.scss";
-const Adddesignation = () => {
-    // const [form] = Form.useForm();
-    const onFinish = (values) => {
-      console.log("Success:", values);
-    };
+import { Form, Input } from "antd";
+import "../Role/Role.scss";
+const Adddepartment = () => {
+  // const [form] = Form.useForm();
+  const onFinish = (values) => {
+    console.log("Success:", values);
+  };
 
-    const onFinishFailed = (errorInfo) => {
-      console.log("Failed:", errorInfo);
-    };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   return (
     <div>
       <Form
@@ -28,13 +28,29 @@ const Adddesignation = () => {
         onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-        <Form.Item
-          label="Designation Name"
-          name="designationname"
+        {/* <Form.Item
+          label="Department ID"
+          name="deptid"
           rules={[
             {
               required: true,
-              message: "Please input Designation!",
+              message: "Please input Department ID!",
+            },
+          ]}
+        >
+          <div className="wrapasterik">
+            <span className="asterik">*</span>
+            <Input />
+          </div>
+        </Form.Item> */}
+
+        <Form.Item
+          label="Department Name"
+          name="departmentname"
+          rules={[
+            {
+              required: true,
+              message: "Please input Department Name!",
             },
           ]}
         >
@@ -43,8 +59,7 @@ const Adddesignation = () => {
             <Input />
           </div>
         </Form.Item>
-
-        <Form.Item label="Description" name="description">
+        {/* <Form.Item label="Description" name="description">
           <div className="wrapasterik">
             <span className="asterik"> &nbsp;&nbsp;</span>
             <Input.TextArea />
@@ -52,10 +67,10 @@ const Adddesignation = () => {
           <span className="degn_textarea">
             0 characters remaining of 100 characters
           </span>
-        </Form.Item>
+        </Form.Item> */}
       </Form>
     </div>
   );
 };
 
-export default Adddesignation;
+export default Adddepartment;

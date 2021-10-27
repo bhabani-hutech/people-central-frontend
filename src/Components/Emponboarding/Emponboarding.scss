@@ -68,12 +68,24 @@ border-radius:5px;
 }
 .Button{
   display: flex;
-  margin-left: 25%;
+  margin-left: 80%;
+  margin-bottom: 5%;
   justify-content:center;
   padding:0;
   border: 0;
   border-radius:5px;
 }
 .cancelbtn{
-  margin-right: 5%;
+ 
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius:5px;
+}
+.savebtn{
+
+   margin-left: 16%;
+  background: rgba(3, 73, 133, 1);
+  color: #fff;
+  border:0;
+   border-radius:5px;
 }
