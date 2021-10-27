@@ -3,7 +3,7 @@ import constants from "../../constants/Constants";
 import "antd/dist/antd.css";
 import "./login.scss";
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from "antd";
+import { Form, Input, Button, Checkbox, Row,Col } from "antd";
 const {
   ROUTES: { RESET },
   REMEMBER_ME_LABEL,
