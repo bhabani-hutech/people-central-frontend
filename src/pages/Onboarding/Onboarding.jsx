@@ -10,6 +10,7 @@ import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
 import Role from "../../Components/Role/Role";
 import Department from "../../Components/Department/Department";
+import Employement from "../../Components/Employement/Employement";
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
@@ -34,7 +35,8 @@ const Onboarding = () => {
                 <Emponboarding />
               </TabPane>
               <TabPane tab="Employment" key="3">
-                Content of Tab Pane 3
+                <Employement/>
+                {/* Content of Tab Pane 3 */}
               </TabPane>
               <TabPane tab="Designation" key="4">
                 <Designation/>
