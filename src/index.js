@@ -11,13 +11,13 @@ import App from './App';
 
 let reducer = combineReducers({
 
-  
-
 })
 let intialstate = {}
 let middleware = [thunk]
 
+
 let store = createStore(reducer, intialstate, composeWithDevTools(applyMiddleware(...middleware)))
+
 ReactDOM.render(
   
   <React.StrictMode>
@@ -25,7 +25,8 @@ ReactDOM.render(
     <App />
     </Provider>
   </React.StrictMode>,
-
 document.getElementById('root')
+
+
 
 );
