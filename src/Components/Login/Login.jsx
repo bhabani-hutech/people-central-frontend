@@ -23,9 +23,10 @@ const Login = () => {
   
   const history = useHistory();
   const onFinish = (values) => {
-    axios.post().then((res)=>{
+    axios.post('' ,{}).then((res)=>{
     // history.push('/onc')
-        
+    
+
     }) 
     console.log("Success:", values);
     form.resetFields()     

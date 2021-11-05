@@ -8,6 +8,7 @@ import "./Onboarding.scss";
 import AppFooter from "../../Components/Appfooter/Appfooter";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
+import Employeelist from "../../Components/employeelist/employeelist";
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
@@ -38,7 +39,7 @@ const Onboarding = () => {
                 <Designation/>
               </TabPane>
               <TabPane tab="Role" key="5">
-                Content of Tab Pane 5
+                <Employeelist />
               </TabPane>
               <TabPane tab="Department" key="6">
                 Content of Tab Pane 6

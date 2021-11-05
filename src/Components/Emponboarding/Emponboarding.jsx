@@ -19,8 +19,8 @@ import {
 } from "@ant-design/icons";
 import "./Emponboarding.scss";
 import "antd/dist/antd.css";
-import axios from "axios";
 
+import axios from "axios";
 const props = {
   name: "file",
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -57,6 +57,7 @@ const Emponboarding = () => {
   
   const onFinish = (values) => {
     console.log("Success:", values);
+    
     //  axios.post('/',{})
     // form.resetFields().then((=>{})).catch(()=>{
 
