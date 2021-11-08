@@ -16,6 +16,7 @@ const Reset = () => {
  return (
    <div className="form_container">
      <Form
+       requiredMark={false}
        name="basic"
        layout="vertical"
        onFinish={onFinish}

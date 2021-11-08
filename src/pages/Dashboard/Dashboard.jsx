@@ -25,17 +25,6 @@ const Dashboard = () => {
           <Onboarding/>) : (
             <Home/>
           )}
-        {/* {location.pathname.includes(DASHBOARD) ? (
-          <Home />
-        ) : location.pathname.includes(ONBOADING) ? (
-          <Reset />
-        ) : location.pathname.includes(CREATE) ? (
-          <Create />
-        ) : (
-          <Login />
-        )} */}
-
-        {/* <Home /> */}
         <Footer />
       </Layout>
     </Layout>

@@ -8,7 +8,7 @@
   margin-right: 0%;
 }
 .adddepartmentbtn {
-  margin-left: 67%;
+  margin-left: 68%;
   margin-top: 5%;
   border:2px solid  rgba(3, 73, 133, 1);
   border-radius:5px;
@@ -27,11 +27,13 @@ background: rgba(3, 73, 133, 1);
   color: #fff;
   border:0;
    border-radius:5px;
+   margin-right: 0;
 }
 .cancelbtn{
   color: #1890ff;
   border: 1px solid #1890ff;
   border-radius:5px;
+  margin-left: 100%;
 }
 .ant-modal-content{
   margin-top: 10%;
@@ -41,12 +43,19 @@ background: rgba(3, 73, 133, 1);
 display: flex;
 
 }
+// .asterik{
+//   color: red;
+//   margin-top: 2%;
+//   margin-right: 5%;
+// }
+
 .asterik{
   color: red;
   margin-top: 2%;
   margin-right: 5%;
 }
-.degn_textarea{
-  font-size:10px;
-  margin-left: 8%;
+.asterik::after{
+  content: ":";
+  color: black;
+  margin-left: 2%;
 }

@@ -6,10 +6,12 @@ const { Footer } = Layout;
 const AppFooter = () => {
     return (
       <div className="fixed_footer">
-        <Footer style={{ textAlign: "center", background: "white"}}>
-          © PeopleCentral 2021 &nbsp;&nbsp;&nbsp;&nbsp; Terms & Conditions
-          &nbsp;&nbsp;&nbsp;&nbsp; Privacy Policy &nbsp;&nbsp;&nbsp;&nbsp;
-          Cookie Preferences&nbsp;&nbsp;&nbsp;&nbsp; Contact Us
+        <Footer className="app_footer">
+          <div className="footer_item">© PeopleCentral 2021</div>
+          <div className="footer_item">Terms & Conditions</div>
+          <div className="footer_item"> Privacy Policy</div>
+          <div className="footer_item">Cookie Preferences</div>
+          <div className="footer_item">Contact Us</div>
         </Footer>
       </div>
     );

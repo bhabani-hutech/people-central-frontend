@@ -1,7 +1,16 @@
 .fixed_footer{
-     width: 100%;
+     width: 100vw;
         position: fixed;        
-        color: #fff;
         bottom: 0;
-       text-align: center;
+}
+.app_footer{
+   display: flex;
+   align-items: center;
+   justify-content:center;
+   width: 100%;
+   text-align: center;
+   background: #fff;
+}
+.footer_item{
+   margin-left: 1%;
 }

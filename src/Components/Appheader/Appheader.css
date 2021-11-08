@@ -1,0 +1,69 @@
+.fixed_header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 9999;
+}
+
+.header {
+  background: linear-gradient(147.6deg, #032848 -9.8%, #043968 117.16%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: #fff;
+  height: 30%;
+  width: 100%;
+}
+
+.logo {
+  color: white;
+}
+
+.date {
+  padding: 0.5%;
+  margin-left: 20%;
+}
+
+.title {
+  padding: 0.5%;
+  margin-left: 15%;
+}
+
+.ant-page-header-heading-sub-title {
+  margin-left: 15%;
+  margin-right: 5px;
+}
+
+#components-layout-demo-custom-trigger .logo {
+  height: 32px;
+  margin: 16px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-layout-background {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.site-page-header {
+  border: 1px solid #ebedf0;
+  background: #fff;
+}
+
+.dropdown {
+  margin-left: 63%;
+}
+
+.banner {
+  margin-right: 20%;
+}
+
+.dropdown a {
+  color: #2d3135;
+}
+
+.ant-dropdown {
+  z-index: 9999;
+}
+/*# sourceMappingURL=Appheader.css.map */

@@ -10,7 +10,7 @@ import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
 import Role from "../../Components/Role/Role";
 import Department from "../../Components/Department/Department";
-import Employement from "../../Components/Employement/Employement";
+import Employeement from "../../Components/Employeement/Employeement";
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
@@ -22,7 +22,7 @@ const Onboarding = () => {
     <>
       <Layout className="layout">
         <Content style={{ padding: "0 50px" }}>
-          <div className="site-layout-content">
+          <div className="onboarding-content">
             <Tabs
               className="layout-content-heading"
               defaultActiveKey="2"
@@ -34,22 +34,19 @@ const Onboarding = () => {
               <TabPane tab="Employee Onboarding" key="2">
                 <Emponboarding />
               </TabPane>
-              <TabPane tab="Employment" key="3">
-                <Employement/>
-                {/* Content of Tab Pane 3 */}
-              </TabPane>
-              <TabPane tab="Designation" key="4">
+              {/* <TabPane tab="Employment" key="3">
+                <Employeement/>
+              </TabPane> */}
+              <TabPane tab="Designation" key="3">
                 <Designation/>
               </TabPane>
-              <TabPane tab="Role" key="5">
+              <TabPane tab="Role" key="4">
                 <Role/>
-                {/* Content of Tab Pane 5 */}
               </TabPane>
-              <TabPane tab="Department" key="6">
+              <TabPane tab="Department" key="5">
                 <Department/>
-                {/* Content of Tab Pane 6 */}
               </TabPane>
-              <TabPane tab="Time Off" key="7">
+              <TabPane tab="Time Off" key="6">
                 Content of Tab Pane 7
               </TabPane>
             </Tabs>

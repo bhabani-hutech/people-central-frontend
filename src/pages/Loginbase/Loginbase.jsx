@@ -25,12 +25,12 @@ const Loginbase = () => {
       <Row>
         <Col span={24}>
           <Row>
-            <Col span={6}>
-              <img alt="avtar" src={img1} className="image1" />
-              <img alt="avtar" src={img2} className="image2" />
-              <img alt="avtar" src={img3} className="image3" />
+            <Col className="login_left" span={10}>
+              <img alt="image1" src={img1} className="image1" />
+              <img alt="image2" src={img2} className="image2" />
+              <img alt="image3" src={img3} className="image3" />
             </Col>
-            <Col span={18}>
+            <Col span={14}>
               <div className="main_container">
                 <div className="container">
                   <div className="login_heading">
@@ -38,19 +38,24 @@ const Loginbase = () => {
                       {LOGIN_SUBHEADING_LABEL1}
                     </div>
                     <div className="login_subheading2">
-                      <img alt="avtar" src={img4} className="image4" />{" "}
+                      <div className="logo">
+                        {" "}
+                        <img alt="avtar" src={img4} className="image4" />{" "}
+                      </div>
                       {LOGIN_SUBHEADING_LABEL2}
                     </div>
                   </div>
-                  {location.pathname.includes(FORGOTPASSWORD) ? (
-                    <Forgot />
-                  ) : location.pathname.includes(RESET) ? (
-                    <Reset />
-                  ) : location.pathname.includes(CREATE) ? (
-                    <Create />
-                  ) : (
-                    <Login />
-                  )}
+                  <div>
+                    {location.pathname.includes(FORGOTPASSWORD) ? (
+                      <Forgot />
+                    ) : location.pathname.includes(RESET) ? (
+                      <Reset />
+                    ) : location.pathname.includes(CREATE) ? (
+                      <Create />
+                    ) : (
+                      <Login />
+                    )}
+                  </div>
                 </div>
               </div>
             </Col>

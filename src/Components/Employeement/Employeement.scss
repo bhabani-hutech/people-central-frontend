@@ -1,19 +1,17 @@
-.employementheader {
-  font-size: 20px;
+.employeementheader {
+   font-size: 20px;
   margin-top: 5%;
   margin-right: 78%;
-  // margin-left: 4%;
 }
 .tablestyle{
   margin-left: 0%;
   margin-right: 0%;
 }
-.addemployementbtn {
-  margin-left: 65%;
+.addemployeementbtn {
+   margin-left: 65%;
   margin-top: 5%;
   border:2px solid  rgba(3, 73, 133, 1);
   border-radius:5px;
-  /* background-color: $dark-blue-color; */
 }
 .ant-modal-header{
 background: rgba(3, 73, 133, 1);
@@ -29,11 +27,13 @@ background: rgba(3, 73, 133, 1);
   color: #fff;
   border:0;
    border-radius:5px;
+   margin-right: 0;
 }
 .cancelbtn{
   color: #1890ff;
   border: 1px solid #1890ff;
   border-radius:5px;
+  margin-left: 100%;
 }
 .ant-modal-content{
   margin-top: 10%;
@@ -43,8 +43,18 @@ background: rgba(3, 73, 133, 1);
 display: flex;
 
 }
+// .asterik{
+//   color: red;
+//   margin-top: 2%;
+//   margin-right: 5%;
+// }
 .asterik{
   color: red;
   margin-top: 2%;
   margin-right: 5%;
+}
+.asterik::after{
+  content: ":";
+  color: black;
+  margin-left: 2%;
 }

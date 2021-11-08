@@ -1,0 +1,68 @@
+.designationheader {
+  font-size: 20px;
+  margin-top: 5%;
+  margin-right: 78%;
+}
+
+.tablestyle {
+  margin-left: 0%;
+  margin-right: 0%;
+}
+
+.addbtn {
+  margin-left: 68%;
+  margin-top: 5%;
+  border: 2px solid #034985;
+  border-radius: 5px;
+}
+
+.ant-modal-header {
+  background: #034985;
+}
+
+.ant-modal-title {
+  color: #fff;
+}
+
+.ant-modal-close {
+  color: #fff;
+}
+
+.savebtn {
+  background: #034985;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+  margin-right: 0;
+}
+
+.cancelbtn {
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius: 5px;
+  margin-left: 100%;
+}
+
+.ant-modal-content {
+  margin-top: 10%;
+  margin-left: 10%;
+}
+
+.wrapasterik {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.asterik {
+  color: red;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+
+.degn_textarea {
+  font-size: 10px;
+  margin-left: 35%;
+  margin-bottom: 5%;
+}
+/*# sourceMappingURL=Designation.css.map */

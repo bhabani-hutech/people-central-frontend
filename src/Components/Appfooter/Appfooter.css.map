@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,aAAa,CAAA;EACR,KAAK,EAAE,IAAI;EACR,QAAQ,EAAE,KAAK;EACf,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,CAAC;EACV,UAAU,EAAE,MAAM;CACxB",
+    "sources": [
+        "Appfooter.scss"
+    ],
+    "names": [],
+    "file": "Appfooter.css"
+}

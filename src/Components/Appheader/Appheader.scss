@@ -14,7 +14,11 @@
 }
 
 .logo {
-  color: white;
+  display: flex;
+ justify-content: center;
+  align-items: center;
+  // margin-right: 10%;
+  // color: white;
 }
 .date {
   padding: 0.5%;
@@ -23,23 +27,18 @@
 .title {
   padding: 0.5%;
   margin-left: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title2{
+  margin-left: 3rem;
 }
 
 .ant-page-header-heading-sub-title {
   margin-left: 15%;
   margin-right: 5px;
 }
-// #components-layout-demo-custom-trigger .trigger {
-//   padding: 0 24px;
-//   font-size: 18px;
-//   line-height: 64px;
-//   cursor: pointer;
-//   transition: color 0.3s;
-// }
-
-// #components-layout-demo-custom-trigger .trigger:hover {
-//   color: #1890ff;
-// }
 
 #components-layout-demo-custom-trigger .logo {
   height: 32px;
@@ -48,29 +47,57 @@
 }
 .site-layout-background {
   display: flex;
+  padding: 0;
+  background: white;
+  color: linear-gradient(147.6deg, #032848 -9.8%, #043968 117.16%),
 }
 .site-page-header {
   border: 1px solid rgb(235, 237, 240);
   background: #fff;
 }
-// .trigger {
-//   display: flex;
-//   margin-top: 2%;
-//   margin-left: 2%;
-// }
+
 .dropdown {
-  margin-left: 63%;
+margin-left: 63%;
 }
-.banner {
-  margin-right: 20%;
-}
+// .banner {
+//   margin-right: 20%;
+// }
 .dropdown a{
 color:rgba(45, 49, 53, 1);
 }
-// .ant-dropdown-link{
-  
-// }
 .ant-dropdown {
 z-index: 9999;
 }
-
+@media (max-width: 1200px) {
+ .dropdown {
+  margin-left: 53%;
+}
+.date {
+  margin-left: 9%;
+}
+.title{
+   margin-left: 9%;
+}
+}
+@media (max-width: 768px) {
+ .dropdown {
+  margin-left: 35%;
+}
+.date {
+  margin-left: 5%;
+}
+.title{
+   margin-left: 5%;
+}
+}
+@media (max-width: 576px) {
+ .dropdown {
+  margin-left: 25%;
+}
+.date {
+  margin-left: 0%;
+}
+.title{
+   margin-left: 1%;
+}
+}
