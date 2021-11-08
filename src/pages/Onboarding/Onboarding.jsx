@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   Layout,
   Tabs,
@@ -9,13 +9,30 @@ import AppFooter from "../../Components/Appfooter/Appfooter";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
 import Employeelist from "../../Components/employeelist/employeelist";
+import {useSelector} from 'react-redux'
+
+import {useHistory} from 'react-router-dom'
 const { Content } = Layout;
 const { TabPane } = Tabs;
 
+
+
 const Onboarding = () => {
+  let history = useHistory()
+
   function callback(key) {
     console.log(key);
   }
+
+  const userloginn = useSelector(state => state.userlogin)
+  
+  let {loading, userinfo, error} = userloginn
+  useEffect(() => {
+    if(!userinfo){
+     history.push('/')
+    }
+  }, [history])
+  
   return (
     <>
       <Layout className="layout">

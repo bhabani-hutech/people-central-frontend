@@ -9,11 +9,24 @@ import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import App from './App';
 
-let reducer = combineReducers({
+import {userloginreducer} from './reducer/userreducer'
 
+let reducer = combineReducers({
+  userlogin:userloginreducer 
 })
-let intialstate = {}
+
+
+
+
+let userinfofromstorage = localStorage.getItem('userinfo') ? JSON.parse(localStorage.getItem('userinfo')) : null
+
+let intialstate = {
+userlogin:{ userinfo:userinfofromstorage},
+
+}
 let middleware = [thunk]
+
+
 
 
 let store = createStore(reducer, intialstate, composeWithDevTools(applyMiddleware(...middleware)))
