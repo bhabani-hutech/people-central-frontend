@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Row,
@@ -31,12 +31,12 @@ const columns = [
   },
   {
     title: "Role ID",
-    dataIndex: "roleid",
+    dataIndex: "viewRoleId",
     key: "roleid",
   },
   {
     title: "Role Name",
-    dataIndex: "rolename",
+    dataIndex: "viewRoleName",
     key: "rolename",
   },
   {
@@ -69,29 +69,58 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    roleid: "201",
-    rolename: "Fullstack Devloper",
-  },
-  {
-    key: "2",
-    roleid: "202",
-    rolename: "Human Resource",
-  },
-  {
-    key: "3",
-    roleid: "203",
-    rolename: "Frontend Devloper",
-  },
-];
+// const data = [
+//   {
+//     key: "1",
+//     roleid: "201",
+//     rolename: "Fullstack Devloper",
+//   },
+//   {
+//     key: "2",
+//     roleid: "202",
+//     rolename: "Human Resource",
+//   },
+//   {
+//     key: "3",
+//     roleid: "203",
+//     rolename: "Frontend Devloper",
+//   },
+// ];
 const Role = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [rolename, setRolename] = useState("");
   const [roleId, setRoleId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [viewRoleData, setViewRoleData] = useState([
+    {
+      viewRoleId: "",
+      viewRoleName: "",
+    },
+  ]);
   const [form] = Form.useForm();
+
+useEffect(() => {
+  axios
+    .get("https://hutechpayrollapp.azurewebsites.net/application/viewRole")
+
+    .then((response) => {
+      console.log("response", response);
+      const RoleData = response.data.map((item, i) => ({
+        key: i + 1,
+        viewRoleId: item.roleId,
+        viewRoleName: item.roleName,
+      }));
+
+      setViewRoleData(RoleData);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
+
+
+
+
   const onFinish = (values) => {
     console.log("Success:", values);
     axios
@@ -145,6 +174,7 @@ const Role = () => {
       [name]: value,
     });
   };
+
 
 const showModal = () => {
   setIsModalVisible(true);
@@ -257,7 +287,14 @@ const handleCancel = () => {
       </Row>
 
       <Divider />
-      <Table className="tablestyle" columns={columns} dataSource={data} />
+      
+      <Table
+        className="tablestyle"
+        columns={columns}
+        dataSource={viewRoleData}
+        loading={loading}
+        scroll={{ x: 400 }}
+      />
     </div>
   );
 };

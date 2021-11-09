@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, Divider, Table, Button, Modal, Form, Input } from "antd";
 import "antd/dist/antd.css";
@@ -20,13 +20,18 @@ const columns = [
     key: "key",
   },
   {
-    title: "Name",
-    dataIndex: "name",
+    title: "Desgnation Id",
+    dataIndex: "viewDesgnId",
+    key: "designationid",
+  },
+  {
+    title: "Desgnation Name",
+    dataIndex: "viewDesgnName",
     key: "name",
   },
   {
     title: "Description",
-    dataIndex: "description",
+    dataIndex: "viewDesgnDescription",
     key: "description",
   },
   {
@@ -59,48 +64,75 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    name: "Junior Devloper",
-    description: "Junior Devloper",
-  },
-  {
-    key: "2",
-    name: "Senior Developer",
-    description: "Senior Developer",
-  },
-  {
-    key: "3",
-    name: "Business Analyst",
-    description: "Business Analyst",
-  },
-];
+// const data = [
+//   {
+//     key: "1",
+//     name: "Junior Devloper",
+//     description: "Junior Devloper",
+//   },
+//   {
+//     key: "2",
+//     name: "Senior Developer",
+//     description: "Senior Developer",
+//   },
+//   {
+//     key: "3",
+//     name: "Business Analyst",
+//     description: "Business Analyst",
+//   },
+// ];
 const Designation = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  // const [designation, setDesignation] = useState({
-  //   designationName: "",
-  //   description: "",
-  // });
+  const [designation, setDesignation] = useState([
+    {
+desgnId:"",
+    desgnName: "",
+    desgndescription: "",
+    },
+  ]);
   const [designationId, setDesignationId] = useState(null);
   const [designationName, setDesignationName] = useState("");
   const [description, setDescription] = useState("");
   const [form] = Form.useForm();
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
-     axios.post(
-        "https://hutechpayrollapp.azurewebsites.net/application/createDesignation",
-        values,
-        { headers: { "Content-Type": "application/json" } }
+  useEffect(() => {
+    axios
+      .get(
+        "https://hutechpayrollapp.azurewebsites.net/application/viewDesignation"
       )
-      .then((res) => {
-        console.log(res);
+
+      .then((response) => {
+        console.log("response", response);
+        const DesgnData = response.data.map((item, i) => ({
+          key: i + 1,
+          viewDesgnId: item.designationId,
+          viewDesgnName: item.designationName,
+          viewDesgnDescription: item.description,
+        }));
+
+        setDesignation(DesgnData);
       })
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+
+
+  const onFinish = (values) => {
+    console.log("Success:", values);
+     axios
+       .post(
+         "https://hutechpayrollapp.azurewebsites.net/application/createDesignation",
+         values,
+         { headers: { "Content-Type": "application/json" } }
+       )
+       .then((res) => {
+         console.log(res);
+       })
+       .catch((err) => {
+         console.log(err);
+       });
     // console.log(designation);
      console.log(designationId);
     console.log(designationName);
@@ -265,7 +297,8 @@ const handelDesignationId = (e) => {
       <Table
         className="tablestyle"
         columns={columns}
-        dataSource={data}
+        loading={loading}
+        dataSource={designation}
         scroll={{ x: 400 }}
       />
     </div>

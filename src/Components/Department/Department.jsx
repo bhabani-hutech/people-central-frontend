@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, Divider, Table, Button, Modal, Form, Input } from "antd";
 import "antd/dist/antd.css";
@@ -22,12 +22,12 @@ const columns = [
   },
   {
     title: "Department ID",
-    dataIndex: "deptid",
+    dataIndex: "viewDeptId",
     key: "deptid",
   },
   {
     title: "Department Name",
-    dataIndex: "deptname",
+    dataIndex: "viewDeptName",
     key: "deptname",
   },
 
@@ -61,30 +61,44 @@ const columns = [
   },
 ];
 
-const data = [
-  {
-    key: "1",
-    deptid: "101",
-    deptname: "Default",
-  },
-  {
-    key: "2",
-    deptid: "102",
-    deptname:"Marketing",
-  },
-  {
-    key: "3",
-    deptid: "103",
-    deptname: "Finance",
-  },
-];
+
+
 const Department = () => {
    const [isModalVisible, setIsModalVisible] = useState(false);
   const [departmentId, setDepartmentId] = useState(null);
   const [department, setDepartment] = useState("");
+  const [viewDeptData, setViewDeptData] = useState([
+    {
+      viewDeptId: "",
+      viewDeptName:""
+    },
+  ]);
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
-  
+ 
+  useEffect(() => {
+    axios
+      .get(
+        "https://hutechpayrollapp.azurewebsites.net/application/viewDepartment"
+      )
+
+      .then((response) => {
+        console.log("response", response);
+        const DeptData = response.data.map((item, i) => ({
+          key: i + 1,
+          viewDeptId: item.departmentId,
+          viewDeptName: item.departmentName,
+        }));
+
+        setViewDeptData(DeptData);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
+
+
  const onFinish = (values) => {
    console.log("Success:", values);
    const { departmentId, department } = values; 
@@ -146,6 +160,7 @@ const handelDepartmentChange = (e) => {
   
 };
 
+ 
 
 
   const showModal = () => {
@@ -260,7 +275,8 @@ const handelDepartmentChange = (e) => {
       <Table
         className="tablestyle"
         columns={columns}
-        dataSource={data}
+        dataSource={viewDeptData}
+        loading={loading}
         scroll={{ x: 400 }}
       />
     </div>
@@ -298,3 +314,21 @@ export default Department;
 //  >
 //    <Adddepartment />
 //  </Modal>;
+
+// const data = [
+//   {
+//     key: "1",
+//     deptid: "101",
+//     deptname: "Default",
+//   },
+//   {
+//     key: "2",
+//     deptid: "102",
+//     deptname: "Marketing",
+//   },
+//   {
+//     key: "3",
+//     deptid: "103",
+//     deptname: "Finance",
+//   },
+// ];
