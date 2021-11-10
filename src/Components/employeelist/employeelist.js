@@ -1,60 +1,63 @@
-import React,{useState, useEffect} from 'react'
+/* eslint-disable no-unused-vars */
+import React,{useState} from 'react'
 import 'antd/dist/antd.css'
 import {Table} from 'antd'
 
 const Employeelist = () => { 
     const [dataSourse, setdataSourse] = useState([])
     const [loading, setloading] = useState(false)
-    useEffect(() => {
-        setloading(true)
-       fetch('/api/user/employee').then(res=>res.json()).then(data=>{
-           setdataSourse(data)
-       
-        }).catch((err)=>{
-        
-            console.log(err)
-        }).finally(()=>{
-            setloading(false)
-        })
+    // useEffect(() => {
+    //     setloading(true)
+    //    fetch("https://hutechpayrollapp.azurewebsites.net/application/")
+    //      .then((res) => res.json())
+    //      .then((data) => {
+    //        setdataSourse(data);
+    //      })
+    //      .catch((err) => {
+    //        console.log(err);
+    //      })
+    //      .finally(() => {
+    //        setloading(false);
+    //      });
          
-    }, [])
+    // }, [])
 
-    let data = [
-        {
-            empid:'1',
-            name:'robert',
+    // let data = [
+    //     {
+    //         empid:'1',
+    //         name:'robert',
             
-            email:'abc123@gmail.com',
+    //         email:'abc123@gmail.com',
             
-            phone:'123456',
-            designation:'hr',
-            manageremail:'abc123@gmail.com',
+    //         phone:'123456',
+    //         designation:'hr',
+    //         manageremail:'abc123@gmail.com',
             
             
-            employee_type:'parttime',
-            department:'civil',
-            placeofworking:'banglore',             
-            key:1
+    //         employee_type:'parttime',
+    //         department:'civil',
+    //         placeofworking:'banglore',             
+    //         key:1
        
-        },
-        {
-            empid:'2',
-            name:'aron',
+    //     },
+    //     {
+    //         empid:'2',
+    //         name:'aron',
             
-            email:'abc123@gmail.com',
+    //         email:'abc123@gmail.com',
             
-            phone:'123456',
-            designation:'hr',
-            manageremail:'abc123@gmail.com',
+    //         phone:'123456',
+    //         designation:'hr',
+    //         manageremail:'abc123@gmail.com',
             
             
-            employee_type:'parttime',
-            department:'civil',
-            placeofworking:'banglore',             
+    //         employee_type:'parttime',
+    //         department:'civil',
+    //         placeofworking:'banglore',             
            
-            key:1
-        },
-    ]
+    //         key:1
+    //     },
+    // ]
     // striped
     let columns = [
         {

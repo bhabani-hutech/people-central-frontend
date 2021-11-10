@@ -97,6 +97,7 @@ desgnId:"",
   const [form] = Form.useForm();
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         "https://hutechpayrollapp.azurewebsites.net/application/viewDesignation"
@@ -115,6 +116,9 @@ desgnId:"",
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 

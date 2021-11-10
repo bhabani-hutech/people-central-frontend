@@ -9,11 +9,10 @@ import {
   Col,
   Form,
   Upload,
-  message,
   Input,
   DatePicker,
   Select,
-  // Table, Modal
+  message,
 } from "antd";
 import {
   UploadOutlined,
@@ -23,96 +22,135 @@ import {
 import "./Emponboarding.scss";
 import "antd/dist/antd.css";
 
-const props = {
-  name: "file",
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  headers: {
-    authorization: "authorization-text",
+
+const Imageprops = {
+  action: "//jsonplaceholder.typicode.com/posts/",
+  onChange({ file, fileList }) {
+    if (file.status !== "uploading") {
+      console.log(file, fileList);
+    }
   },
+};
+// const Resumeprops = {
+//   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+//   onChange({ file, fileList }) {
+//     if (file.status !== "uploading") {
+//       console.log(file, fileList);
+//     }
+//   },
+// };
+
+const Resumeprops = {
+  name: "file",
+  multiple: true,
+  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
   onChange(info) {
-    if (info.file.status !== "uploading") {
+    const { status } = info.file;
+    if (status !== "uploading") {
       console.log(info.file, info.fileList);
     }
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
+    if (status === "done") {
+      message.success(`${info.file.name} file uploaded successfully.`);
+    } else if (status === "error") {
       message.error(`${info.file.name} file upload failed.`);
     }
   },
 };
 
 const emptype = ["Part Time", "Full Time", "Contract", "Intern"];
-const Department = ["Default", "Marketing", "Finance", "HR"];
+const Department = ["Default", "Marketing", "finance", "HR"];
 const permission = ["Admin", "Employee", "Manager"];
 const Designation = [
-  "HRBP",
+  "HRBPA",
   "Business analyst Level",
   "Developer",
   "Junior Developer",
   "Senior Developer",
 ];
 
-
-
 const Emponboarding = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
-  const [employee, setEmployee] = useState({
-    // image: "",
-    // resume: "",
-    empFirstName: "",
-    empLastName: "",
-    phnoeNumber: "",
-    gender: "",
-    address1: "",
-    address2: "",
-    dateOfBirth: "",
-    empId: "",
-    empEmail: "",
-    joiningDate: "",
-    relievingDate: "",
-    managerEmail: "",
-    experience: "",
-    qualication: "",
-    bankAccountNo: "",
-    ifscCode: "",
-    bankName: "",
-    branchName: "",
-    employeement: "",
-    designation: {
-      designationName: "",
-    },
-    roles: {
-      roleName: "",
-    },
-    department: {
-      departmentName: "",
-    },
-  });
- 
+  // const [fileUpload, setFileupload] = useState({
+  //   selectedFile: null,
+  //   selectedFileList: [],
+  // });
+  // const onChangefile = (info) => {
+  //   const nextState = {};
+  //   switch (info.file.status) {
+  //     case "uploading":
+  //       nextState.selectedFileList = [info.file];
+  //       break;
+  //     case "done":
+  //       nextState.selectedFile = info.file;
+  //       nextState.selectedFileList = [info.file];
+  //       break;
 
+  //     default:
+  //       // error or removed
+  //       nextState.selectedFile = null;
+  //       nextState.selectedFileList = [];
+  //   }
+  //   setFileupload(() => nextState);
+  // };
 
+  // const [employee, setEmployee] = useState({
+  //   // image: "",
+  //   // resume: "",
+  //   empFirstName: "",
+  //   empLastName: "",
+  //   phnoeNumber: "",
+  //   gender: "",
+  //   address1: "",
+  //   address2: "",
+  //   dateOfBirth: "",
+  //   empId: "",
+  //   empEmail: "",
+  //   joiningDate: "",
+  //   relievingDate: "",
+  //   managerEmail: "",
+  //   experience: "",
+  //   qualication: "",
+  //   bankAccountNo: "",
+  //   ifscCode: "",
+  //   bankName: "",
+  //   branchName: "",
+  //   employeement: "",
+  //   designation: {
+  //     designationName: "",
+  //   },
+  //   roles: {
+  //     roleName: "",
+  //   },
+  //   department: {
+  //     departmentName: "",
+  //   },
+  // });
 
+  // const handelEmployeement = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   // console.log(value);
+  //   setEmployee({
+  //     [name]: value,
+  //   });
+  // };
+  // console.log(employee);
 
-const handelEmployeement = (e) => {
-  const name = e.target.name;
-  const value = e.target.value;
-  // console.log(value);
-  setEmployee({
-    [name]: value,
-  });
-};
-  console.log(employee);
-
-
+  //  const d = new Date();
+  //  const Jdate = d.toLocaleDateString(values.joiningDate._d);
   const onFinish = (values) => {
     console.log("Success:", values);
-    const d = new Date();
-    // const Jdate = moment(new Date(values.joiningDate));
-    // values.joiningDate=Jdate.format("DD/MM/YYYY");
-    // console.log(values.joiningDate);
- 
+
+    const Jdate = moment(new Date(values.joiningDate._d));
+    const Rdate = moment(new Date(values.relievingDate._d));
+    const Bdate = moment(new Date(values.dateOfBirth._d));
+    values.joiningDate = Jdate.format("DD-MM-YYYY");
+    values.relievingDate = Rdate.format("DD-MM-YYYY");
+    values.dateOfBirth = Bdate.format("DD-MM-YYYY");
+    console.log(values.joiningDate);
+    //  const exp = parseInt(values.experience);
     const employeeDetails = {
       empFirstName: values.empFirstName,
       empLastName: values.empLastName,
@@ -121,11 +159,9 @@ const handelEmployeement = (e) => {
       address1: values.address1,
       address2: values.address2,
       dateOfBirth: values.dateOfBirth,
-      // image: values.image,
-      // resume: values.resume,
       empId: values.empId,
       empEmail: values.empEmail,
-      joiningDate: d.toLocaleDateString(values.joiningDate._d),
+      joiningDate: values.joiningDate,
       relievingDate: values.relievingDate,
       managerEmail: values.managerEmail,
       experience: values.experience,
@@ -145,27 +181,49 @@ const handelEmployeement = (e) => {
         departmentName: values.departmentName,
       },
     };
-     
+
     axios
       .post(
         "https://hutechpayrollapp.azurewebsites.net/application/addEmployee",
-        { employeeDetails },
+        employeeDetails,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    const empfiles = {
+      employee: {
+        empId: values.empId,
+      },
+      image: values.image,
+      resume: values.resume,
+    };
+
+    axios
+      .post(
+        "https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile",
+        empfiles,
         {
           headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+            // "Accept": "application/json", ":":"multipart/form-data"
+            // "Content-Type": "application/json",":":
+            "Content-Type": "multipart/mixed",
           },
         }
       )
       .then((res) => {
         console.log(res);
-        
       })
       .catch((err) => {
         console.log(err);
       });
-    
+
     // console.log(employee);
     setLoading(true);
     setTimeout(() => {
@@ -177,34 +235,26 @@ const handelEmployeement = (e) => {
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
-  const handelEmployee = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    console.log(value);
-    setEmployee({
-      [name]: value,
-    });
-  };
- 
 
   const [value, setValue] = React.useState(1);
+
   const onChange = (e) => {
+    console.log(e);
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
   return (
     <div>
       <Form
         form={form}
-        // colon={false}
-        // requiredMark={false}
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
         initialValues={{ remember: true }}
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
-        autoComplete="off"
+        // autoComplete="off"
       >
         <div className="user_details">
           <div className="tab2_header">
@@ -221,7 +271,7 @@ const handelEmployeement = (e) => {
               <Form.Item
                 label="First Name"
                 name="empFirstName"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -238,7 +288,7 @@ const handelEmployeement = (e) => {
               <Form.Item
                 label="Last Name"
                 name="empLastName"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -254,7 +304,7 @@ const handelEmployeement = (e) => {
 
               <Form.Item
                 name="phnoeNumber"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 label="Phone Number"
                 rules={[
                   {
@@ -272,7 +322,7 @@ const handelEmployeement = (e) => {
               <Form.Item
                 label="Gender"
                 name="gender"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -283,9 +333,9 @@ const handelEmployeement = (e) => {
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
                 <Radio.Group onChange={onChange} value={value}>
-                  <Radio value={1}>Male</Radio>
-                  <Radio value={2}>Female</Radio>
-                  <Radio value={3}>Others</Radio>
+                  <Radio value="Male">Male</Radio>
+                  <Radio value="Female">Female</Radio>
+                  <Radio value="Others">Others</Radio>
                 </Radio.Group>
                 {/* </div> */}
               </Form.Item>
@@ -294,7 +344,7 @@ const handelEmployeement = (e) => {
               <Form.Item
                 label="Address line 1"
                 name="address1"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -311,7 +361,7 @@ const handelEmployeement = (e) => {
               <Form.Item
                 label="Address line 2"
                 name="address2"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
@@ -321,7 +371,7 @@ const handelEmployeement = (e) => {
 
               <Form.Item
                 name="dateOfBirth"
-                onChange={handelEmployee}
+                // onChange={handelEmployee}
                 label="Date of Birth"
                 rules={[
                   {
@@ -336,10 +386,14 @@ const handelEmployeement = (e) => {
                 />
               </Form.Item>
 
-              <Form.Item label="Image" name="image" onChange={handelEmployee}>
+              <Form.Item label="Image" name="image">
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                <Upload {...props}>
+                {/* <Upload {...props}>
+                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
+                </Upload> */}
+
+                <Upload {...Imageprops}>
                   <Button icon={<UploadOutlined />} style={{ width: "120%" }}>
                     Choose a file or Drag an image
                   </Button>
@@ -358,7 +412,7 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Employee ID"
                   name="empId"
-                  onChange={handelEmployeement}
+                  // onChange={handelEmployeement}
                   rules={[
                     {
                       required: true,
@@ -374,7 +428,7 @@ const handelEmployeement = (e) => {
 
                 <Form.Item
                   name="empEmail"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Email Address"
                   rules={[
                     {
@@ -393,7 +447,7 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Date of joining"
                   name="joiningDate"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -408,7 +462,7 @@ const handelEmployeement = (e) => {
                 </Form.Item>
                 <Form.Item
                   name="employeement"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Employment Type"
                   rules={[
                     {
@@ -433,7 +487,7 @@ const handelEmployeement = (e) => {
 
                 <Form.Item
                   name="designationName"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Designation"
                   rules={[
                     {
@@ -458,7 +512,7 @@ const handelEmployeement = (e) => {
 
                 <Form.Item
                   name="departmentName"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Department"
                   rules={[
                     {
@@ -486,18 +540,22 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Experienece"
                   name="experience"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployeement}
                 >
                   {/* <div className="wrapasterik">
                     <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  <Input placeholder="Experienece " />
+                  {/* <Input placeholder="Experienece " /> */}
+                  <Input
+                    placeholder="Experienece "
+                    // onChange={onChange}
+                  />
                   {/* </div> */}
                 </Form.Item>
 
                 <Form.Item
                   label="Highest Qualification"
                   name="qualication"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                 >
                   {/* <div className="wrapasterik">
                     <span className="asterik"> &nbsp;&nbsp;</span> */}
@@ -508,7 +566,7 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Exit Date"
                   name="relievingDate"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                 >
                   <DatePicker
                     className="datepicker"
@@ -519,7 +577,7 @@ const handelEmployeement = (e) => {
 
                 <Form.Item
                   name="managerEmail"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Manager/Supervisor"
                   rules={[
                     {
@@ -537,7 +595,7 @@ const handelEmployeement = (e) => {
 
                 <Form.Item
                   name="roleName"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Permission Level"
                   rules={[
                     {
@@ -564,15 +622,25 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Resume"
                   name="resume"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                 >
                   {/* <div className="wrapasterik">
                     <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  <Upload {...props}>
+                  <Upload {...Resumeprops}>
                     <Button icon={<UploadOutlined />} style={{ width: "110%" }}>
                       Choose a file or Drag an resume
                     </Button>
                   </Upload>
+                  {/* <Upload
+                    fileList={fileUpload.selectedFileList}
+                    customRequest={dummyRequest}
+                    onChange={onChangefile}
+                  >
+                    <Button icon={<UploadOutlined />} style={{ width: "110%" }}>
+                      Choose a file or Drag an resume
+                    </Button>
+                  </Upload> */}
+
                   {/* </div> */}
                 </Form.Item>
               </Col>
@@ -589,7 +657,7 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Bank Name"
                   name="bankName"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -606,7 +674,7 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   // value={employee.branchName}
                   name="branchName"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   label="Branch Name"
                   rules={[
                     {
@@ -626,11 +694,11 @@ const handelEmployeement = (e) => {
                 <Form.Item
                   label="Bank Account No."
                   name="bankAccountNo"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Bank Account No.!",
+                      message: "Please input your Bank Account No!",
                     },
                   ]}
                 >
@@ -639,10 +707,11 @@ const handelEmployeement = (e) => {
                   <Input placeholder="Bank Account No." />
                   {/* </div> */}
                 </Form.Item>
+
                 <Form.Item
                   label="IFSC Code"
                   name="ifscCode"
-                  onChange={handelEmployee}
+                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -678,4 +747,3 @@ const handelEmployeement = (e) => {
 };
 
 export default Emponboarding;
-

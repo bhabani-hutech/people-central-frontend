@@ -12,8 +12,9 @@ import { useLocation } from "react-router-dom";
 import Reset from "../../Components/Reset/Reset";
 import Forgot from "../../Components/Forgot/Forgot";
 import Create from "../../Components/Create/Create";
+import Activation from "../../Components/Activation/Activation";
 const {
-  ROUTES: { FORGOTPASSWORD, RESET, CREATE },
+  ROUTES: { FORGOTPASSWORD, RESET, CREATE,ACTIVATION },
   LOGIN_SUBHEADING_LABEL1,
   LOGIN_SUBHEADING_LABEL2,
 } = constants;
@@ -52,7 +53,9 @@ const Loginbase = () => {
                       <Reset />
                     ) : location.pathname.includes(CREATE) ? (
                       <Create />
-                    ) : (
+                    ) : location.pathname.includes(ACTIVATION) ? (
+                            <Activation />
+                      ): (
                       <Login />
                     )}
                   </div>

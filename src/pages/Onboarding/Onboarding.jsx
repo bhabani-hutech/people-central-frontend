@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import {
   Layout,
@@ -8,9 +9,9 @@ import "./Onboarding.scss";
 import AppFooter from "../../Components/Appfooter/Appfooter";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
-import Role from "../../Components/Role/Role";
+// import Role from "../../Components/Role/Role";
 import Department from "../../Components/Department/Department";
-import Employeement from "../../Components/Employeement/Employeement";
+// import Employeement from "../../Components/Employeement/Employeement";
 import {useSelector} from 'react-redux'
 import {useHistory} from 'react-router-dom'
 import Employeelist from '../../Components/employeelist/employeelist'
@@ -39,39 +40,36 @@ const Onboarding = () => {
   
   return (
     <>
-
-
       <Layout className="layout">
         <Content style={{ padding: "0 50px" }}>
           <div className="onboarding-content">
             <Tabs
               className="layout-content-heading"
-              defaultActiveKey="2"
+              defaultActiveKey="1"
               onChange={callback}
             >
-              <TabPane tab="Client Onboarding" key="1">
-               <Clientonboarding /> 
-              </TabPane>
-              <TabPane tab="Employee Onboarding" key="2">
+              <TabPane tab="Employee Onboarding" key="1">
                 <Emponboarding />
+              </TabPane>
+              <TabPane tab="Client Onboarding" key="2">
+                <Clientonboarding />
               </TabPane>
               {/* <TabPane tab="Employment" key="3">
                 <Employeement/>
               </TabPane> */}
               <TabPane tab="Designation" key="3">
-                <Designation/>
+                <Designation />
               </TabPane>
-              <TabPane tab="Role" key="4">
+              {/* <TabPane tab="Role" key="4">
                 <Role/>
-              </TabPane>
+              </TabPane> */}
               <TabPane tab="Department" key="5">
-                <Department/>
+                <Department />
               </TabPane>
-              <TabPane tab="view all employee" key="6">
-                
-               <Employeelist /> 
+              <TabPane tab="View Onboarded Employee" key="6">
+                <Employeelist />
               </TabPane>
-              <TabPane tab="holiday" key="7">
+              <TabPane tab="Holiday" key="7">
                 <Holiday />
               </TabPane>
             </Tabs>

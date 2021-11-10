@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
+// import { useHistory } from "react-router-dom";
 import "antd/dist/antd.css";
 import "../Login/login.scss";
 import constants from "../../constants/Constants";
@@ -11,8 +13,28 @@ const {
   SAVE_BTN,
 } = constants;
 const Create = () => {
+  const [form] = Form.useForm();
+// let history = useHistory();
+useEffect(() => {
+  axios
+    .get(
+      "https://hutechpayrollapp.azurewebsites.net/application/verifyEmployee"
+    )
+
+    .then((response) => {
+      console.log("response", response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}, []);
+
+
   const onFinish = (values) => {
     console.log("Success:", values);
+    alert("Your password has been created successfully");
+    // history.push("/activation");
+     form.resetFields();
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -21,7 +43,15 @@ const Create = () => {
 
   return (
     <div className="form_container">
+      <div style={{ color: "green", fontSize: "1.5rem" }}>
+        {" "}
+        * Your account is activated successfully!!!
+      </div>
+      <div style={{ color: "green", fontSize: "1.5rem",fontWeight: "bold" }}>
+        Please create your password
+      </div>
       <Form
+        form={form}
         name="basic"
         layout="vertical"
         onFinish={onFinish}
@@ -44,7 +74,7 @@ const Create = () => {
         <Form.Item
           label={CONFIRM_NEW_PASSWORD}
           labelAlign="right"
-          name="password"
+          name="cpassword"
           rules={[
             {
               required: true,

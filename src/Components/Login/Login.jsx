@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React,{useEffect} from "react";
 import constants from "../../constants/Constants";
 
@@ -9,15 +10,15 @@ import { Form, Input, Button, Checkbox } from "antd";
 import {useDispatch, useSelector} from 'react-redux'
 
 
-import axios from "axios";
+// import axios from "axios";
 
-import {userlogin} from '../../action/useraction'
+// import {userlogin} from '../../action/useraction'
 const {
-  ROUTES: { RESET, DASHBOARD },
+  ROUTES: { RESET },
   REMEMBER_ME_LABEL,
   FORGOT_PASSWORD_LABEL,
   LOG_IN_LABEL,
-  EMAIL_LABEL,
+  USERNAME_LABEL,
   EMAIL_PLACEHOLDER,
   PASSWORD_LABEL,
   PASSWORD_PLACEHOLDER,
@@ -45,7 +46,7 @@ const Login = () => {
     
     // dispatch(userlogin(email, password))
     console.log("Success:", values);
-    history.push(DASHBOARD);
+    history.push("/dashboard");
 
     form.resetFields() 
   };
@@ -67,7 +68,7 @@ const Login = () => {
         autoComplete="off"
       >
         <Form.Item
-          label={EMAIL_LABEL}
+          label={USERNAME_LABEL}
           name="emailId"
           rules={[
             {

@@ -77,6 +77,7 @@ const Department = () => {
   const [form] = Form.useForm();
  
   useEffect(() => {
+    setLoading(true);
     axios
       .get(
         "https://hutechpayrollapp.azurewebsites.net/application/viewDepartment"
@@ -94,6 +95,9 @@ const Department = () => {
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 

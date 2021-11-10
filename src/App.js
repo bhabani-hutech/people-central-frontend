@@ -6,7 +6,15 @@ const Loginbase = lazy(() => import("./pages/Loginbase/Loginbase"));
 // const Onboarding = lazy(() => import("./pages/Onboarding/Onboarding"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 const {
-  ROUTES: { LOGIN, FORGOTPASSWORD, RESET, DASHBOARD, CREATE, ONBOADING },
+  ROUTES: {
+    LOGIN,
+    FORGOTPASSWORD,
+    RESET,
+    DASHBOARD,
+    CREATE,
+    ONBOADING,
+    ACTIVATION,
+  },
   LOADING,
 } = constants;
 function App() {
@@ -19,6 +27,7 @@ function App() {
             <Route path={FORGOTPASSWORD} component={Loginbase} />
             <Route path={RESET} component={Loginbase} />
             <Route path={CREATE} component={Loginbase} />
+            <Route path={ACTIVATION} component={Loginbase} />
             <Route path={DASHBOARD} component={Dashboard} />
             <Route path={ONBOADING} component={Dashboard} />
           </Switch>
