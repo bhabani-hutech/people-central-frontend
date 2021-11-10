@@ -1,9 +1,17 @@
-import React from "react";
+import React,{useEffect} from "react";
 import constants from "../../constants/Constants";
+
+
 import "antd/dist/antd.css";
 import "./login.scss";
 import { useHistory } from "react-router-dom";
 import { Form, Input, Button, Checkbox } from "antd";
+import {useDispatch, useSelector} from 'react-redux'
+
+
+import axios from "axios";
+
+import {userlogin} from '../../action/useraction'
 const {
   ROUTES: { RESET, DASHBOARD },
   REMEMBER_ME_LABEL,
@@ -15,10 +23,31 @@ const {
   PASSWORD_PLACEHOLDER,
 } = constants;
 const Login = () => {
+  let [form] = Form.useForm()
+  const userloginn = useSelector(state => state.userlogin)
+  let {loading, userinfo, error} = userloginn
+
   const history = useHistory();
+
+  useEffect(() => {
+    if(userinfo){
+      history.push('/onboarding')
+     
+    }
+  }, [history, userinfo])
+  let dispatch = useDispatch()
+  
   const onFinish = (values) => {
+    let email = values.emailId
+    let password = values.password
+    console.log(email)
+    
+    
+    // dispatch(userlogin(email, password))
     console.log("Success:", values);
     history.push(DASHBOARD);
+
+    form.resetFields() 
   };
 
   const onFinishFailed = (errorInfo) => {

@@ -8,15 +8,30 @@ import {
   LogoutOutlined,
   // DownOutlined,
 } from "@ant-design/icons";
+
 import "../Appsidebar/Appsidebar.scss"
+
+import {useDispatch} from 'react-redux'
+import {userlogout} from '../../action/useraction'
+import {useHistory} from 'react-router-dom'
+
+
 const { Sider } = Layout;
 
-const Appsidebar = () => {
-    const [collapsed, setCollapsed] = useState(false);
 
+
+const Appsidebar = () => {
+  
+  let history = useHistory()
+  const [collapsed, setCollapsed] = useState(false);
+  const dispatch = useDispatch()
     const toggle = () => {
       setCollapsed(!collapsed);
     };
+    let handlelogout = ()=>{
+      dispatch(userlogout()) 
+      history.push('/') 
+    }
   return (
     <div className="sidebar">
       <Sider
@@ -38,7 +53,7 @@ const Appsidebar = () => {
           <Menu.Item key="3" icon={<SettingOutlined />}>
             Settings
           </Menu.Item>
-          <Menu.Item key="4" icon={<LogoutOutlined />}>
+          <Menu.Item onClick={handlelogout} key="4" icon={<LogoutOutlined />}>
             Log Out
           </Menu.Item>
         </Menu>

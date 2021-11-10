@@ -11,15 +11,36 @@ import Designation from "../../Components/Designation/Designation";
 import Role from "../../Components/Role/Role";
 import Department from "../../Components/Department/Department";
 import Employeement from "../../Components/Employeement/Employeement";
+import {useSelector} from 'react-redux'
+import {useHistory} from 'react-router-dom'
+import Employeelist from '../../Components/employeelist/employeelist'
+import Holiday from "../../Components/holiday/holiday";
+import Clientonboarding from "../../Components/clientonboard/clientonboarding";
+
+
 const { Content } = Layout;
+
 const { TabPane } = Tabs;
 
 const Onboarding = () => {
   function callback(key) {
     console.log(key);
+  
   }
+  const userloginn = useSelector(state => state.userlogin)
+  let history = useHistory()
+  let {loading, userinfo, error} = userloginn
+  // useEffect(() => {
+  //   if(!userinfo){
+  
+  //     history.push('/')
+  //   }
+  // }, [history])
+  
   return (
     <>
+
+
       <Layout className="layout">
         <Content style={{ padding: "0 50px" }}>
           <div className="onboarding-content">
@@ -29,7 +50,7 @@ const Onboarding = () => {
               onChange={callback}
             >
               <TabPane tab="Client Onboarding" key="1">
-                Content of Tab Pane 1
+               <Clientonboarding /> 
               </TabPane>
               <TabPane tab="Employee Onboarding" key="2">
                 <Emponboarding />
@@ -46,8 +67,12 @@ const Onboarding = () => {
               <TabPane tab="Department" key="5">
                 <Department/>
               </TabPane>
-              <TabPane tab="Time Off" key="6">
-                Content of Tab Pane 7
+              <TabPane tab="view all employee" key="6">
+                
+               <Employeelist /> 
+              </TabPane>
+              <TabPane tab="holiday" key="7">
+                <Holiday />
               </TabPane>
             </Tabs>
           </div>
