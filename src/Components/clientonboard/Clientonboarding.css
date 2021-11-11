@@ -57,11 +57,6 @@
 .asterik {
   color: red;
   margin-top: 2%;
-  margin-right: 5%;
-}
-
-.ant-form-item-label > label::after {
-  margin: 2px 3px 0 2px;
 }
 
 .tab2_header {
@@ -121,14 +116,4 @@
   border: 0;
   border-radius: 5px;
 }
-
-.datepicker {
-  margin-left: 1.7rem;
-  width: 20.5vw;
-}
-
-.ant-select-selector {
-  margin-left: 2rem;
-  width: 20%;
-}
-/*# sourceMappingURL=Emponboarding.css.map */
+/*# sourceMappingURL=Clientonboarding.css.map */

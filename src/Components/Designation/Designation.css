@@ -54,15 +54,14 @@
   display: flex;
 }
 
-.asterik {
-  color: red;
-  margin-top: 2%;
-  margin-right: 5%;
-}
-
 .degn_textarea {
   font-size: 10px;
   margin-left: 35%;
   margin-bottom: 5%;
+}
+
+.asterik {
+  color: red;
+  margin-top: 2%;
 }
 /*# sourceMappingURL=Designation.css.map */

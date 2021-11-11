@@ -51,13 +51,13 @@ display: flex;
 .asterik{
   color: red;
   margin-top: 2%;
-  margin-right: 5%;
+  // margin-right: 5%;
 }
-.asterik::after{
-  content: ":";
-  color: black;
-  margin-left: 2%;
-}
+// .asterik::after{
+//   content: ":";
+//   color: black;
+//   margin-left: 2%;
+// }
 .tab2_header{
   display: flex;
 
@@ -104,11 +104,11 @@ margin-top: 5%;
   border:0;
    border-radius:5px;
 }
-.datepicker{
-  margin-left: 2rem;
-  width: 95%;
-}
-.empdropdown{
-  // margin-left: 2rem;
-  width:80%;
-}
+// .datepicker{
+//   // margin-left: 2rem;
+//   width: 2rem;
+// }
+// .empdropdown{
+//   // margin-left: 2rem;
+//   width:80%;
+// }

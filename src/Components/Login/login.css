@@ -6,52 +6,6 @@
   overflow: hidden;
 }
 
-.main_container {
-  left: 0;
-  min-height: 100vh;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.container {
-  color: white;
-}
-
-.login_heading {
-  text-align: end;
-  margin-bottom: 5%;
-  color: #3C76CC;
-  font-weight: bold;
-}
-
-.login_subheading1 {
-  font-size: 30px;
-}
-
-.login_subheading2 {
-  font-size: 40px;
-}
-
-.left {
-  position: relative;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
 .forgotpassfield {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -73,10 +27,73 @@
   margin-right: 0%;
 }
 
-@media (max-width: 768px) {
+.form_container {
+  width: 60rem;
+  margin-left: 0;
+}
+
+.form_container label {
+  font-size: 1.5rem;
+}
+
+.form_container Input {
+  width: 100%;
+  height: 4.5rem;
+  border-radius: 5px;
+}
+
+#basic_password {
+  width: 100%;
+  height: 3.5rem;
+  border-radius: 5px;
+}
+
+.loginbtn {
+  background: #3C76CC;
+  height: 5rem;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+@media (max-width: 400px) {
   .form_container {
-    width: 80%;
+    width: 10rem;
     margin-left: 10%;
+    margin-right: 10%;
+  }
+  .form_container .ant-form-item-control-input {
+    width: 70%;
+    height: 4.5rem;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 665px) {
+  .form_container {
+    width: 40rem;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .form_container .ant-form-item-control-input {
+    width: 80%;
+    height: 4.5rem;
+    border-radius: 5px;
+  }
+}
+
+@media (max-width: 880px) {
+  .form_container {
+    width: 40rem;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+}
+
+@media (min-width: 1070px) {
+  .form_container {
+    width: 60rem;
   }
 }
 /*# sourceMappingURL=login.css.map */

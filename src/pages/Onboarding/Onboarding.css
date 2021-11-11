@@ -1,6 +1,6 @@
-.layout .site-layout-content {
-  min-height: 280px;
-  padding: 24px;
+.layout .onboarding-content {
+  min-height: 28rem;
+  padding: 2rem;
   background: #fff;
   -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -13,8 +13,8 @@
 
 #components-layout-demo-top .logo {
   float: left;
-  width: 120px;
-  height: 31px;
+  width: 12rem;
+  height: 3rem;
   margin: 16px 24px 16px 0;
   background: rgba(255, 255, 255, 0.3);
 }

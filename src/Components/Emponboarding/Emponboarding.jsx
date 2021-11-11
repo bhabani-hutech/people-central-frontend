@@ -31,31 +31,31 @@ const Imageprops = {
     }
   },
 };
-// const Resumeprops = {
-//   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-//   onChange({ file, fileList }) {
-//     if (file.status !== "uploading") {
-//       console.log(file, fileList);
-//     }
-//   },
-// };
-
 const Resumeprops = {
-  name: "file",
-  multiple: true,
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  onChange(info) {
-    const { status } = info.file;
-    if (status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (status === "done") {
-      message.success(`${info.file.name} file uploaded successfully.`);
-    } else if (status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
+  onChange({ file, fileList }) {
+    if (file.status !== "uploading") {
+      console.log(file, fileList);
     }
   },
 };
+
+// const Resumeprops = {
+//   name: "file",
+//   multiple: true,
+//   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
+//   onChange(info) {
+//     const { status } = info.file;
+//     if (status !== "uploading") {
+//       console.log(info.file, info.fileList);
+//     }
+//     if (status === "done") {
+//       message.success(`${info.file.name} file uploaded successfully.`);
+//     } else if (status === "error") {
+//       message.error(`${info.file.name} file upload failed.`);
+//     }
+//   },
+// };
 
 const emptype = ["Part Time", "Full Time", "Contract", "Intern"];
 const Department = ["Default", "Marketing", "finance", "HR"];
@@ -95,51 +95,8 @@ const Emponboarding = () => {
   //   setFileupload(() => nextState);
   // };
 
-  // const [employee, setEmployee] = useState({
-  //   // image: "",
-  //   // resume: "",
-  //   empFirstName: "",
-  //   empLastName: "",
-  //   phnoeNumber: "",
-  //   gender: "",
-  //   address1: "",
-  //   address2: "",
-  //   dateOfBirth: "",
-  //   empId: "",
-  //   empEmail: "",
-  //   joiningDate: "",
-  //   relievingDate: "",
-  //   managerEmail: "",
-  //   experience: "",
-  //   qualication: "",
-  //   bankAccountNo: "",
-  //   ifscCode: "",
-  //   bankName: "",
-  //   branchName: "",
-  //   employeement: "",
-  //   designation: {
-  //     designationName: "",
-  //   },
-  //   roles: {
-  //     roleName: "",
-  //   },
-  //   department: {
-  //     departmentName: "",
-  //   },
-  // });
-
-  // const handelEmployeement = (e) => {
-  //   const name = e.target.name;
-  //   const value = e.target.value;
-  //   // console.log(value);
-  //   setEmployee({
-  //     [name]: value,
-  //   });
-  // };
-  // console.log(employee);
-
-  //  const d = new Date();
-  //  const Jdate = d.toLocaleDateString(values.joiningDate._d);
+  
+  
   const onFinish = (values) => {
     console.log("Success:", values);
 
@@ -150,7 +107,6 @@ const Emponboarding = () => {
     values.relievingDate = Rdate.format("DD-MM-YYYY");
     values.dateOfBirth = Bdate.format("DD-MM-YYYY");
     console.log(values.joiningDate);
-    //  const exp = parseInt(values.experience);
     const employeeDetails = {
       empFirstName: values.empFirstName,
       empLastName: values.empLastName,
@@ -211,8 +167,6 @@ const Emponboarding = () => {
         empfiles,
         {
           headers: {
-            // "Accept": "application/json", ":":"multipart/form-data"
-            // "Content-Type": "application/json",":":
             "Content-Type": "multipart/mixed",
           },
         }
@@ -248,6 +202,8 @@ const Emponboarding = () => {
     <div>
       <Form
         form={form}
+        requiredMark={false}
+        // labelAlign="left"
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
@@ -271,7 +227,6 @@ const Emponboarding = () => {
               <Form.Item
                 label="First Name"
                 name="empFirstName"
-                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -279,16 +234,15 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Input placeholder="First Name" />
-                {/* </div> */}
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Input placeholder="First Name" />
+                </div>
               </Form.Item>
 
               <Form.Item
                 label="Last Name"
                 name="empLastName"
-                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -296,15 +250,14 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Input placeholder="Last Name" />
-                {/* </div> */}
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Input placeholder="Last Name" />
+                </div>
               </Form.Item>
 
               <Form.Item
                 name="phnoeNumber"
-                // onChange={handelEmployee}
                 label="Phone Number"
                 rules={[
                   {
@@ -313,16 +266,15 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Input placeholder="Phone Number" />
-                {/* </div> */}
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Input placeholder="Phone Number" />
+                </div>
               </Form.Item>
 
               <Form.Item
                 label="Gender"
                 name="gender"
-                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -330,21 +282,20 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Radio.Group onChange={onChange} value={value}>
-                  <Radio value="Male">Male</Radio>
-                  <Radio value="Female">Female</Radio>
-                  <Radio value="Others">Others</Radio>
-                </Radio.Group>
-                {/* </div> */}
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Radio.Group onChange={onChange} value={value}>
+                    <Radio value="Male">Male</Radio>
+                    <Radio value="Female">Female</Radio>
+                    <Radio value="Others">Others</Radio>
+                  </Radio.Group>
+                </div>
               </Form.Item>
             </Col>
             <Col span={12}>
               <Form.Item
                 label="Address line 1"
                 name="address1"
-                // onChange={handelEmployee}
                 rules={[
                   {
                     required: true,
@@ -352,26 +303,21 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Input placeholder="Address line 1" />
-                {/* </div> */}
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Input placeholder="Address line 1" />
+                </div>
               </Form.Item>
 
-              <Form.Item
-                label="Address line 2"
-                name="address2"
-                // onChange={handelEmployee}
-              >
-                {/* <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span> */}
-                <Input placeholder="Address line 2" />
-                {/* </div> */}
+              <Form.Item label="Address line 2" name="address2">
+                <div className="wrapasterik">
+                  <span className="asterik"> &nbsp;&nbsp;</span>
+                  <Input placeholder="Address line 2" />
+                </div>
               </Form.Item>
 
               <Form.Item
                 name="dateOfBirth"
-                // onChange={handelEmployee}
                 label="Date of Birth"
                 rules={[
                   {
@@ -387,18 +333,18 @@ const Emponboarding = () => {
               </Form.Item>
 
               <Form.Item label="Image" name="image">
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                {/* <Upload {...props}>
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  {/* <Upload {...props}>
                   <Button icon={<UploadOutlined />}>Click to Upload</Button>
                 </Upload> */}
 
-                <Upload {...Imageprops}>
-                  <Button icon={<UploadOutlined />} style={{ width: "120%" }}>
-                    Choose a file or Drag an image
-                  </Button>
-                </Upload>
-                {/* </div> */}
+                  <Upload {...Imageprops}>
+                    <Button icon={<UploadOutlined />} style={{ width: "122%" }}>
+                      Choose a file or Drag an image
+                    </Button>
+                  </Upload>
+                </div>
               </Form.Item>
             </Col>
           </Row>
@@ -412,7 +358,6 @@ const Emponboarding = () => {
                 <Form.Item
                   label="Employee ID"
                   name="empId"
-                  // onChange={handelEmployeement}
                   rules={[
                     {
                       required: true,
@@ -420,15 +365,14 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="Employee ID" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="Employee ID" />
+                  </div>
                 </Form.Item>
 
                 <Form.Item
                   name="empEmail"
-                  // onChange={handelEmployee}
                   label="Email Address"
                   rules={[
                     {
@@ -438,16 +382,15 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="Email Address" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="Email Address" />
+                  </div>
                 </Form.Item>
 
                 <Form.Item
                   label="Date of joining"
                   name="joiningDate"
-                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -455,14 +398,13 @@ const Emponboarding = () => {
                   ]}
                 >
                   <DatePicker
-                    className="datepicker"
+                    style={{ width: "20.5vw", marginLeft: "1.7rem" }}
+                    // className="datepicker"
                     placeholder="DD/MM/YYYY"
-                    // style={{ width: "100%" }}
                   />
                 </Form.Item>
                 <Form.Item
                   name="employeement"
-                  // onChange={handelEmployee}
                   label="Employment Type"
                   rules={[
                     {
@@ -471,10 +413,7 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  <Select
-                    placeholder="Select Employment Type"
-                    className="empdropdown"
-                  >
+                  <Select placeholder="Select Employment Type">
                     {emptype.map((fr, index) => {
                       return (
                         <Select.Option key={index} value={fr}>
@@ -487,7 +426,6 @@ const Emponboarding = () => {
 
                 <Form.Item
                   name="designationName"
-                  // onChange={handelEmployee}
                   label="Designation"
                   rules={[
                     {
@@ -498,7 +436,7 @@ const Emponboarding = () => {
                 >
                   <Select
                     placeholder="Select Designation"
-                    className="empdropdown"
+                    // className="empdropdown"
                   >
                     {Designation.map((fr, index) => {
                       return (
@@ -512,7 +450,6 @@ const Emponboarding = () => {
 
                 <Form.Item
                   name="departmentName"
-                  // onChange={handelEmployee}
                   label="Department"
                   rules={[
                     {
@@ -523,7 +460,7 @@ const Emponboarding = () => {
                 >
                   <Select
                     placeholder="Select Department"
-                    className="empdropdown"
+                    // className="empdropdown"
                   >
                     {Department.map((fr, index) => {
                       return (
@@ -537,39 +474,24 @@ const Emponboarding = () => {
               </Col>
 
               <Col span={12}>
-                <Form.Item
-                  label="Experienece"
-                  name="experience"
-                  // onChange={handelEmployeement}
-                >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  {/* <Input placeholder="Experienece " /> */}
-                  <Input
-                    placeholder="Experienece "
-                    // onChange={onChange}
-                  />
-                  {/* </div> */}
+                <Form.Item label="Experienece" name="experience">
+                  <div className="wrapasterik">
+                    <span className="asterik"> &nbsp;&nbsp;</span>
+                    <Input placeholder="Experienece " />
+                  </div>
                 </Form.Item>
 
-                <Form.Item
-                  label="Highest Qualification"
-                  name="qualication"
-                  // onChange={handelEmployee}
-                >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  <Input placeholder="Highest Academic Qualification" />
-                  {/* </div> */}
+                <Form.Item label="Highest Qualification" name="qualication">
+                  <div className="wrapasterik">
+                    <span className="asterik"> &nbsp;&nbsp;</span>
+                    <Input placeholder="Highest Academic Qualification" />
+                  </div>
                 </Form.Item>
 
-                <Form.Item
-                  label="Exit Date"
-                  name="relievingDate"
-                  // onChange={handelEmployee}
-                >
+                <Form.Item label="Exit Date" name="relievingDate">
                   <DatePicker
-                    className="datepicker"
+                    // className="datepicker"
+                    style={{ width: "20.5vw", marginLeft: "1.7rem" }}
                     placeholder="DD/MM/YYYY"
                     // style={{ width: "100%" }}
                   />
@@ -577,7 +499,6 @@ const Emponboarding = () => {
 
                 <Form.Item
                   name="managerEmail"
-                  // onChange={handelEmployee}
                   label="Manager/Supervisor"
                   rules={[
                     {
@@ -587,15 +508,14 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="manager@gmail.com" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="manager@gmail.com" />
+                  </div>
                 </Form.Item>
 
                 <Form.Item
                   name="roleName"
-                  // onChange={handelEmployee}
                   label="Permission Level"
                   rules={[
                     {
@@ -606,8 +526,8 @@ const Emponboarding = () => {
                 >
                   <Select
                     placeholder="Select Permission"
-                    className="empdropdown"
-                    style={{ marginLeft: "7%" }}
+                    // className="empdropdown"
+                    // style={{ marginLeft: "7%" }}
                   >
                     {permission.map((fr, index) => {
                       return (
@@ -619,19 +539,21 @@ const Emponboarding = () => {
                   </Select>
                 </Form.Item>
 
-                <Form.Item
-                  label="Resume"
-                  name="resume"
-                  // onChange={handelEmployee}
-                >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  <Upload {...Resumeprops}>
-                    <Button icon={<UploadOutlined />} style={{ width: "110%" }}>
-                      Choose a file or Drag an resume
-                    </Button>
-                  </Upload>
-                  {/* <Upload
+                <Form.Item label="Resume" name="resume">
+                  <div className="wrapasterik">
+                    <span className="asterik"> &nbsp;&nbsp;</span>
+                    <Upload
+                      {...Resumeprops}
+                      accept=".doc,.docx,application/pdf"
+                    >
+                      <Button
+                        icon={<UploadOutlined />}
+                        style={{ width: "110%" }}
+                      >
+                        Choose a file or Drag an resume
+                      </Button>
+                    </Upload>
+                    {/* <Upload
                     fileList={fileUpload.selectedFileList}
                     customRequest={dummyRequest}
                     onChange={onChangefile}
@@ -640,8 +562,7 @@ const Emponboarding = () => {
                       Choose a file or Drag an resume
                     </Button>
                   </Upload> */}
-
-                  {/* </div> */}
+                  </div>
                 </Form.Item>
               </Col>
             </Row>
@@ -657,7 +578,6 @@ const Emponboarding = () => {
                 <Form.Item
                   label="Bank Name"
                   name="bankName"
-                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -665,16 +585,14 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="Bank Name" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="Bank Name" />
+                  </div>
                 </Form.Item>
 
                 <Form.Item
-                  // value={employee.branchName}
                   name="branchName"
-                  // onChange={handelEmployee}
                   label="Branch Name"
                   rules={[
                     {
@@ -683,10 +601,10 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="Branch Name" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="Branch Name" />
+                  </div>
                 </Form.Item>
               </Col>
 
@@ -694,7 +612,6 @@ const Emponboarding = () => {
                 <Form.Item
                   label="Bank Account No."
                   name="bankAccountNo"
-                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -702,16 +619,15 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="Bank Account No." />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="Bank Account No." />
+                  </div>
                 </Form.Item>
 
                 <Form.Item
                   label="IFSC Code"
                   name="ifscCode"
-                  // onChange={handelEmployee}
                   rules={[
                     {
                       required: true,
@@ -719,10 +635,10 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
-                  <Input placeholder="IFSC Code" />
-                  {/* </div> */}
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Input placeholder="IFSC Code" />
+                  </div>
                 </Form.Item>
               </Col>
             </Row>

@@ -24,19 +24,33 @@
   font-size: calc(10px + 2vmin);
 }
 
-.container {
+.main_container .container {
   color: white;
 }
 
 .login_heading {
-  text-align: end;
-  margin-bottom: 20%;
-  color: #3C76CC;
+  line-height: 0.2rem;
+  margin-bottom: 3%;
+  color: #3c76cc;
   font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 .login_subheading1 {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  margin-left: 3rem;
 }
 
 .login_subheading2 {
@@ -61,7 +75,7 @@
 }
 
 .image2 {
-  width: 100%;
+  width: 80%;
   position: absolute;
   top: 10%;
   left: 0%;
@@ -70,7 +84,7 @@
 .image3 {
   width: 100%;
   position: absolute;
-  top: 60%;
+  top: 40%;
   left: 0%;
 }
 
@@ -96,19 +110,6 @@
 }
 
 @media (max-width: 576px) {
-  .login_right {
-    width: 100%;
-    margin-left: 20%;
-  }
-  .login_left {
-    display: none;
-  }
-  .main_container {
-    width: 100vw;
-  }
-  .container {
-    width: 100%;
-  }
   .login_subheading1 {
     font-size: 1rem;
   }
@@ -118,8 +119,14 @@
 }
 
 @media (max-width: 768px) {
-  .image2 {
-    top: 25%;
+  .login_left {
+    display: none;
+  }
+  .main_container {
+    width: 80vw;
+  }
+  .container {
+    width: 100%;
   }
   .login_subheading1 {
     font-size: 1rem;

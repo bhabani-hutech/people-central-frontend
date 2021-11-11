@@ -53,10 +53,9 @@ display: flex;
   margin-top: 2%;
   margin-right: 5%;
 }
-.asterik::after{
-  content: ":";
-  color: black;
-  margin-left: 2%;
+.ant-form-item-label > label::after{
+  // content:":";
+  margin: 2px 3px 0 2px;
 }
 .tab2_header{
   display: flex;
@@ -106,9 +105,24 @@ margin-top: 5%;
 }
 .datepicker{
   margin-left: 2rem;
-  width: 95%;
+  width:21.7vw;
 }
-.empdropdown{
-  // margin-left: 2rem;
-  width:80%;
+// .ant-select .empdropdown{
+//    margin-left: 1.8rem;
+// } 
+// .empdropdown{
+//   min-width: 80%;
+ 
+// }
+.ant-select-selector{
+  margin-left:2rem;
+}
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector{
+  width: 93%;
+  height: 32px;
+  padding: 0 11px;
+}
+.ant-select .ant-select-single .ant-select-show-arrow{
+  margin-left:2rem;
+  right: 2%;
 }

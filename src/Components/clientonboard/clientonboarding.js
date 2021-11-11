@@ -21,7 +21,7 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import "./Emponboarding.scss";
+import "./Clientonboarding.scss";
 import "antd/dist/antd.css";
 
 const props = {

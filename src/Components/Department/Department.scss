@@ -52,10 +52,10 @@ display: flex;
 .asterik{
   color: red;
   margin-top: 2%;
-  margin-right: 5%;
+  // margin-right: 5%;
 }
-.asterik::after{
-  content: ":";
-  color: black;
-  margin-left: 2%;
-}
+// .asterik::after{
+//   content: ":";
+//   color: black;
+//   margin-left: 2%;
+// }
