@@ -7,7 +7,7 @@ const AppFooter = () => {
     return (
       <div className="fixed_footer">
         <Footer className="app_footer">
-          <div className="footer_item">© PeopleCentral 2021</div>
+          <div className="footer_item">© PeopleCentral By Hutech Solutions 2021</div>
           <div className="footer_item">Terms & Conditions</div>
           <div className="footer_item"> Privacy Policy</div>
           <div className="footer_item">Cookie Preferences</div>

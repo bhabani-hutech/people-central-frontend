@@ -24,7 +24,7 @@ const Reset = () => {
        autoComplete="off"
      >
        <Form.Item
-         label={EMAIL_LABEL}
+         label="Email Address"
          name="emailId"
          rules={[
            {
@@ -38,7 +38,7 @@ const Reset = () => {
        </Form.Item>
 
        <Form.Item>
-         <Button block type="primary" htmlType="submit">
+         <Button block type="primary" htmlType="submit" className="loginbtn">
            {SUBMIT_BTN}
          </Button>
        </Form.Item>

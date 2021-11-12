@@ -56,7 +56,7 @@ const Resumeprops = {
 //   },
 // };
 
-const emptype = ["Part Time", "Full Time", "Contract", "Intern"];
+const emptype = ["Part Time", "Full Time", "Contract"];
 const Department = ["Default", "Marketing", "finance", "HR"];
 const permission = ["Admin", "Employee", "Manager"];
 const Designation = [
@@ -321,14 +321,18 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
+                    message: "Please input Date of Birth!",
                   },
                 ]}
               >
-                <DatePicker
-                  className="datepicker"
-                  placeholder="DD/MM/YYYY"
-                  // style={{ width: "100%" }}
-                />
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <DatePicker
+                    className="datepicker"
+                    placeholder="DD/MM/YYYY"
+                    style={{ width: "100%" }}
+                  />
+                </div>
               </Form.Item>
 
               <Form.Item label="Image" name="image">
@@ -412,15 +416,18 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  <Select placeholder="Select Employment Type">
-                    {emptype.map((fr, index) => {
-                      return (
-                        <Select.Option key={index} value={fr}>
-                          {fr}
-                        </Select.Option>
-                      );
-                    })}
-                  </Select>
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
+                    <Select placeholder="Select Employment Type">
+                      {emptype.map((fr, index) => {
+                        return (
+                          <Select.Option key={index} value={fr}>
+                            {fr}
+                          </Select.Option>
+                        );
+                      })}
+                    </Select>
+                  </div>
                 </Form.Item>
 
                 <Form.Item
@@ -433,6 +440,8 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Designation"
                     // className="empdropdown"
@@ -445,6 +454,7 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
+                  </div>
                 </Form.Item>
 
                 <Form.Item
@@ -457,6 +467,8 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Department"
                     // className="empdropdown"
@@ -469,6 +481,7 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
+                  </div>
                 </Form.Item>
               </Col>
 
@@ -523,6 +536,8 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
+                  <div className="wrapasterik">
+                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Permission"
                     // className="empdropdown"
@@ -536,6 +551,7 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
+                  </div>
                 </Form.Item>
 
                 <Form.Item label="Resume" name="resume">

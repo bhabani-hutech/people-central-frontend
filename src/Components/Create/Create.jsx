@@ -5,6 +5,8 @@ import "antd/dist/antd.css";
 import "../Login/login.scss";
 import constants from "../../constants/Constants";
 import { Form, Input, Button } from "antd";
+import { CheckCircleFilled } from "@ant-design/icons";
+
 const {
   CREATE_PASSWORD,
   CONFIRM_NEW_PASSWORD,
@@ -45,13 +47,14 @@ useEffect(() => {
     <div className="form_container">
       <div style={{ color: "green", fontSize: "1.5rem" }}>
         {" "}
-        * Your account is activated successfully!!!
+        <CheckCircleFilled /> Your account is activated successfully!!!
       </div>
-      <div style={{ color: "green", fontSize: "1.5rem",fontWeight: "bold" }}>
+      <div style={{ color: "green", fontSize: "1.5rem", fontWeight: "bold" }}>
         Please create your password
       </div>
       <Form
         form={form}
+        requiredMark={false}
         name="basic"
         layout="vertical"
         onFinish={onFinish}
@@ -86,7 +89,7 @@ useEffect(() => {
         </Form.Item>
 
         <Form.Item>
-          <Button block type="primary" htmlType="submit">
+          <Button block type="primary" htmlType="submit" className="loginbtn">
             {SAVE_BTN}
           </Button>
         </Form.Item>

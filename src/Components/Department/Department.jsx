@@ -202,7 +202,7 @@ const handelDepartmentChange = (e) => {
           >
             <Form
               form={form}
-              // requiredMark={false}
+              requiredMark={false}
               name="basic"
               labelCol={{
                 span: 8,
@@ -229,7 +229,10 @@ const handelDepartmentChange = (e) => {
                   },
                 ]}
               >
-                <Input />
+                <div className="wrapasterik">
+                  <span className="asterik">*</span>
+                  <Input />
+                </div>
               </Form.Item>
               <Form.Item
                 label="Department Name"
@@ -243,7 +246,10 @@ const handelDepartmentChange = (e) => {
                   },
                 ]}
               >
+                  <div className="wrapasterik">
+                  <span className="asterik">*</span>
                 <Input />
+                </div>
               </Form.Item>
               <Row>
                 <Col span={19}>
