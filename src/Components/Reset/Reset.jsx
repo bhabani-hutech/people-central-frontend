@@ -3,7 +3,7 @@ import "antd/dist/antd.css";
 import constants from "../../constants/Constants";
 import "../Login/login.scss";
 import { Form, Input, Button } from "antd";
-const { EMAIL_LABEL, EMAIL_PLACEHOLDER, SUBMIT_BTN } = constants;
+const { EMAIL_PLACEHOLDER, SUBMIT_BTN } = constants;
 const Reset = () => {
  const onFinish = (values) => {
    console.log("Success:", values);
