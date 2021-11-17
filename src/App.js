@@ -14,6 +14,7 @@ const {
     CREATE,
     ONBOADING,
     ACTIVATION,
+    SETTING,
   },
   LOADING,
 } = constants;
@@ -30,6 +31,7 @@ function App() {
             <Route path={ACTIVATION} component={Loginbase} />
             <Route path={DASHBOARD} component={Dashboard} />
             <Route path={ONBOADING} component={Dashboard} />
+            <Route path={SETTING} component={Dashboard} />
           </Switch>
         </Suspense>
       </div>

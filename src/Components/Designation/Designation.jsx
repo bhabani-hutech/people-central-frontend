@@ -202,6 +202,7 @@ const Designation = () => {
             <Form
               form={form}
               requiredMark={false}
+              colon={false}
               name="basic"
               labelCol={{
                 span: 8,
@@ -228,10 +229,10 @@ const Designation = () => {
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
                   <Input />
-                </div>
+                {/* </div> */}
               </Form.Item>
               <Form.Item
                 label="Designation Name"
@@ -245,10 +246,10 @@ const Designation = () => {
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
                   <Input />
-                </div>
+                {/* </div> */}
               </Form.Item>
 
               <Form.Item
@@ -257,10 +258,10 @@ const Designation = () => {
                 name="description"
                 onChange={handelDescription}
               >
-                <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span>
+                {/* <div className="wrapasterik">
+                  <span className="asterik"> &nbsp;&nbsp;</span> */}
                   <Input.TextArea />
-                </div>
+                {/* </div> */}
               </Form.Item>
               <div className="degn_textarea">
                 0 characters remaining of 100 characters

@@ -2,7 +2,7 @@
 import React from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./Onboarding.scss";
+import "./AppSetting.scss";
 import AppFooter from "../../Components/Appfooter/Appfooter";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
@@ -19,7 +19,7 @@ const { Content } = Layout;
 
 const { TabPane } = Tabs;
 
-const Onboarding = () => {
+const AppSetting = () => {
   function callback(key) {
     console.log(key);
   }
@@ -43,14 +43,17 @@ const Onboarding = () => {
               defaultActiveKey="1"
               onChange={callback}
             >
-              <TabPane tab="Employee Onboarding" key="1">
-                <Emponboarding />
+             
+              <TabPane tab="Designation" key="1">
+                <Designation />
               </TabPane>
-              <TabPane tab="View Onboarded Employee" key="2">
-                <Employeelist />
+             
+              <TabPane tab="Department" key="2">
+                <Department />
               </TabPane>
-              <TabPane tab="Client Onboarding" key="3">
-                <Clientonboarding />
+             
+              <TabPane tab="Holiday" key="3">
+                <Holiday />
               </TabPane>
             </Tabs>
           </div>
@@ -61,4 +64,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding;
+export default AppSetting;

@@ -30,6 +30,7 @@ const Home = () => {
   };
   const handelSetting = () => {
     console.log("Setting");
+     history.push("/setting");
   };
   return (
     <div className="container">

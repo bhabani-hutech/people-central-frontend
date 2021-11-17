@@ -126,3 +126,29 @@ margin-top: 5%;
   margin-left:2rem;
   right: 2%;
 }
+.ant-form-item-explain.ant-form-item-explain-error {
+    color: #ff4d4f;
+    text-align: left;
+    margin-left: 2rem;
+}
+div.ant-upload{
+    width: 100%;
+}
+.ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+    display: inline-block;
+    margin-right: 4px;
+    color: #ff4d4f;
+    font-size: 14px;
+    font-family: SimSun, sans-serif;
+    line-height: 1;
+    content: '*';
+}
+.ant-form-item-control-input{
+  width: 100%;
+}
+.ant-form-item-control-input::before{
+  display: flex;
+    margin-right: 4px;
+    color:black;
+    content: ':';
+}

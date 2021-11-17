@@ -12,6 +12,7 @@ import {
   Input,
   DatePicker,
   Select,
+  message,
 } from "antd";
 import {
   UploadOutlined,
@@ -21,84 +22,106 @@ import {
 import "./Emponboarding.scss";
 import "antd/dist/antd.css";
 
-
-const Imageprops = {
-  action: "//jsonplaceholder.typicode.com/posts/",
-  onChange({ file, fileList }) {
-    if (file.status !== "uploading") {
-      console.log(file, fileList);
-    }
-  },
-};
-const Resumeprops = {
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  onChange({ file, fileList }) {
-    if (file.status !== "uploading") {
-      console.log(file, fileList);
-    }
-  },
-};
-
-// const Resumeprops = {
-//   name: "file",
-//   multiple: true,
-//   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-//   onChange(info) {
-//     const { status } = info.file;
-//     if (status !== "uploading") {
-//       console.log(info.file, info.fileList);
-//     }
-//     if (status === "done") {
-//       message.success(`${info.file.name} file uploaded successfully.`);
-//     } else if (status === "error") {
-//       message.error(`${info.file.name} file upload failed.`);
-//     }
-//   },
-// };
-
 const emptype = ["Part Time", "Full Time", "Contract"];
-const Department = ["Default", "Marketing", "finance", "HR"];
+const Department = ["Default", "Marketing", "Development"];
 const permission = ["Admin", "Employee", "Manager"];
 const Designation = [
   "HRBPA",
-  "Business analyst Level",
+  "Human Resources",
   "Developer",
   "Junior Developer",
   "Senior Developer",
 ];
+const bloodGrouptype = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
 
 const Emponboarding = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
-  // const [fileUpload, setFileupload] = useState({
-  //   selectedFile: null,
-  //   selectedFileList: [],
-  // });
-  // const onChangefile = (info) => {
-  //   const nextState = {};
-  //   switch (info.file.status) {
-  //     case "uploading":
-  //       nextState.selectedFileList = [info.file];
-  //       break;
-  //     case "done":
-  //       nextState.selectedFile = info.file;
-  //       nextState.selectedFileList = [info.file];
-  //       break;
 
-  //     default:
-  //       // error or removed
-  //       nextState.selectedFile = null;
-  //       nextState.selectedFileList = [];
-  //   }
-  //   setFileupload(() => nextState);
-  // };
+  const [fileUpload, setFileupload] = useState({
+    selectedFile: null,
+    selectedFileList: [],
+  });
+  const dummyRequest = ({ file, onSuccess }) => {
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  };
 
-  
-  
+  const onChangefile = (info) => {
+    const nextState = {};
+    switch (info.file.status) {
+      case "uploading":
+        nextState.selectedFileList = [info.file];
+
+        break;
+      case "done":
+        nextState.selectedFile = info.file;
+        nextState.selectedFileList = [info.file];
+        break;
+
+      default:
+        // error or removed
+        nextState.selectedFile = null;
+        nextState.selectedFileList = [];
+    }
+    setFileupload(() => nextState);
+  };
+
+  const Imageprops = {
+    name: "image",
+    action: "//jsonplaceholder.typicode.com/posts/",
+
+    onChange(info) {
+      const { status } = info.file;
+      if (status !== "uploading") {
+        console.log(info.file, info.fileList);
+      }
+      if (status === "done") {
+        message.success(`${info.file.name} file uploaded successfully.`);
+        console.log(info.file, info.fileList);
+      } else if (status === "error") {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
   const onFinish = (values) => {
     console.log("Success:", values);
+    const formData = new FormData();
+    // var reader = new FileReader();
+    // var fileByteArray = [];
+   
+    // var array = new Uint32Array(values.image.file);
+    // console.log("_+_array:", array); // the array is empty!
 
+    // for (var i = 0; i < array.length; i++) {
+    //   fileByteArray.push(array[i]);
+    // }
+
+   
+    // formData.append("image", values.image.file);
+    // formData.append("resume", values.resume.file);
+    console.log(values.image.file);
+    
+
+     var array = new Uint32Array(values.image.file);
+     console.log("_+_array:", array); // the array is empty!
+     var binaryString = String.fromCharCode.apply(String, array);
+     console.log("__binaryString:", binaryString);
+    formData.append("image", array);
+
+
+
+
+    var filearray = new Uint32Array(values.resume.file);
+    console.log("_+_filearray:", filearray); // the array is empty!
+    var binaryStringfile = String.fromCharCode.apply(String, filearray);
+    console.log("__binaryStringfile:", binaryStringfile);
+    formData.append("resume", filearray);
+
+   
     const Jdate = moment(new Date(values.joiningDate._d));
     const Rdate = moment(new Date(values.relievingDate._d));
     const Bdate = moment(new Date(values.dateOfBirth._d));
@@ -114,6 +137,9 @@ const Emponboarding = () => {
       address1: values.address1,
       address2: values.address2,
       dateOfBirth: values.dateOfBirth,
+      empBloodGroup: values.empBloodGroup,
+      martialStatus: values.martialStatus,
+      anniversary: values.anniversary,
       empId: values.empId,
       empEmail: values.empEmail,
       joiningDate: values.joiningDate,
@@ -125,6 +151,7 @@ const Emponboarding = () => {
       bankName: values.bankName,
       branchName: values.branchName,
       ifscCode: values.ifscCode,
+      pan: values.pan,
       employeement: values.employeement,
       designation: {
         designationName: values.designationName,
@@ -152,21 +179,15 @@ const Emponboarding = () => {
         console.log(err);
       });
 
-    const empfiles = {
-      employee: {
-        empId: values.empId,
-      },
-      image: values.image,
-      resume: values.resume,
-    };
 
     axios
       .post(
-        "https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile",
-        empfiles,
+        `https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile/${values.empId}`,
+
+        formData,
         {
           headers: {
-            "Content-Type": "multipart/mixed",
+            "Content-Type": "multipart/form-data",
           },
         }
       )
@@ -183,7 +204,7 @@ const Emponboarding = () => {
       setLoading(false);
       form.resetFields();
     }, 3000);
-  };
+  };;;
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -202,6 +223,7 @@ const Emponboarding = () => {
       <Form
         form={form}
         requiredMark={false}
+        colon={false}
         // labelAlign="left"
         name="basic"
         labelCol={{ span: 8 }}
@@ -229,14 +251,11 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input first name!",
+                    message: "Please input First name!",
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <Input placeholder="First Name" />
-                </div>
+                <Input placeholder="First Name" />
               </Form.Item>
 
               <Form.Item
@@ -245,14 +264,11 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input first name!",
+                    message: "Please input Last name!",
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <Input placeholder="Last Name" />
-                </div>
+                <Input placeholder="Last Name" />
               </Form.Item>
 
               <Form.Item
@@ -261,14 +277,32 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your phone number!",
+                    message: "Please input Phone number!",
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <Input placeholder="Phone Number" />
-                </div>
+                <Input placeholder="Phone Number" />
+              </Form.Item>
+
+              <Form.Item
+                name="empBloodGroup"
+                label="Blood Group"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Blood Group!",
+                  },
+                ]}
+              >
+                <Select placeholder="Select Blood Group">
+                  {bloodGrouptype.map((fr, index) => {
+                    return (
+                      <Select.Option key={index} value={fr}>
+                        {fr}
+                      </Select.Option>
+                    );
+                  })}
+                </Select>
               </Form.Item>
 
               <Form.Item
@@ -277,18 +311,15 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input gender!",
+                    message: "Please input Gender!",
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <Radio.Group onChange={onChange} value={value}>
-                    <Radio value="Male">Male</Radio>
-                    <Radio value="Female">Female</Radio>
-                    <Radio value="Others">Others</Radio>
-                  </Radio.Group>
-                </div>
+                <Radio.Group onChange={onChange} value={value}>
+                  <Radio value="Male">Male</Radio>
+                  <Radio value="Female">Female</Radio>
+                  <Radio value="Others">Others</Radio>
+                </Radio.Group>
               </Form.Item>
             </Col>
             <Col span={12}>
@@ -298,21 +329,15 @@ const Emponboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input address!",
+                    message: "Please input Address 1!",
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <Input placeholder="Address line 1" />
-                </div>
+                <Input placeholder="Address line 1" />
               </Form.Item>
 
               <Form.Item label="Address line 2" name="address2">
-                <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span>
-                  <Input placeholder="Address line 2" />
-                </div>
+                <Input placeholder="Address line 2" />
               </Form.Item>
 
               <Form.Item
@@ -325,29 +350,45 @@ const Emponboarding = () => {
                   },
                 ]}
               >
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  <DatePicker
-                    className="datepicker"
-                    placeholder="DD/MM/YYYY"
-                    style={{ width: "100%" }}
-                  />
-                </div>
+                <DatePicker
+                  className="datepicker"
+                  placeholder="DD/MM/YYYY"
+                  style={{ width: "100%" }}
+                />
+              </Form.Item>
+
+              <Form.Item
+                label="Marital Status"
+                name="martialStatus"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input Martial Status!",
+                  },
+                ]}
+              >
+                <Input placeholder="Martial Status" />
+              </Form.Item>
+
+              <Form.Item name="anniversary" label="Marriage Annivarsary">
+                <DatePicker
+                  className="datepicker"
+                  placeholder="DD/MM/YYYY"
+                  style={{ width: "100%" }}
+                />
               </Form.Item>
 
               <Form.Item label="Image" name="image">
-                <div className="wrapasterik">
-                  <span className="asterik">*</span>
-                  {/* <Upload {...props}>
-                  <Button icon={<UploadOutlined />}>Click to Upload</Button>
-                </Upload> */}
-
-                  <Upload {...Imageprops}>
-                    <Button icon={<UploadOutlined />} style={{ width: "122%" }}>
-                      Choose a file or Drag an image
-                    </Button>
-                  </Upload>
-                </div>
+                <Upload
+                  {...Imageprops}
+                  // customRequest={uploadImage}
+                  // onRemove={handleRemove}
+                  // onChange={handleUpload}
+                >
+                  <Button icon={<UploadOutlined />} style={{ width: "100%" }}>
+                    Choose a file or Drag an image
+                  </Button>
+                </Upload>
               </Form.Item>
             </Col>
           </Row>
@@ -364,14 +405,11 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Employee ID!",
+                      message: "Please input Employee ID!",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="Employee ID" />
-                  </div>
+                  <Input placeholder="Employee ID" />
                 </Form.Item>
 
                 <Form.Item
@@ -381,53 +419,40 @@ const Emponboarding = () => {
                     {
                       type: "email",
                       required: true,
-                      message: "Please input your Email Address!",
+                      message: "Please input Email Address!",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="Email Address" />
-                  </div>
+                  <Input placeholder="Email Address" />
                 </Form.Item>
 
-                <Form.Item
-                  label="Date of joining"
-                  name="joiningDate"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
-                >
+                <Form.Item label="Date of joining" name="joiningDate">
                   <DatePicker
-                    style={{ width: "20.5vw", marginLeft: "1.7rem" }}
+                    style={{ width: "100%" }}
                     // className="datepicker"
                     placeholder="DD/MM/YYYY"
                   />
                 </Form.Item>
+
                 <Form.Item
                   name="employeement"
                   label="Employment Type"
                   rules={[
                     {
                       required: true,
-                      message: "Missing Employeement",
+                      message: "Please input Employeement",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Select placeholder="Select Employment Type">
-                      {emptype.map((fr, index) => {
-                        return (
-                          <Select.Option key={index} value={fr}>
-                            {fr}
-                          </Select.Option>
-                        );
-                      })}
-                    </Select>
-                  </div>
+                  <Select placeholder="Select Employment Type">
+                    {emptype.map((fr, index) => {
+                      return (
+                        <Select.Option key={index} value={fr}>
+                          {fr}
+                        </Select.Option>
+                      );
+                    })}
+                  </Select>
                 </Form.Item>
 
                 <Form.Item
@@ -436,12 +461,10 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Missing Designation Name",
+                      message: "Please input Designation Name",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Designation"
                     // className="empdropdown"
@@ -454,7 +477,6 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
-                  </div>
                 </Form.Item>
 
                 <Form.Item
@@ -463,12 +485,10 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Missing Department Name",
+                      message: "Please input Department Name",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Department"
                     // className="empdropdown"
@@ -481,31 +501,23 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
-                  </div>
                 </Form.Item>
               </Col>
 
               <Col span={12}>
                 <Form.Item label="Experienece" name="experience">
-                  <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span>
-                    <Input placeholder="Experienece " />
-                  </div>
+                  <Input placeholder="Experienece " />
                 </Form.Item>
 
                 <Form.Item label="Highest Qualification" name="qualication">
-                  <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span>
-                    <Input placeholder="Highest Academic Qualification" />
-                  </div>
+                  <Input placeholder="Highest Academic Qualification" />
                 </Form.Item>
 
                 <Form.Item label="Exit Date" name="relievingDate">
                   <DatePicker
                     // className="datepicker"
-                    style={{ width: "20.5vw", marginLeft: "1.7rem" }}
+                    style={{ width: "100%" }}
                     placeholder="DD/MM/YYYY"
-                    // style={{ width: "100%" }}
                   />
                 </Form.Item>
 
@@ -520,10 +532,7 @@ const Emponboarding = () => {
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="manager@gmail.com" />
-                  </div>
+                  <Input placeholder="manager@gmail.com" />
                 </Form.Item>
 
                 <Form.Item
@@ -532,12 +541,10 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Missing Permission Level",
+                      message: "Please input Permission Level",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
                   <Select
                     placeholder="Select Permission"
                     // className="empdropdown"
@@ -551,33 +558,31 @@ const Emponboarding = () => {
                       );
                     })}
                   </Select>
-                  </div>
+                </Form.Item>
+
+                <Form.Item
+                  name="empSalary"
+                  label="Salary"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input Salary!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Salary" />
                 </Form.Item>
 
                 <Form.Item label="Resume" name="resume">
-                  <div className="wrapasterik">
-                    <span className="asterik"> &nbsp;&nbsp;</span>
-                    <Upload
-                      {...Resumeprops}
-                      accept=".doc,.docx,application/pdf"
-                    >
-                      <Button
-                        icon={<UploadOutlined />}
-                        style={{ width: "110%" }}
-                      >
-                        Choose a file or Drag an resume
-                      </Button>
-                    </Upload>
-                    {/* <Upload
+                  <Upload
                     fileList={fileUpload.selectedFileList}
                     customRequest={dummyRequest}
                     onChange={onChangefile}
                   >
-                    <Button icon={<UploadOutlined />} style={{ width: "110%" }}>
+                    <Button icon={<UploadOutlined />} style={{ width: "100%" }}>
                       Choose a file or Drag an resume
                     </Button>
-                  </Upload> */}
-                  </div>
+                  </Upload>
                 </Form.Item>
               </Col>
             </Row>
@@ -596,14 +601,11 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Bank Name!",
+                      message: "Please input Bank Name!",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="Bank Name" />
-                  </div>
+                  <Input placeholder="Bank Name" />
                 </Form.Item>
 
                 <Form.Item
@@ -612,54 +614,57 @@ const Emponboarding = () => {
                   rules={[
                     {
                       required: true,
-                      message: "Please input your Branch Name !",
+                      message: "Please input Branch Name !",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="Branch Name" />
-                  </div>
+                  <Input placeholder="Branch Name" />
+                </Form.Item>
+
+                <Form.Item
+                  label="PAN No."
+                  name="pan"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input PAN No!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="PAN No." />
                 </Form.Item>
               </Col>
 
               <Col span={12}>
-                <Form.Item
-                  label="Bank Account No."
-                  name="bankAccountNo"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input your Bank Account No!",
-                    },
-                  ]}
-                >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="Bank Account No." />
-                  </div>
-                </Form.Item>
-
                 <Form.Item
                   label="IFSC Code"
                   name="ifscCode"
                   rules={[
                     {
                       required: true,
-                      message: "Please input your IFSC Code!",
+                      message: "Please input IFSC Code!",
                     },
                   ]}
                 >
-                  <div className="wrapasterik">
-                    <span className="asterik">*</span>
-                    <Input placeholder="IFSC Code" />
-                  </div>
+                  <Input placeholder="IFSC Code" />
+                </Form.Item>
+                <Form.Item
+                  label="Bank Account No."
+                  name="bankAccountNo"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input Bank Account No!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Bank Account No." />
                 </Form.Item>
               </Col>
             </Row>
           </div>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          {/* <Form.Item wrapperCol={{ offset: 8, span: 16 }}> */}
             <Button className="cancelempbtn" icon={<CloseOutlined />}>
               Cancel
             </Button>
@@ -670,7 +675,7 @@ const Emponboarding = () => {
             >
               Save
             </Button>
-          </Form.Item>
+          {/* </Form.Item> */}
         </div>
       </Form>
     </div>

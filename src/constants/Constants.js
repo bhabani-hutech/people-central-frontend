@@ -6,6 +6,7 @@ const Constants = {
     CREATE: "/create",
     DASHBOARD: "/dashboard",
     ONBOADING: "/onboarding",
+    SETTING: "/setting",
     ACTIVATION: "/activation",
   },
   LOADING: "please wait to load...",

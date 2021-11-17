@@ -31,7 +31,13 @@ const Appsidebar = () => {
     let handlelogout = ()=>{
       dispatch(userlogout()) 
       history.push('/') 
-    }
+  }
+  const handleSetting = () => {
+    history.push('/setting')
+  }
+  const handleOnboarding = () => {
+    history.push("/onboarding");
+  };
   return (
     <div className="sidebar">
       <Sider
@@ -47,10 +53,14 @@ const Appsidebar = () => {
               onClick: toggle,
             })}
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
+          <Menu.Item onClick={handleOnboarding} key="2" icon={<UserOutlined />}>
             Onboarding
           </Menu.Item>
-          <Menu.Item key="3" icon={<SettingOutlined />}>
+          <Menu.Item
+            key="3"
+            onClick={handleSetting}
+            icon={<SettingOutlined />}
+          >
             Settings
           </Menu.Item>
           <Menu.Item onClick={handlelogout} key="4" icon={<LogoutOutlined />}>

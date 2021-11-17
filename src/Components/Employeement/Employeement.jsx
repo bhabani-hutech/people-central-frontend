@@ -178,6 +178,7 @@ const Role = () => {
             <Form
               form={form}
               requiredMark={false}
+              colon={false}
               name="basic"
               labelCol={{
                 span: 8,
