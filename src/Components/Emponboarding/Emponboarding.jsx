@@ -12,7 +12,6 @@ import {
   Input,
   DatePicker,
   Select,
-  message,
 } from "antd";
 import {
   UploadOutlined,
@@ -43,11 +42,39 @@ const Emponboarding = () => {
     selectedFile: null,
     selectedFileList: [],
   });
+  const [imgUpload, setImgupload] = useState({
+    selectedImg: null,
+    selectedImgList: [],
+  });
   const dummyRequest = ({ file, onSuccess }) => {
     setTimeout(() => {
       onSuccess("ok");
     }, 0);
   };
+  const dummyRequestimg = ({ file, onSuccess }) => {
+    setTimeout(() => {
+      onSuccess("ok");
+    }, 0);
+  };
+const onChangeimg = (info) => {
+  const nextImgState = {};
+  switch (info.file.status) {
+    case "uploading":
+      nextImgState.selectedImgList = [info.file];
+
+      break;
+    case "done":
+      nextImgState.selectedImg = info.file;
+      nextImgState.selectedImgList = [info.file];
+      break;
+
+    default:
+      // error or removed
+      nextImgState.selectedImg = null;
+      nextImgState.selectedImgList = [];
+  }
+  setImgupload(() => nextImgState);
+};
 
   const onChangefile = (info) => {
     const nextState = {};
@@ -69,62 +96,21 @@ const Emponboarding = () => {
     setFileupload(() => nextState);
   };
 
-  const Imageprops = {
-    name: "image",
-    action: "//jsonplaceholder.typicode.com/posts/",
-
-    onChange(info) {
-      const { status } = info.file;
-      if (status !== "uploading") {
-        console.log(info.file, info.fileList);
-      }
-      if (status === "done") {
-        message.success(`${info.file.name} file uploaded successfully.`);
-        console.log(info.file, info.fileList);
-      } else if (status === "error") {
-        message.error(`${info.file.name} file upload failed.`);
-      }
-    },
-  };
 
   const onFinish = (values) => {
     console.log("Success:", values);
     const formData = new FormData();
-    // var reader = new FileReader();
-    // var fileByteArray = [];
-   
-    // var array = new Uint32Array(values.image.file);
-    // console.log("_+_array:", array); // the array is empty!
-
-    // for (var i = 0; i < array.length; i++) {
-    //   fileByteArray.push(array[i]);
-    // }
-
-   
-    // formData.append("image", values.image.file);
-    // formData.append("resume", values.resume.file);
+    formData.append("image", values.image.file);
+    formData.append("resume", values.resume.file);
     console.log(values.image.file);
-    
-
-     var array = new Uint32Array(values.image.file);
-     console.log("_+_array:", array); // the array is empty!
-     var binaryString = String.fromCharCode.apply(String, array);
-     console.log("__binaryString:", binaryString);
-    formData.append("image", array);
+    console.log(values.resume.file);
 
 
-
-
-    var filearray = new Uint32Array(values.resume.file);
-    console.log("_+_filearray:", filearray); // the array is empty!
-    var binaryStringfile = String.fromCharCode.apply(String, filearray);
-    console.log("__binaryStringfile:", binaryStringfile);
-    formData.append("resume", filearray);
-
-   
+   const Mdate = moment(new Date(values.anniversary._d));
     const Jdate = moment(new Date(values.joiningDate._d));
     const Rdate = moment(new Date(values.relievingDate._d));
     const Bdate = moment(new Date(values.dateOfBirth._d));
+    values.anniversary = Mdate.format("DD-MM-YYYY");
     values.joiningDate = Jdate.format("DD-MM-YYYY");
     values.relievingDate = Rdate.format("DD-MM-YYYY");
     values.dateOfBirth = Bdate.format("DD-MM-YYYY");
@@ -181,10 +167,9 @@ const Emponboarding = () => {
 
 
     axios
-      .post(
+      .put(
         `https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile/${values.empId}`,
-
-        formData,
+        {formData},
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -380,11 +365,11 @@ const Emponboarding = () => {
 
               <Form.Item label="Image" name="image">
                 <Upload
-                  {...Imageprops}
-                  // customRequest={uploadImage}
-                  // onRemove={handleRemove}
-                  // onChange={handleUpload}
+                  fileList={imgUpload.selectedImgList}
+                  customRequest={dummyRequestimg}
+                  onChange={onChangeimg}
                 >
+                  
                   <Button icon={<UploadOutlined />} style={{ width: "100%" }}>
                     Choose a file or Drag an image
                   </Button>
@@ -665,16 +650,16 @@ const Emponboarding = () => {
           </div>
 
           {/* <Form.Item wrapperCol={{ offset: 8, span: 16 }}> */}
-            <Button className="cancelempbtn" icon={<CloseOutlined />}>
-              Cancel
-            </Button>
-            <Button
-              htmlType="submit"
-              className="saveempbtn"
-              icon={<CheckOutlined />}
-            >
-              Save
-            </Button>
+          <Button className="cancelempbtn" icon={<CloseOutlined />}>
+            Cancel
+          </Button>
+          <Button
+            htmlType="submit"
+            className="saveempbtn"
+            icon={<CheckOutlined />}
+          >
+            Save
+          </Button>
           {/* </Form.Item> */}
         </div>
       </Form>
