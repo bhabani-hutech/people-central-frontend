@@ -12,8 +12,15 @@ import Employeelist from "../../Components/employeelist/employeelist";
 import {useSelector} from 'react-redux'
 
 import {useHistory} from 'react-router-dom'
+import Holiday from '../../Components/holiday/holiday'
+
+
+
 const { Content } = Layout;
+
 const { TabPane } = Tabs;
+
+
 
 
 
@@ -55,11 +62,11 @@ const Onboarding = () => {
               <TabPane tab="Designation" key="4">
                 <Designation/>
               </TabPane>
-              <TabPane tab="Role" key="5">
+              <TabPane tab="View employee" key="5">
                 <Employeelist />
               </TabPane>
-              <TabPane tab="Department" key="6">
-                Content of Tab Pane 6
+              <TabPane tab="add holiday" key="6">
+                <Holiday />
               </TabPane>
               <TabPane tab="Time Off" key="7">
                 Content of Tab Pane 7
