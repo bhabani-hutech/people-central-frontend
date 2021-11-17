@@ -6,9 +6,17 @@ import EmpOnboard from "../../assets/images/emponboard.png";
 import { useHistory } from "react-router-dom";
 import { Layout } from "antd";
 import banner from "../../assets/images/Group 235.png";
+import {useSelector} from 'react-redux'
 const { Content } = Layout;
 
 const Home = () => {
+  
+  const userlogin = useSelector(state => state.userlogin)
+  let {loading, userinfo, error} = userlogin
+  if(userinfo){
+    let {isAdmin} = userinfo
+  
+  }
   const cards = [
     {
       id: "1",
@@ -37,7 +45,30 @@ const Home = () => {
         <div className="banner">
           <img src={banner} alt="Admin Banner"></img>
         </div>
-        <div className="cardgroup" >
+        {/* {userinfo && userinfo.isAdmin ?  */}
+         
+         <div className="cardgroup" >
+         {cards.map((items) => {
+           return (
+             <div className="card">
+               <div className="sec1">
+                 <img
+                   src={items.backgroundimage}
+                   alt={items.alt}
+                   onClick={
+                     items.title === "Onboading"
+                       ? handelOnboarding
+                       : handelSetting
+                   }
+                 />
+               </div>
+               <div className="sec2">{items.title}</div>
+             </div>
+           );
+         })}
+       </div>
+          
+        {/* <div className="cardgroup" >
           {cards.map((items) => {
             return (
               <div className="card">
@@ -56,7 +87,7 @@ const Home = () => {
               </div>
             );
           })}
-        </div>
+        </div> */}
       </Content>
     </div>
   );

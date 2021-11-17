@@ -10,15 +10,23 @@ const Holiday = () => {
     const onFinish = (values) => {
     
       console.log("Success:", values);
+    
+      let date = values.holiday_date
+      let correct_date = date.match(/^([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0]?[1-9]|[1][0-2])[./-]([0-9]{4}|[0-9]{2})$/)
       
-    form.resetFields()
+
+      if(!correct_date){
+        
+        alert('date not valid')
+      }
+    
+      form.resetFields()
     };
     let handleclear = ()=>{
-    form.resetFields()
-    
-    
+      form.resetFields()
     }  
 
+    
     return (    
 
 <div>          
@@ -62,7 +70,7 @@ const Holiday = () => {
                 </div>
               </Form.Item> 
       <Form.Item
-                  name="holiday date"
+                  name="holiday_date"
                   label="Date of holiday"
 
                   rules={[
@@ -84,9 +92,18 @@ const Holiday = () => {
                 </Form.Item>            
     
         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button onClick={handleclear} icon={<CloseOutlined />} className="cancelbtn">
+            {/* <Button onClick={handleclear} icon={<CloseOutlined />} className="cancelbtn">
               Cancel
-            </Button>
+            
+            </Button> */}
+
+            <Button
+              onClick={handleclear}
+              style={{borderRadius:'5px'}}
+              icon={<CloseOutlined />}
+            >
+              Cencel
+            </Button>&nbsp;&nbsp;
             <Button
               htmlType="submit"
               className="savebtn"
@@ -94,6 +111,7 @@ const Holiday = () => {
             >
               Save
             </Button>
+           
           </Form.Item>
     </Form> 
         </div>   

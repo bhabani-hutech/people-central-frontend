@@ -1,0 +1,114 @@
+.layout .site-layout-content {
+  min-height: 28rem;
+  padding: 2rem;
+  // background: #fff;
+}
+.layout{
+  margin-top:10%;
+  margin-bottom:10%;
+}
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+// .ant-select-selector{
+//   width: 94%;
+// }
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn{
+    color:#000000;
+    font-weight: bold;
+}
+.ant-select-selector{
+  text-align: left;
+}
+.tab2_heading{
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: bold;
+    font-size:15px;
+margin-top: 2%;
+
+}
+.tab2_subheading{
+    color: rgba(0, 0, 0, 0.85);
+    font-size:12px;
+    margin-left: 73%;
+    margin-top: 2%;
+}
+.span_heading{
+    color: red;
+}
+.wrapasterik{
+display: flex;
+
+}
+.asterik{
+  color: red;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+.asterik::after{
+  content: ":";
+  color: black;
+  margin-left: 2%;
+}
+.tab2_header{
+  display: flex;
+
+}
+.user_details{
+padding: 0 3%;
+background: rgba(250, 250, 250, 1);
+border: 0;
+border-radius:5px;
+}
+.employment_details{
+  padding: 0 3%;
+background: rgba(250, 250, 250, 1);
+border: 0;
+border-radius:5px;
+}
+.bank_details{
+   padding: 0 3%;
+background: rgba(250, 250, 250, 1);
+border: 0;
+border-radius:5px;
+}
+.Button{
+  display: flex;
+  margin-left: 80%;
+  margin-bottom: 5%;
+  justify-content:center;
+  padding:0;
+  border: 0;
+  border-radius:5px;
+}
+.cancelempbtn{
+  margin-left: 35%;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius:5px;
+}
+.saveempbtn{
+margin-top: 5%;
+   margin-left: 5%;
+   margin-bottom: 5%;
+  background: rgba(3, 73, 133, 1);
+  color: #fff;
+  border:0;
+   border-radius:5px;
+}
+.datepicker{
+  margin-left: 2rem;
+  width: 95%;
+}
+.empdropdown{
+  // margin-left: 2rem;
+  width:80%;
+}

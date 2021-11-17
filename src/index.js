@@ -9,19 +9,20 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import {userloginreducer} from './reducer/userreducer'
+import {userloginreducer, clientreducer} from './reducer/userreducer'
 
 let reducer = combineReducers({  
-  userlogin:userloginreducer 
-})
+  userlogin:userloginreducer, 
+  clientcreate:clientreducer
 
+
+})
 
 
 
 let userinfofromstorage = localStorage.getItem('userinfo') ? JSON.parse(localStorage.getItem('userinfo')) : null
 let intialstate = {
 userlogin:{ userinfo:userinfofromstorage},
-
 }
 let middleware = [thunk]
 let store = createStore(reducer, intialstate, composeWithDevTools(applyMiddleware(...middleware)))
@@ -29,6 +30,7 @@ let store = createStore(reducer, intialstate, composeWithDevTools(applyMiddlewar
 ReactDOM.render(
   <React.StrictMode>
      <Provider store={store}>  
+      
       <App />
     
      </Provider>

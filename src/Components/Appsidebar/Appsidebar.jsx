@@ -11,18 +11,32 @@ import {
 
 import "../Appsidebar/Appsidebar.scss"
 
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {userlogout} from '../../action/useraction'
 import {useHistory} from 'react-router-dom'
 
 
+
+
 const { Sider } = Layout;
 
-
-
 const Appsidebar = () => {
-  
+       
+  const userlogin = useSelector(state => state.userlogin)
+  let {loading, userinfo, error} = userlogin
   let history = useHistory()
+  let handlesend = ()=>{
+  
+    if(userinfo && userinfo.isAdmin){
+     
+ history.push('/onboarding')    
+  
+}
+  else {
+
+    history.push('/profile')
+  }       
+  }               
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch()
     const toggle = () => {
@@ -47,14 +61,21 @@ const Appsidebar = () => {
               onClick: toggle,
             })}
           </Menu.Item>
-          <Menu.Item key="2" icon={<UserOutlined />}>
-            Onboarding
+          <Menu.Item key="2" icon={<UserOutlined />} onClick={handlesend}>
+            
+            
+            {userinfo && userinfo.isAdmin ? 
+          'Onboarding' : 'Profile'  
+          }
+            
           </Menu.Item>
           <Menu.Item key="3" icon={<SettingOutlined />}>
             Settings
           </Menu.Item>
           <Menu.Item onClick={handlelogout} key="4" icon={<LogoutOutlined />}>
-            Log Out
+          
+          
+          Log Out
           </Menu.Item>
         </Menu>
       </Sider>

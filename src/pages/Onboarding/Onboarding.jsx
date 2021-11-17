@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {
   Layout,
   Tabs,
@@ -16,29 +16,39 @@ import {useHistory} from 'react-router-dom'
 import Employeelist from '../../Components/employeelist/employeelist'
 import Holiday from "../../Components/holiday/holiday";
 import Clientonboarding from "../../Components/clientonboard/clientonboarding";
+import Profile from '../../Components/profile/profile'
 
+import {userlogin} from '../../action/useraction' 
+import Payslip from "../../Components/payslip/payslip";
 
 const { Content } = Layout;
-
 const { TabPane } = Tabs;
 
 const Onboarding = () => {
+  const [loading, setloading] = useState(false)
   function callback(key) {
     console.log(key);
   
   }
   const userloginn = useSelector(state => state.userlogin)
   let history = useHistory()
-  let {loading, userinfo, error} = userloginn
-  // useEffect(() => {
-  //   if(!userinfo){
+  let {loading:userloading, userinfo, error} = userloginn
+  let {isAdmin} = userinfo
+  console.log(isAdmin)
   
-  //     history.push('/')
-  //   }
-  // }, [history])
   
+  
+  useEffect(() => {
+    if(!userinfo){    
+      history.push('/')
+    }
+
+
+  }, [history])
   return (
     <>
+    {userloading && setloading(true)}
+
 
 
       <Layout className="layout">
@@ -49,31 +59,59 @@ const Onboarding = () => {
               defaultActiveKey="2"
               onChange={callback}
             >
+              {isAdmin && 
               <TabPane tab="Client Onboarding" key="1">
-               <Clientonboarding /> 
-              </TabPane>
-              <TabPane tab="Employee Onboarding" key="2">
-                <Emponboarding />
-              </TabPane>
-              {/* <TabPane tab="Employment" key="3">
-                <Employeement/>
-              </TabPane> */}
+              <Clientonboarding /> 
+             </TabPane>
+              }
+              
+              {isAdmin && 
+               <TabPane tab="Employee Onboarding" key="2">
+               <Emponboarding />
+             </TabPane>
+              }
+             
+              {isAdmin &&  
               <TabPane tab="Designation" key="3">
-                <Designation/>
-              </TabPane>
+              <Designation/>
+            </TabPane>
+              }
+              {isAdmin && 
               <TabPane tab="Role" key="4">
-                <Role/>
-              </TabPane>
+              <Role/>
+            </TabPane>
+              }
+              {isAdmin && 
               <TabPane tab="Department" key="5">
-                <Department/>
-              </TabPane>
+              <Department/>
+            </TabPane>
+              }
+              {isAdmin && 
               <TabPane tab="view all employee" key="6">
                 
-               <Employeelist /> 
-              </TabPane>
+              <Employeelist /> 
+             </TabPane>
+              }
+              
+              {isAdmin && 
               <TabPane tab="holiday" key="7">
-                <Holiday />
+              <Holiday />
+            </TabPane>
+              } 
+              {!isAdmin && 
+               
+               <TabPane tab="employee profile" key="8">
+               <Profile /> 
               </TabPane>
+              }          
+              <TabPane tab="payslip" key="9">
+              
+              <Payslip />
+            </TabPane>
+
+              {/* <TabPane tab="employee profile" key="8">
+               <Profile /> 
+              </TabPane> */}
             </Tabs>
           </div>
         </Content>

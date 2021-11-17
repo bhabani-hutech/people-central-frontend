@@ -1,24 +1,62 @@
 import React,{useState, useEffect} from 'react'
 import 'antd/dist/antd.css'
-import {Table} from 'antd'
 
+
+import {Table, Avatar} from 'antd'
+import axios from 'axios'
 const Employeelist = () => { 
     const [dataSourse, setdataSourse] = useState([])
     const [loading, setloading] = useState(false)
     useEffect(() => {
-        setloading(true)
-       fetch('/api/user/employee').then(res=>res.json()).then(data=>{
-           setdataSourse(data)
-       
-        }).catch((err)=>{
-        
-            console.log(err)
-        }).finally(()=>{
-            setloading(false)
-        })
-         
-    }, [])
 
+        setloading(true)
+    
+    //    fetch('https://hutechpayrollapp.azurewebsites.net/application/onboardedEmployees').then(res=>res.json()).then(data=>{
+    //        setdataSourse(data)
+       
+    //     }).catch((err)=>{
+        
+    //         console.log(err)
+    //     }).finally(()=>{
+    //         setloading(false)
+    //     })
+     
+    axios.get('https://hutechpayrollapp.azurewebsites.net/application/onboardedEmployees').then((res)=>{
+       console.log(res.data)
+       setdataSourse(res.data)
+    }).catch((err)=>{
+        console.log(err) 
+    
+    
+    
+    }).finally(()=>{
+         
+        setloading(false)
+    })
+    }, [])
+    const handleDes = (text, record) => {
+        return (
+          <span>
+            {record?.department?.departmentName}    </span>
+        );
+      };
+      const handleDes2 = (text, record) => {
+        return (
+          <span>
+            {record?.designation?.designationName}    </span>
+        );
+      };
+
+      const handleimage = (text, record) => {
+        return (
+          <span>
+            {record?.image? <Avatar src={record.image}/>: null} 
+            {record?.empFirstName}
+
+               </span>
+        );
+      };
+    // axios.all([])
     let data = [
         {
             empid:'1',
@@ -59,61 +97,69 @@ const Employeelist = () => {
     let columns = [
         {
           title:'Employee ID',
-          dataIndex:'empid',
+          dataIndex:'empId',
           key:'key' 
         },
         {
             title:'name',
-            dataIndex:'firstname',   
+            dataIndex:'empFirstName',   
             key:'key', 
+            render:(text, record) => handleimage(text, record)
+            // render:(text, record)=>{
+            //   return (
 
-            // render:(completed)=>{
-            //  return <p>{completed ? 'completed':'not completed'}</p>   
+            //     <div>
+            //         <img src={record.image} />
+            //     </div>
+            //   )
             // }
-            sorter:(record1, record2)=>{
-                return record1
-            }
+            // (theimage)=> <img src={theimage} />
+            // sorter:(record1, record2)=>{
+            //     return record1
+            // }
         },
         
         
         {
             
             title:'Email',
-            dataIndex:'empemailid',   
+            dataIndex:'empEmail',   
             key:'key' 
         },
         {
             title:'Phone',
-            dataIndex:'phone',   
+            dataIndex:'phnoeNumber',   
             key:'key' 
         
         },
         {
           
             title:'designation',
-            dataIndex:'designation',   
-            key:'key' 
+            dataIndex:"designation",   
+            key:'key', 
+            render:(text, record) => handleDes2(text, record)
+
         },
         {
             title:'manageremail',
-            dataIndex:'manageremailid',   
+            dataIndex:'managerEmail',   
             key:'key' 
         },
 
         {
             title:'employee_type',
-            dataIndex:'Employment',   
+            dataIndex:'employeement',   
             key:'key' 
         },
         {
             title:'department',
-            dataIndex:'department',   
-            key:'key' 
-    
+            dataIndex:"department",   
+            key:'key', 
+            render:(text, record) => handleDes(text, record)
         },
         {
             title:'placeofworking',
-            dataIndex:'placeofworking',   
+            dataIndex:'address1',   
             key:'key' 
         },
     ]
@@ -129,5 +175,6 @@ const Employeelist = () => {
     )
 
 }
+
 
 export default Employeelist

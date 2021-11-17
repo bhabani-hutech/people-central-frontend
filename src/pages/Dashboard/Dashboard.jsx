@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { Layout } from "antd";
 import constants from "../../constants/Constants";
 import "antd/dist/antd.css";
@@ -10,10 +10,29 @@ import Appsidebar from "../../Components/Appsidebar/Appsidebar";
 import Home from "../../Components/Home/Home";
 import { useLocation } from "react-router-dom";
 import Onboarding from "../Onboarding/Onboarding";
+
+import {useSelector} from 'react-redux'
+
 const {
   ROUTES: { ONBOADING },
 } = constants;
-const Dashboard = () => {
+const Dashboard = ({history}) => {
+  const userlogin = useSelector(state => state.userlogin)
+let {laoding, userinfo, error} = userlogin
+
+if(userinfo){
+  let {isAdmin} = userinfo
+
+}
+useEffect(() => {
+  if(!userinfo){
+     
+    history.push('/')
+  }  
+
+
+
+}, [history])
    const location = useLocation();
    console.log(location.pathname);
   return (
@@ -21,8 +40,11 @@ const Dashboard = () => {
       <Appsidebar />
       <Layout className="site-layout">
         <Appheader />
-        {location.pathname.includes(ONBOADING) ? (
-          <Onboarding/>) : (
+        {location.pathname.includes(ONBOADING) && userinfo ? (
+           
+            <Onboarding/>
+          
+          ) : (
             <Home/>
           )}
         <Footer />

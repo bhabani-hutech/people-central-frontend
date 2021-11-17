@@ -30,11 +30,13 @@ const Login = () => {
   const history = useHistory();
 
   useEffect(() => {
+    
     if(userinfo){
-      history.push('/onboarding')
-     
+      history.push('/dashboard') 
     }
   }, [history, userinfo])
+ 
+ 
   let dispatch = useDispatch()
   
   const onFinish = (values) => {
@@ -43,9 +45,9 @@ const Login = () => {
     console.log(email)
     
     
-    // dispatch(userlogin(email, password))
+    dispatch(userlogin(email, password))
     console.log("Success:", values);
-    history.push(DASHBOARD);
+    // history.push(DASHBOARD);
 
     form.resetFields() 
   };
