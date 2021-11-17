@@ -59,51 +59,55 @@ const Onboarding = () => {
               defaultActiveKey="2"
               onChange={callback}
             >
-              {isAdmin && 
+              {/* {isAdmin && 
               <TabPane tab="Client Onboarding" key="1">
               <Clientonboarding /> 
              </TabPane>
-              }
+              } */}
+               
+              <TabPane tab="Client Onboarding" key="1">
+              <Clientonboarding /> 
+             </TabPane>
+            
               
-              {isAdmin && 
                <TabPane tab="Employee Onboarding" key="2">
                <Emponboarding />
              </TabPane>
-              }
+              
              
-              {isAdmin &&  
+                
               <TabPane tab="Designation" key="3">
               <Designation/>
             </TabPane>
-              }
-              {isAdmin && 
+              
+               
               <TabPane tab="Role" key="4">
               <Role/>
             </TabPane>
-              }
-              {isAdmin && 
+              
+               
               <TabPane tab="Department" key="5">
               <Department/>
             </TabPane>
-              }
-              {isAdmin && 
+              
+              
               <TabPane tab="view all employee" key="6">
                 
               <Employeelist /> 
              </TabPane>
-              }
               
-              {isAdmin && 
+              
+              
               <TabPane tab="holiday" key="7">
               <Holiday />
             </TabPane>
-              } 
-              {!isAdmin && 
+              
+              
                
                <TabPane tab="employee profile" key="8">
                <Profile /> 
               </TabPane>
-              }          
+                      
               <TabPane tab="payslip" key="9">
               
               <Payslip />

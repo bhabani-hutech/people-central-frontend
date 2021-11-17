@@ -1,5 +1,5 @@
 import axios from 'axios'
-export let userlogin = (email,password)=> async(dispatch)=>{
+export let userlogin = (userName,password)=> async(dispatch)=>{
 
 
     try {
@@ -11,7 +11,7 @@ export let userlogin = (email,password)=> async(dispatch)=>{
        
         }
         
-       let {data} = await axios.post('api/user/login',{email, password}, config)
+       let {data} = await axios.post('https://hutechpayrollapp.azurewebsites.net/application/logintoken',{userName, password}, config)
        dispatch({type:'USER_LOGIN_SUCCESS', payload:data})
        localStorage.setItem('userinfo', JSON.stringify(data))
     
