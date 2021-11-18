@@ -12,7 +12,7 @@ import {useDispatch, useSelector} from 'react-redux'
 
 // import axios from "axios";
 
-// import {userlogin} from '../../action/useraction'
+import {userlogin} from '../../action/useraction'
 const {
   ROUTES: { RESET },
   REMEMBER_ME_LABEL,
@@ -31,11 +31,13 @@ const Login = () => {
   const history = useHistory();
 
   useEffect(() => {
+    
     if(userinfo){
-      history.push('/onboarding')
-     
+      history.push('/dashboard') 
     }
   }, [history, userinfo])
+ 
+ 
   let dispatch = useDispatch()
   
   const onFinish = (values) => {
@@ -44,9 +46,9 @@ const Login = () => {
     console.log(email)
     
     
-    // dispatch(userlogin(email, password))
+    dispatch(userlogin(email, password))
     console.log("Success:", values);
-    history.push("/dashboard");
+    // history.push(DASHBOARD);
 
     form.resetFields() 
   };

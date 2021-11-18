@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React,{useEffect} from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
 import "./AppSetting.scss";
@@ -26,12 +27,12 @@ const AppSetting = () => {
   const userloginn = useSelector((state) => state.userlogin);
   let history = useHistory();
   let { loading, userinfo, error } = userloginn;
-  // useEffect(() => {
-  //   if(!userinfo){
+  useEffect(() => {
+    if(!userinfo){
 
-  //     history.push('/')
-  //   }
-  // }, [history])
+      history.push('/')
+    }
+  }, [history])
 
   return (
     <>

@@ -106,7 +106,7 @@ const onChangeimg = (info) => {
     console.log(values.resume.file);
 
 
-   const Mdate = moment(new Date(values.anniversary._d));
+   const Mdate = moment(new Date(values.anniversary));
     const Jdate = moment(new Date(values.joiningDate._d));
     const Rdate = moment(new Date(values.relievingDate._d));
     const Bdate = moment(new Date(values.dateOfBirth._d));
@@ -115,6 +115,7 @@ const onChangeimg = (info) => {
     values.relievingDate = Rdate.format("DD-MM-YYYY");
     values.dateOfBirth = Bdate.format("DD-MM-YYYY");
     console.log(values.joiningDate);
+    console.log(values.anniversary);
     const employeeDetails = {
       empFirstName: values.empFirstName,
       empLastName: values.empLastName,
@@ -169,7 +170,7 @@ const onChangeimg = (info) => {
     axios
       .put(
         `https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile/${values.empId}`,
-        {formData},
+        formData,
         {
           headers: {
             "Content-Type": "multipart/form-data",
@@ -369,7 +370,6 @@ const onChangeimg = (info) => {
                   customRequest={dummyRequestimg}
                   onChange={onChangeimg}
                 >
-                  
                   <Button icon={<UploadOutlined />} style={{ width: "100%" }}>
                     Choose a file or Drag an image
                   </Button>

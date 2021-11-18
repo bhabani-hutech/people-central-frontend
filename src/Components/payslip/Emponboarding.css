@@ -1,0 +1,121 @@
+.layout .site-layout-content {
+  min-height: 280px;
+  padding: 24px;
+  background: #fff;
+}
+
+.layout {
+  margin-top: 10%;
+  margin-bottom: 10%;
+}
+
+#components-layout-demo-top .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-row-rtl #components-layout-demo-top .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #000000;
+  font-weight: bold;
+}
+
+.ant-select-selector {
+  text-align: left;
+}
+
+.tab2_heading {
+  color: rgba(0, 0, 0, 0.85);
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 2%;
+}
+
+.tab2_subheading {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 12px;
+  margin-left: 70%;
+  margin-top: 2%;
+}
+
+.span_heading {
+  color: red;
+}
+
+.wrapasterik {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.asterik {
+  color: red;
+  margin-top: 2%;
+  margin-right: 5%;
+}
+
+.tab2_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.user_details {
+  padding: 0 3%;
+  background: #fafafa;
+  border: 0;
+  border-radius: 5px;
+}
+
+.employment_details {
+  padding: 0 3%;
+  background: #fafafa;
+  border: 0;
+  border-radius: 5px;
+}
+
+.bank_details {
+  padding: 0 3%;
+  background: #fafafa;
+  border: 0;
+  border-radius: 5px;
+}
+
+.Button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: 80%;
+  margin-bottom: 5%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 5px;
+}
+
+.cancelempbtn {
+  margin-left: 35%;
+  color: #1890ff;
+  border: 1px solid #1890ff;
+  border-radius: 5px;
+}
+
+.saveempbtn {
+  margin-top: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+  background: #034985;
+  color: #fff;
+  border: 0;
+  border-radius: 5px;
+}
+/*# sourceMappingURL=Emponboarding.css.map */

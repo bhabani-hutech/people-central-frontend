@@ -1,8 +1,7 @@
-/* eslint-disable no-useless-escape */
 /* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import moment from "moment";
-import axios from "axios";
+// import axios from "axios";
 import {
   Radio,
   Divider,
@@ -15,6 +14,7 @@ import {
   Input,
   DatePicker,
   Select,
+  Space
   // Table, Modal
 } from "antd";
 import {
@@ -22,7 +22,7 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import "./Clientonboarding.scss";
+import "./Emponboarding.scss";
 import "antd/dist/antd.css";
 
 import {useDispatch, useSelector} from 'react-redux'
@@ -43,17 +43,20 @@ const props = {
       message.error(`${info.file.name} file upload failed.`);
     }
   },
+
 };
+const { RangePicker } = DatePicker;
 const currency = ["rupiya", "lira"];
 
 
 const paymentterm = ["Upon receipt", "Advance payment"];
 
 
-const Clientonboarding = () => {
+const Payslip = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
+  
   const [employee, setEmployee] = useState({
     // image: "",
     // resume: "",
@@ -86,12 +89,12 @@ const Clientonboarding = () => {
       departmentName: "",
     },
   });
+  
+  
   const dispatch = useDispatch()
 
 
-  const clientcreate = useSelector(state => state.clientcreate)
   
-  let {loading:clientloading, client, success, error} = clientcreate
 
 
 
@@ -109,58 +112,21 @@ const Clientonboarding = () => {
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    let website = values.website
-    let urlcheck = /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
-    if(!website.match(urlcheck)){
-         alert('wrong url')
-    }
-
-    else {
-      
-      let client = {
-       customerName:values.customername,
-       website:values.website,
-       
-       
-       email:values.empEmail,
-       addressLine1:values.address1,
-
-
-
-       addressLine2:values.address2,
-       phoneNumber:values.phnoeNumber,
-       gSTNumber:values.gstn,
-       cIN:values.cin,
-       paymentTerms:values.paymentterm,
-       
-       currency:values.Currency
-      }
-     
-      dispatch(clientonboard(client))     
-      if(success){
-        
-        alert('client onboarded')
-      }
-        }
-    console.log(website)
-    form.resetFields();
     
     
-    
-    
+
+    form.resetFields();    
   };
-
   const onFinishFailed = (errorInfo) => {
+    
+    
     console.log("Failed:", errorInfo);
   
   };
 
-  // let handleclear = ()=>{
-  //   form.resetFields();    
-  // }  
+    
   let clearform = ()=>{
-    form.resetFields();
-           
+    form.resetFields();         
   }
 
 
@@ -195,7 +161,7 @@ const Clientonboarding = () => {
       >
         <div className="user_details">
           <div className="tab2_header">
-            <div className="tab2_heading">Client onboarding :</div>
+            <div className="tab2_heading">Employee detail: </div>
 
             <div className="tab2_subheading">
               <span className="span_heading">*</span>&nbsp;indicates mandatory
@@ -204,110 +170,108 @@ const Clientonboarding = () => {
           </div>
           <Divider></Divider>
           <Row justify="start">
+           
             <Col span={12}>
               <Form.Item
-                label="Customer Name"
-                name="customername"
+                label="Employee id"
+                name="empid"
                 
                 rules={[
                   {
                     required: true,
-                    message: "Please input customer name!",
+                    message: "Please input employee id",
+                  },
+                ]}
+              >
+                <Input placeholder="HT002" />
+                {/* </div> */}
+              </Form.Item>
+
+              <Form.Item
+                label="Consultant name"
+                name="consultant_name"
+                
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input consultant name",
                   },
                 ]}
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                
-                
-                
-                <Input placeholder="Customer name" />
+                <Input placeholder="Consultant Name" />
                 {/* </div> */}
-              </Form.Item>
-
+              </Form.Item>    
               <Form.Item
-                label="Website"
-                name="website"
+                label="Designation"
+                name="designation"
                 
                 rules={[
                   {
                     required: true,
-                    message: "Please input customer name!",
+                    message: "Please input designation name",
                   },
                 ]}
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                <Input placeholder="Website" />
+                <Input placeholder="Designation Name" />
+                {/* </div> */}
+              </Form.Item> 
+              <Form.Item
+                name="Employee Type"
+                label="Employee Type"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your EMP type!",
+                  },
+                ]}
+              >
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
+                <Input placeholder="EMP Type" />
                 {/* </div> */}
               </Form.Item>
-
+             {/*  */}
+              <Space direction="vertical" size={10}>
+    <RangePicker
+      ranges={{
+        Today: [moment(), moment()],
+        'This Month': [moment().startOf('month'), moment().endOf('month')],
+      }}
+      onChange={onChange}
+    /> </Space>
               <Form.Item
-                  name="Currency"
-                
-                  label="Currency"
+                  name="department"
                   
-                >
-                  <Select
-                    placeholder="Select currency"
-                    className="empdropdown"
-                  >
-                    {currency.map((fr, index) => {
-                      return (
-                        <Select.Option key={index} value={fr}>
-                          {fr}
-                        </Select.Option>
-                      );
-                    })}
-                  </Select>
-                </Form.Item>
-  
-              
-
-              <Form.Item
-                name="phnoeNumber"
-                
-                label="Phone Number"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your phone number!",
-                  },
-                ]}
-              >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
-                <Input placeholder="Phone Number" />
-                {/* </div> */}
-              </Form.Item>
-              <Form.Item
-                  name="empEmail"
-                  
-                  label="Email Address"
+                  label="Department"
                   rules={[
                     {
-                      type: "email",
+                    
                       required: true,
-                      message: "Please input your Email Address!",
+                      message: "Please input your department",
                     },
                   ]}
                 >
                   {/* <div className="wrapasterik">
                     <span className="asterik">*</span> */}
-                  <Input placeholder="Email Address" />
+                  <Input placeholder="department" />
                   {/* </div> */}
                 </Form.Item>
               
             </Col>
+            
             <Col span={12}>
               <Form.Item
-                label="Address line 1"
-                name="address1"
+                label="No of days in month"
+                name="no_day"
                 
                 rules={[
                   {
                     required: true,
-                    message: "Please input address!",
+                    message: "Please input no of day",
                   },
                 ]}
               >
@@ -317,35 +281,63 @@ const Clientonboarding = () => {
                 {/* </div> */}
               </Form.Item>
               <Form.Item
-                label="Address line 2"
-                name="address2"
+                name="doj"
+                label="Date of join"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
+              >
+                <DatePicker
+                  className="datepicker"
+                  placeholder="DD/MM/YYYY"
+                  // style={{ width: "100%" }}
+                />
+              </Form.Item>
+              
+              <Form.Item
+                label="Working day"
+                name="working_day"
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
-                <Input placeholder="Address line 2" />
+                <Input placeholder="" />
+                {/* </div> */}
+              </Form.Item>
+
+              <Form.Item
+                label="ESIC number"
+                name="esic_number"
+              >
+                {/* <div className="wrapasterik">
+                  <span className="asterik"> &nbsp;&nbsp;</span> */}
+                <Input placeholder="ESIC number" />
                 {/* </div> */}
               </Form.Item>
               <Form.Item
-                label="GSTN Number"
-                name="gstn"
+                label="total Arrear day"
+                name="arrear"
               
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
-                <Input placeholder="GSTN Number" />
+                <Input placeholder="" />
                 {/* </div> */}
               </Form.Item>
               <Form.Item
-                label="CIN Number"
-                name="cin"
+                label="Loss of pay"
+                name="lop"
                 
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
-                <Input placeholder="CIN number" />
+                <Input placeholder="LOP" />
                 {/* </div> */}
               </Form.Item>
-              <Form.Item
+              
+              
+              {/* <Form.Item
                   name="paymentterm"
               
                   label="Payment term"
@@ -368,14 +360,73 @@ const Clientonboarding = () => {
                       );
                     })}
                   </Select>
-                </Form.Item>
+                </Form.Item> */}
             
             </Col>
           </Row>
          
-
-        
-
+          
+          <div className="tab2_header">
+            <div className="tab2_heading">Bank detail:</div>
+            
+          </div>
+          <Divider></Divider>
+         
+          <Row justify="start">
+          <Col span={12}> 
+          <Form.Item
+                label="Account Number"
+                name="account_number"
+                
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your account number",
+                  },
+                ]}
+              >
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
+                <Input placeholder="Account number" />
+                {/* </div> */}
+              </Form.Item>
+              <Form.Item
+                label="Bank Name"
+                name="Bank name"
+                
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your bank name",
+                  },
+                ]}
+              >
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
+                <Input placeholder="Bank name" />
+                {/* </div> */}
+              </Form.Item>
+              <Form.Item
+                label="Branch Name"
+                name="branch_name"
+                
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your branch name",
+                  },
+                ]}
+              >
+                {/* <div className="wrapasterik">
+                  <span className="asterik">*</span> */}
+                <Input placeholder="Branch name" />
+                {/* </div> */}
+              </Form.Item> 
+          </Col>
+          <Col span={12}> 
+          
+          </Col> 
+          </Row>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
             
             <Button onClick={clearform} icon={<CloseOutlined />} className="cancelempbtn">
@@ -396,4 +447,4 @@ const Clientonboarding = () => {
 
 );
 };
-export default Clientonboarding
+export default Payslip

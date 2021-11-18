@@ -2,6 +2,7 @@ import './App.css';
 import constants from "./constants/Constants";
 import React, { Suspense, lazy } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import Profile from './Components/profile/profile';
 const Loginbase = lazy(() => import("./pages/Loginbase/Loginbase"));
 // const Onboarding = lazy(() => import("./pages/Onboarding/Onboarding"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
@@ -32,6 +33,8 @@ function App() {
             <Route path={DASHBOARD} component={Dashboard} />
             <Route path={ONBOADING} component={Dashboard} />
             <Route path={SETTING} component={Dashboard} />
+            <Route path='/profile' component={Profile} />
+            
           </Switch>
         </Suspense>
       </div>

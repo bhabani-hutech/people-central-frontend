@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
@@ -9,35 +10,40 @@ import {
   // DownOutlined,
 } from "@ant-design/icons";
 
-import "../Appsidebar/Appsidebar.scss"
+import "../Appsidebar/Appsidebar.scss";
 
-import {useDispatch} from 'react-redux'
-import {userlogout} from '../../action/useraction'
-import {useHistory} from 'react-router-dom'
-
+import { useDispatch, useSelector } from "react-redux";
+import { userlogout } from "../../action/useraction";
+import { useHistory } from "react-router-dom";
 
 const { Sider } = Layout;
 
-
-
 const Appsidebar = () => {
-  
-  let history = useHistory()
-  const [collapsed, setCollapsed] = useState(false);
-  const dispatch = useDispatch()
-    const toggle = () => {
-      setCollapsed(!collapsed);
-    };
-    let handlelogout = ()=>{
-      dispatch(userlogout()) 
-      history.push('/') 
-  }
-  const handleSetting = () => {
-    history.push('/setting')
-  }
-  const handleOnboarding = () => {
-    history.push("/onboarding");
+  const userlogin = useSelector((state) => state.userlogin);
+  let { loading, userinfo, error } = userlogin;
+  let history = useHistory();
+  let handleOnboarding = () => {
+    if (userinfo && userinfo.isAdmin) {
+      history.push("/onboarding");
+    } else {
+      history.push("/profile");
+    }
   };
+  const [collapsed, setCollapsed] = useState(false);
+  const dispatch = useDispatch();
+  const toggle = () => {
+    setCollapsed(!collapsed);
+  };
+  let handlelogout = () => {
+    dispatch(userlogout());
+    history.push("/");
+  };
+  const handleSetting = () => {
+    history.push("/setting");
+  };
+  // const handleOnboarding = () => {
+  //   history.push("/onboarding");
+  // };
   return (
     <div className="sidebar">
       <Sider
@@ -53,14 +59,12 @@ const Appsidebar = () => {
               onClick: toggle,
             })}
           </Menu.Item>
-          <Menu.Item onClick={handleOnboarding} key="2" icon={<UserOutlined />}>
-            Onboarding
+          {/* <Menu.Item onClick={handleOnboarding} key="2" icon={<UserOutlined />}>
+            Onboarding */}
+          <Menu.Item key="2" icon={<UserOutlined />} onClick={handleOnboarding}>
+            {userinfo && userinfo.isAdmin ? "Onboarding" : "Profile"}
           </Menu.Item>
-          <Menu.Item
-            key="3"
-            onClick={handleSetting}
-            icon={<SettingOutlined />}
-          >
+          <Menu.Item key="3" onClick={handleSetting} icon={<SettingOutlined />}>
             Settings
           </Menu.Item>
           <Menu.Item onClick={handlelogout} key="4" icon={<LogoutOutlined />}>
