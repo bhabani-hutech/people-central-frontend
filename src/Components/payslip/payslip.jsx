@@ -14,7 +14,7 @@ import {
   Input,
   DatePicker,
   Select,
-  Space
+  Space,
   // Table, Modal
 } from "antd";
 import {
@@ -22,11 +22,11 @@ import {
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
-import "./Emponboarding.scss";
+import "./Payslip.scss";
 import "antd/dist/antd.css";
 
-import {useDispatch, useSelector} from 'react-redux'
-import {clientonboard} from '../../action/useraction'
+import { useDispatch, useSelector } from "react-redux";
+import { clientonboard } from "../../action/useraction";
 const props = {
   name: "file",
   action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
@@ -43,20 +43,17 @@ const props = {
       message.error(`${info.file.name} file upload failed.`);
     }
   },
-
 };
 const { RangePicker } = DatePicker;
 const currency = ["rupiya", "lira"];
 
-
 const paymentterm = ["Upon receipt", "Advance payment"];
-
 
 const Payslip = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
-  
+
   const [employee, setEmployee] = useState({
     // image: "",
     // resume: "",
@@ -89,46 +86,31 @@ const Payslip = () => {
       departmentName: "",
     },
   });
-  
-  
-  const dispatch = useDispatch()
 
+  const dispatch = useDispatch();
 
-  
-
-
-
-
-// const handelEmployeement = (e) => {
-//   const name = e.target.name;
-//   const value = e.target.value;
-//   // console.log(value);
-//   setEmployee({
-//     [name]: value,
-//   });
-// };
-//   console.log(employee);
-
+  // const handelEmployeement = (e) => {
+  //   const name = e.target.name;
+  //   const value = e.target.value;
+  //   // console.log(value);
+  //   setEmployee({
+  //     [name]: value,
+  //   });
+  // };
+  //   console.log(employee);
 
   const onFinish = (values) => {
     console.log("Success:", values);
-    
-    
 
-    form.resetFields();    
+    form.resetFields();
   };
   const onFinishFailed = (errorInfo) => {
-    
-    
     console.log("Failed:", errorInfo);
-  
   };
 
-    
-  let clearform = ()=>{
-    form.resetFields();         
-  }
-
+  let clearform = () => {
+    form.resetFields();
+  };
 
   // const handelEmployee = (e) => {
   //   const name = e.target.name;
@@ -138,7 +120,6 @@ const Payslip = () => {
   //     [name]: value,
   //   });
   // };
- 
 
   const [value, setValue] = React.useState(1);
   const onChange = (e) => {
@@ -170,12 +151,10 @@ const Payslip = () => {
           </div>
           <Divider></Divider>
           <Row justify="start">
-           
             <Col span={12}>
               <Form.Item
                 label="Employee id"
                 name="empid"
-                
                 rules={[
                   {
                     required: true,
@@ -190,7 +169,6 @@ const Payslip = () => {
               <Form.Item
                 label="Consultant name"
                 name="consultant_name"
-                
                 rules={[
                   {
                     required: true,
@@ -202,11 +180,10 @@ const Payslip = () => {
                   <span className="asterik">*</span> */}
                 <Input placeholder="Consultant Name" />
                 {/* </div> */}
-              </Form.Item>    
+              </Form.Item>
               <Form.Item
                 label="Designation"
                 name="designation"
-                
                 rules={[
                   {
                     required: true,
@@ -218,7 +195,7 @@ const Payslip = () => {
                   <span className="asterik">*</span> */}
                 <Input placeholder="Designation Name" />
                 {/* </div> */}
-              </Form.Item> 
+              </Form.Item>
               <Form.Item
                 name="Employee Type"
                 label="Employee Type"
@@ -234,40 +211,40 @@ const Payslip = () => {
                 <Input placeholder="EMP Type" />
                 {/* </div> */}
               </Form.Item>
-             {/*  */}
+              {/*  */}
               <Space direction="vertical" size={10}>
-    <RangePicker
-      ranges={{
-        Today: [moment(), moment()],
-        'This Month': [moment().startOf('month'), moment().endOf('month')],
-      }}
-      onChange={onChange}
-    /> </Space>
+                <RangePicker
+                  ranges={{
+                    Today: [moment(), moment()],
+                    "This Month": [
+                      moment().startOf("month"),
+                      moment().endOf("month"),
+                    ],
+                  }}
+                  onChange={onChange}
+                />{" "}
+              </Space>
               <Form.Item
-                  name="department"
-                  
-                  label="Department"
-                  rules={[
-                    {
-                    
-                      required: true,
-                      message: "Please input your department",
-                    },
-                  ]}
-                >
-                  {/* <div className="wrapasterik">
+                name="department"
+                label="Department"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your department",
+                  },
+                ]}
+              >
+                {/* <div className="wrapasterik">
                     <span className="asterik">*</span> */}
-                  <Input placeholder="department" />
-                  {/* </div> */}
-                </Form.Item>
-              
+                <Input placeholder="department" />
+                {/* </div> */}
+              </Form.Item>
             </Col>
-            
+
             <Col span={12}>
               <Form.Item
                 label="No of days in month"
                 name="no_day"
-                
                 rules={[
                   {
                     required: true,
@@ -295,48 +272,33 @@ const Payslip = () => {
                   // style={{ width: "100%" }}
                 />
               </Form.Item>
-              
-              <Form.Item
-                label="Working day"
-                name="working_day"
-              >
+
+              <Form.Item label="Working day" name="working_day">
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
                 <Input placeholder="" />
                 {/* </div> */}
               </Form.Item>
 
-              <Form.Item
-                label="ESIC number"
-                name="esic_number"
-              >
+              <Form.Item label="ESIC number" name="esic_number">
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
                 <Input placeholder="ESIC number" />
                 {/* </div> */}
               </Form.Item>
-              <Form.Item
-                label="total Arrear day"
-                name="arrear"
-              
-              >
+              <Form.Item label="total Arrear day" name="arrear">
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
                 <Input placeholder="" />
                 {/* </div> */}
               </Form.Item>
-              <Form.Item
-                label="Loss of pay"
-                name="lop"
-                
-              >
+              <Form.Item label="Loss of pay" name="lop">
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
                 <Input placeholder="LOP" />
                 {/* </div> */}
               </Form.Item>
-              
-              
+
               {/* <Form.Item
                   name="paymentterm"
               
@@ -361,23 +323,19 @@ const Payslip = () => {
                     })}
                   </Select>
                 </Form.Item> */}
-            
             </Col>
           </Row>
-         
-          
+
           <div className="tab2_header">
             <div className="tab2_heading">Bank detail:</div>
-            
           </div>
           <Divider></Divider>
-         
+
           <Row justify="start">
-          <Col span={12}> 
-          <Form.Item
+            <Col span={12}>
+              <Form.Item
                 label="Account Number"
                 name="account_number"
-                
                 rules={[
                   {
                     required: true,
@@ -393,7 +351,6 @@ const Payslip = () => {
               <Form.Item
                 label="Bank Name"
                 name="Bank name"
-                
                 rules={[
                   {
                     required: true,
@@ -409,7 +366,6 @@ const Payslip = () => {
               <Form.Item
                 label="Branch Name"
                 name="branch_name"
-                
                 rules={[
                   {
                     required: true,
@@ -421,15 +377,16 @@ const Payslip = () => {
                   <span className="asterik">*</span> */}
                 <Input placeholder="Branch name" />
                 {/* </div> */}
-              </Form.Item> 
-          </Col>
-          <Col span={12}> 
-          
-          </Col> 
+              </Form.Item>
+            </Col>
+            <Col span={12}></Col>
           </Row>
           <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            
-            <Button onClick={clearform} icon={<CloseOutlined />} className="cancelempbtn">
+            <Button
+              onClick={clearform}
+              icon={<CloseOutlined />}
+              className="cancelempbtn"
+            >
               Cancel
             </Button>
             <Button
@@ -443,8 +400,6 @@ const Payslip = () => {
         </div>
       </Form>
     </div>
-
-
-);
+  );
 };
-export default Payslip
+export default Payslip;

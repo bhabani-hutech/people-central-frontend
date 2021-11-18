@@ -56,12 +56,19 @@
 
 .degn_textarea {
   font-size: 10px;
-  margin-left: 35%;
+  margin-left: 39%;
   margin-bottom: 5%;
+}
+
+.wrapasterik {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .asterik {
   color: red;
   margin-top: 2%;
+  margin-right: 5%;
 }
 /*# sourceMappingURL=Designation.css.map */

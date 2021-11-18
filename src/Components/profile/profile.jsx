@@ -21,7 +21,7 @@ import {
 //   CheckOutlined,
 //   CloseOutlined,
 // } from "@ant-design/icons";
-import "./Emponboarding.scss";
+import "./Profile.scss";
 import "antd/dist/antd.css";
 
 import {useDispatch, useSelector} from 'react-redux'

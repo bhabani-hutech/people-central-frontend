@@ -1,7 +1,6 @@
 .layout .site-layout-content {
-  min-height: 280px;
-  padding: 24px;
-  background: #fff;
+  min-height: 28rem;
+  padding: 2rem;
 }
 
 .layout {
@@ -41,7 +40,7 @@
 .tab2_subheading {
   color: rgba(0, 0, 0, 0.85);
   font-size: 12px;
-  margin-left: 70%;
+  margin-left: 73%;
   margin-top: 2%;
 }
 
@@ -59,6 +58,12 @@
   color: red;
   margin-top: 2%;
   margin-right: 5%;
+}
+
+.asterik::after {
+  content: ":";
+  color: black;
+  margin-left: 2%;
 }
 
 .tab2_header {
@@ -118,4 +123,13 @@
   border: 0;
   border-radius: 5px;
 }
-/*# sourceMappingURL=Emponboarding.css.map */
+
+.datepicker {
+  margin-left: 2rem;
+  width: 95%;
+}
+
+.empdropdown {
+  width: 80%;
+}
+/*# sourceMappingURL=Payslip.css.map */
