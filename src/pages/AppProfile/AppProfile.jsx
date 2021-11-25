@@ -1,38 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./AppSetting.scss";
+import "./AppProfile.scss";
 import AppFooter from "../../Components/Appfooter/Appfooter";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
 import Designation from "../../Components/Designation/Designation";
-// import Role from "../../Components/Role/Role";
 import Department from "../../Components/Department/Department";
-// import Employeement from "../../Components/Employeement/Employeement";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import Profile from "../../Components/profile/profile";
 import Employeelist from "../../Components/employeelist/employeelist";
-import Holiday from "../../Components/holiday/holiday";
 import Clientonboarding from "../../Components/Clientonboard/Clientonboarding";
-
+import Payslip from "../../Components/payslip/payslip";
 const { Content } = Layout;
 
 const { TabPane } = Tabs;
 
-const AppSetting = () => {
+const AppProfile = () => {
   function callback(key) {
     console.log(key);
   }
   const userloginn = useSelector((state) => state.userlogin);
   let history = useHistory();
   let { loading, userinfo, error } = userloginn;
-  useEffect(() => {
-    if(!userinfo){
-
-      history.push('/')
-    }
-  }, [history])
+  // useEffect(() => {
+  //   if (!userinfo) {
+  //     history.push("/");
+  //   }
+  // }, [history]);
 
   return (
     <>
@@ -44,18 +41,18 @@ const AppSetting = () => {
               defaultActiveKey="1"
               onChange={callback}
             >
+              <>
+                {/* <TabPane tab="Employee Onboarding" key="1">
+                  <Emponboarding />
+                </TabPane> */}
+                <TabPane tab="Personal" key="1">
+                  <Profile />
+                </TabPane>
+                {/* <TabPane tab="payslip" key="2">
+                  <Payslip />
+                </TabPane> */}
              
-              <TabPane tab="Designation" key="1">
-                <Designation />
-              </TabPane>
-             
-              <TabPane tab="Department" key="2">
-                <Department />
-              </TabPane>
-             
-              <TabPane tab="Holiday" key="3">
-                <Holiday />
-              </TabPane>
+              </>
             </Tabs>
           </div>
         </Content>
@@ -65,4 +62,4 @@ const AppSetting = () => {
   );
 };
 
-export default AppSetting;
+export default AppProfile;

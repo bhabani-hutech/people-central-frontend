@@ -1,93 +1,70 @@
-/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import moment from "moment";
-// import axios from "axios";
 import {
-  Radio,
   Divider,
   Button,
   Row,
   Col,
   Form,
-  Upload,
-  message,
   Input,
   DatePicker,
-  Select,
   Space,
-  // Table, Modal
+ 
 } from "antd";
 import {
-  UploadOutlined,
   CheckOutlined,
   CloseOutlined,
 } from "@ant-design/icons";
 import "./Payslip.scss";
 import "antd/dist/antd.css";
 
-import { useDispatch, useSelector } from "react-redux";
-import { clientonboard } from "../../action/useraction";
-const props = {
-  name: "file",
-  action: "https://www.mocky.io/v2/5cc8019d300000980a055e76",
-  headers: {
-    authorization: "authorization-text",
-  },
-  onChange(info) {
-    if (info.file.status !== "uploading") {
-      console.log(info.file, info.fileList);
-    }
-    if (info.file.status === "done") {
-      message.success(`${info.file.name} file uploaded successfully`);
-    } else if (info.file.status === "error") {
-      message.error(`${info.file.name} file upload failed.`);
-    }
-  },
-};
-const { RangePicker } = DatePicker;
-const currency = ["rupiya", "lira"];
+// import { useDispatch, useSelector } from "react-redux";
+// import { clientonboard } from "../../action/useraction";
 
-const paymentterm = ["Upon receipt", "Advance payment"];
+const { RangePicker } = DatePicker;
+// const currency = ["rupiya", "lira"];
+
+// const paymentterm = ["Upon receipt", "Advance payment"];
 
 const Payslip = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
   const [form] = Form.useForm();
 
-  const [employee, setEmployee] = useState({
-    // image: "",
-    // resume: "",
-    empFirstName: "",
-    empLastName: "",
-    phnoeNumber: "",
-    gender: "",
-    address1: "",
-    address2: "",
-    dateOfBirth: "",
-    empId: "",
-    empEmail: "",
-    joiningDate: "",
-    relievingDate: "",
-    managerEmail: "",
-    experience: "",
-    qualication: "",
-    bankAccountNo: "",
-    ifscCode: "",
-    bankName: "",
-    branchName: "",
-    employeement: "",
-    designation: {
-      designationName: "",
-    },
-    roles: {
-      roleName: "",
-    },
-    department: {
-      departmentName: "",
-    },
-  });
+  // const [employee, setEmployee] = useState({
+  //   // image: "",
+  //   // resume: "",
+  //   empFirstName: "",
+  //   empLastName: "",
+  //   phnoeNumber: "",
+  //   gender: "",
+  //   address1: "",
+  //   address2: "",
+  //   dateOfBirth: "",
+  //   empId: "",
+  //   empEmail: "",
+  //   joiningDate: "",
+  //   relievingDate: "",
+  //   managerEmail: "",
+  //   experience: "",
+  //   qualication: "",
+  //   bankAccountNo: "",
+  //   ifscCode: "",
+  //   bankName: "",
+  //   branchName: "",
+  //   employeement: "",
+  //   designation: {
+  //     designationName: "",
+  //   },
+  //   roles: {
+  //     roleName: "",
+  //   },
+  //   department: {
+  //     departmentName: "",
+  //   },
+  // });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   // const handelEmployeement = (e) => {
   //   const name = e.target.name;
@@ -121,6 +98,7 @@ const Payslip = () => {
   //   });
   // };
 
+  // eslint-disable-next-line no-unused-vars
   const [value, setValue] = React.useState(1);
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
@@ -130,8 +108,8 @@ const Payslip = () => {
     <div>
       <Form
         form={form}
-        // colon={false}
-        // requiredMark={false}
+        colon={false}
+        requiredMark={false}
         name="basic"
         labelCol={{ span: 8 }}
         wrapperCol={{ span: 16 }}
@@ -153,7 +131,7 @@ const Payslip = () => {
           <Row justify="start">
             <Col span={12}>
               <Form.Item
-                label="Employee id"
+                label="Employee ID"
                 name="empid"
                 rules={[
                   {
@@ -176,10 +154,9 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
+             
                 <Input placeholder="Consultant Name" />
-                {/* </div> */}
+              
               </Form.Item>
               <Form.Item
                 label="Designation"
@@ -191,10 +168,9 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
+               
                 <Input placeholder="Designation Name" />
-                {/* </div> */}
+               
               </Form.Item>
               <Form.Item
                 name="Employee Type"
@@ -206,12 +182,11 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
+               
                 <Input placeholder="EMP Type" />
-                {/* </div> */}
+             
               </Form.Item>
-              {/*  */}
+             
               <Space direction="vertical" size={10}>
                 <RangePicker
                   ranges={{
@@ -234,10 +209,9 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                    <span className="asterik">*</span> */}
+               
                 <Input placeholder="department" />
-                {/* </div> */}
+              
               </Form.Item>
             </Col>
 
@@ -252,10 +226,9 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
+                
                 <Input placeholder="Address line 1" />
-                {/* </div> */}
+              
               </Form.Item>
               <Form.Item
                 name="doj"
@@ -267,36 +240,32 @@ const Payslip = () => {
                 ]}
               >
                 <DatePicker
-                  className="datepicker"
+                  // className="datepicker"
                   placeholder="DD/MM/YYYY"
                   // style={{ width: "100%" }}
                 />
               </Form.Item>
 
               <Form.Item label="Working day" name="working_day">
-                {/* <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span> */}
+              
                 <Input placeholder="" />
-                {/* </div> */}
+               
               </Form.Item>
 
               <Form.Item label="ESIC number" name="esic_number">
-                {/* <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span> */}
+                
                 <Input placeholder="ESIC number" />
-                {/* </div> */}
+            
               </Form.Item>
               <Form.Item label="total Arrear day" name="arrear">
-                {/* <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span> */}
+               
                 <Input placeholder="" />
-                {/* </div> */}
+             
               </Form.Item>
               <Form.Item label="Loss of pay" name="lop">
-                {/* <div className="wrapasterik">
-                  <span className="asterik"> &nbsp;&nbsp;</span> */}
+             
                 <Input placeholder="LOP" />
-                {/* </div> */}
+               
               </Form.Item>
 
               {/* <Form.Item

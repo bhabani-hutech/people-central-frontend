@@ -55,6 +55,7 @@ useEffect(() => {
       <Form
         form={form}
         requiredMark={false}
+        colon={false}
         name="basic"
         layout="vertical"
         onFinish={onFinish}

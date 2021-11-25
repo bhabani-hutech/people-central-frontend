@@ -27,13 +27,14 @@ background: rgba(3, 73, 133, 1);
   color: #fff;
   border:0;
    border-radius:5px;
-   margin-right: 0;
+  
+  //  margin-right: 0;
 }
 .cancelbtn{
   color: #1890ff;
   border: 1px solid #1890ff;
   border-radius:5px;
-  margin-left: 100%;
+  margin-left: 70%;
 }
 .ant-modal-content{
   margin-top: 10%;
@@ -59,3 +60,6 @@ display: flex;
 //   color: black;
 //   margin-left: 2%;
 // }
+.ant-table-pagination-right {
+    justify-content: center;
+}

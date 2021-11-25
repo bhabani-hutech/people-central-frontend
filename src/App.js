@@ -2,9 +2,8 @@ import './App.css';
 import constants from "./constants/Constants";
 import React, { Suspense, lazy } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import Profile from './Components/profile/profile';
 const Loginbase = lazy(() => import("./pages/Loginbase/Loginbase"));
-// const Onboarding = lazy(() => import("./pages/Onboarding/Onboarding"));
+const EmpDashboard = lazy(() => import("./pages/EmpDashboard/EmpDashboard"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));
 const {
   ROUTES: {
@@ -16,6 +15,10 @@ const {
     ONBOADING,
     ACTIVATION,
     SETTING,
+    PROFILE,
+    DIRECTORY,
+    EMPDASHBOARD,
+    PAYSLIP,
   },
   LOADING,
 } = constants;
@@ -33,8 +36,10 @@ function App() {
             <Route path={DASHBOARD} component={Dashboard} />
             <Route path={ONBOADING} component={Dashboard} />
             <Route path={SETTING} component={Dashboard} />
-            <Route path='/profile' component={Profile} />
-            
+            <Route path={PAYSLIP} component={Dashboard} />
+            <Route path={EMPDASHBOARD} component={EmpDashboard} />
+            <Route path={PROFILE} component={EmpDashboard} />
+            <Route path={DIRECTORY} component={EmpDashboard} />
           </Switch>
         </Suspense>
       </div>

@@ -22,6 +22,7 @@ const Forgot = () => {
     <div className="form_container">
       <Form
         requiredMark={false}
+        colon={false}
         name="basic"
         layout="vertical"
         onFinish={onFinish}

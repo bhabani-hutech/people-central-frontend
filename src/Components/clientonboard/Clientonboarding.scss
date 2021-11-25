@@ -28,17 +28,17 @@
 .ant-select-selector{
   text-align: left;
 }
-.tab2_heading{
+.tab3_heading{
     color: rgba(0, 0, 0, 0.85);
     font-weight: bold;
     font-size:15px;
 margin-top: 2%;
 
 }
-.tab2_subheading{
+.tab3_subheading{
     color: rgba(0, 0, 0, 0.85);
     font-size:12px;
-    margin-left: 73%;
+    margin-left: 70%;
     margin-top: 2%;
 }
 .span_heading{
@@ -58,7 +58,7 @@ display: flex;
 //   color: black;
 //   margin-left: 2%;
 // }
-.tab2_header{
+.tab3_header{
   display: flex;
 
 }
@@ -89,13 +89,13 @@ border-radius:5px;
   border: 0;
   border-radius:5px;
 }
-.cancelempbtn{
+.cancelclientbtn{
   margin-left: 35%;
   color: #1890ff;
   border: 1px solid #1890ff;
   border-radius:5px;
 }
-.saveempbtn{
+.saveclientbtn{
 margin-top: 5%;
    margin-left: 5%;
    margin-bottom: 5%;

@@ -7,6 +7,7 @@ import {
   UserOutlined,
   SettingOutlined,
   LogoutOutlined,
+  ReconciliationOutlined,
   // DownOutlined,
 } from "@ant-design/icons";
 
@@ -22,7 +23,7 @@ const Appsidebar = () => {
   const userlogin = useSelector((state) => state.userlogin);
   let { loading, userinfo, error } = userlogin;
   let history = useHistory();
-  let handleOnboarding = () => {
+  const handleOnboarding = () => {
     if (userinfo && userinfo.isAdmin) {
       history.push("/onboarding");
     } else {
@@ -34,13 +35,32 @@ const Appsidebar = () => {
   const toggle = () => {
     setCollapsed(!collapsed);
   };
-  let handlelogout = () => {
-    dispatch(userlogout());
-    history.push("/");
+  const handlelogout = () => {
+    //  if (userinfo && userinfo.isAdmin) {
+    console.log("logout")
+       dispatch(userlogout());
+       history.push("/");
+    //  }
+    //  else {
+    //    history.push("/");
+    //  }
+   
   };
   const handleSetting = () => {
-    history.push("/setting");
+    if (userinfo && userinfo.isAdmin) {
+       history.push("/setting");
+    } else {
+      history.push("/directory");
+    }
+  
   };
+  const handlePayslip = () => {
+    if (userinfo && userinfo.isAdmin) {
+       console.log("handlePayslip");
+       history.push("/payslip");
+    }
+   
+  }
   // const handleOnboarding = () => {
   //   history.push("/onboarding");
   // };
@@ -65,10 +85,19 @@ const Appsidebar = () => {
             {userinfo && userinfo.isAdmin ? "Onboarding" : "Profile"}
           </Menu.Item>
           <Menu.Item key="3" onClick={handleSetting} icon={<SettingOutlined />}>
-            Settings
+            {userinfo && userinfo.isAdmin ? "Settings" : "Directory"}
           </Menu.Item>
-          <Menu.Item onClick={handlelogout} key="4" icon={<LogoutOutlined />}>
-            Log Out
+          {userinfo && userinfo.isAdmin &&
+            <Menu.Item
+              key="4"
+              onClick={handlePayslip}
+              icon={<ReconciliationOutlined />}
+            >
+              Payslip
+            </Menu.Item>
+          }
+          <Menu.Item onClick={handlelogout} key="5" icon={<LogoutOutlined />}>
+            {userinfo && userinfo.isAdmin ? "Log Out" : "Log Out"}
           </Menu.Item>
         </Menu>
       </Sider>

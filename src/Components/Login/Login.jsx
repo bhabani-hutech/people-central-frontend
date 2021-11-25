@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
 import React,{useEffect} from "react";
 import constants from "../../constants/Constants";
@@ -35,7 +36,16 @@ const Login = () => {
     if(userinfo){
       history.push('/dashboard') 
     }
+    else {
+       history.push("/empdashboard");
+    }
   }, [history, userinfo])
+
+  // useEffect(() => {
+  //   if (!userinfo) {
+  //     history.push("/");
+  //   }
+  // }, [history]);
  
  
   let dispatch = useDispatch()
@@ -63,6 +73,7 @@ const Login = () => {
     <div className="form_container">
       <Form
         requiredMark={false}
+        colon={false}
         name="basic"
         layout="vertical"
         onFinish={onFinish}

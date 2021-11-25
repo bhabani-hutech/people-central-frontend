@@ -4,6 +4,8 @@ import "../Home/Home.scss";
 import "../../pages/Dashboard/Dashboard.scss";
 import setting from "../../assets/images/setting.png";
 import EmpOnboard from "../../assets/images/emponboard.png";
+import profile from "../../assets/images/profileicon.png";
+import directory from "../../assets/images/directory.png";
 import { useHistory } from "react-router-dom";
 import { Layout } from "antd";
 import banner from "../../assets/images/Group 235.png";
@@ -31,19 +33,25 @@ const Home = () => {
       alt: "Settings",
       title: "Settings",
     },
+    {
+      id: "3",
+      backgroundimage: setting,
+      alt: "Payslip",
+      title: "Payslip",
+    },
   ];
   const empcards = [
     {
       id: "1",
-      backgroundimage: EmpOnboard,
-      alt: "Directory",
-      title: "Directory",
+      backgroundimage: profile,
+      alt: "Profile",
+      title: "Profile",
     },
     {
       id: "2",
-      backgroundimage: setting,
-      alt: "MyProfile",
-      title: "My Profile",
+      backgroundimage: directory,
+      alt: "Directory",
+      title: "Directory",
     },
   ];
   let history = useHistory();
@@ -56,13 +64,17 @@ const Home = () => {
      history.push("/setting");
   };
    const handelDirectory = () => {
-     console.log("Onboarding");
-     history.push("/onboarding");
+     console.log("directory");
+     history.push("/directory");
    };
    const handelprofile = () => {
-     console.log("Setting");
-     history.push("/setting");
-   };
+     console.log("Profile");
+     history.push("/profile");
+  };
+  const handelPayslip = () => {
+     console.log("Payslip");
+     history.push("/payslip");
+  }
   return (
     <div className="container">
       <Content className="site-layout-content">
@@ -83,7 +95,7 @@ const Home = () => {
                         onClick={
                           items.title === "Onboading"
                             ? handelOnboarding
-                            : handelSetting
+                            : items.title === "Settings"? handelSetting : handelPayslip
                         }
                       />
                     </div>

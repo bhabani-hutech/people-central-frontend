@@ -1,5 +1,5 @@
 import React from "react";
-import img4 from "../../assets/images/Grouplogo.png";
+import img4 from "../../assets/images/logo.png";
 import { Dropdown, Menu, Layout } from "antd";
 import calling from "../../assets/images/Calling.png";
 import profile from "../../assets/images/profile.png";
@@ -8,23 +8,38 @@ import {
   DownOutlined,
 } from "@ant-design/icons";
 import "./Appheader.scss";
+import { useHistory } from "react-router-dom";
+import Clock from "../Clock/Clock";
+import { SettingOutlined, LogoutOutlined } from "@ant-design/icons";
+
 const d = new Date();
 let day = d.toDateString();
 console.log(day);
-const menu = (
-  <Menu>
-    <Menu.Item key="0">
-      <a href="https://www.antgroup.com">1st menu item</a>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <a href="https://www.aliyun.com">2nd menu item</a>
-    </Menu.Item>
-    <Menu.Divider />
-    <Menu.Item key="3">3rd menu item</Menu.Item>
-  </Menu>
-);
+ 
+
 const { Header } = Layout;
 const Appheader = () => {
+   let history = useHistory();
+  const handelBack = ()=>{
+    console.log("back");
+      history.push("/dashboard");
+  }
+  const handleSetting = () => {
+    history.push("/setting");
+  };
+  const handleLogout = () => {
+    history.push("/");
+  };
+  const menu = (
+    <Menu>
+      <Menu.Item key="0" icon={<SettingOutlined />} onClick={handleSetting}>
+        Setting
+      </Menu.Item>
+      <Menu.Item key="1" icon={<LogoutOutlined />} onClick={handleLogout}>
+        Log Out
+      </Menu.Item>
+    </Menu>
+  );
   return (
     <>
       <div className="fixed_header">
@@ -50,10 +65,11 @@ const Appheader = () => {
         </div>
         <Header className="site-layout-background">
           <div className="logo">
-            <img src={img4} alt="logo" width="70px" height="70px" />
-            <div className="Menu">PeopleCentral</div>
+            <img src={img4} alt="logo" onClick={handelBack} />
           </div>
-
+          <div className="webclock">
+            <Clock />
+          </div>
           <div className="dropdown">
             <Dropdown overlay={menu} trigger={["click"]}>
               <a

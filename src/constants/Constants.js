@@ -8,6 +8,10 @@ const Constants = {
     ONBOADING: "/onboarding",
     SETTING: "/setting",
     ACTIVATION: "/activation",
+    PROFILE: "/profile",
+    DIRECTORY: "/directory",
+    EMPDASHBOARD: "/empdashboard",
+    PAYSLIP:"/payslip"
   },
   LOADING: "please wait to load...",
   REMEMBER_ME_LABEL: "Remember me",

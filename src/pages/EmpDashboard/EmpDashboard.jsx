@@ -1,44 +1,43 @@
 /* eslint-disable no-unused-vars */
-import React,{useEffect} from "react";
+import React, { useEffect } from "react";
 import { Layout } from "antd";
 import constants from "../../constants/Constants";
 import "antd/dist/antd.css";
 import Footer from "../../Components/Appfooter/Appfooter";
 import "antd/dist/antd.css";
-import "./Dashboard.scss";
+import "./EmpDashboard.scss";
 import Appheader from "../../Components/Appheader/Appheader";
 import Appsidebar from "../../Components/Appsidebar/Appsidebar";
 import Home from "../../Components/Home/Home";
 import { useLocation } from "react-router-dom";
 import Onboarding from "../Onboarding/Onboarding";
 import AppSetting from "../AppSetting/AppSetting";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 import AppProfile from "../AppProfile/AppProfile";
-import AppPayslip from "../AppPayslip/AppPayslip";
+import AppDirectory from "../AppDirectory/AppDirectory";
 
 const {
-  ROUTES: { ONBOADING, SETTING, PAYSLIP },
+  ROUTES: { ONBOADING, SETTING, PROFILE, DIRECTORY },
 } = constants;
-const Dashboard = ({history}) => {
-  const userlogin = useSelector(state => state.userlogin);
-  let { laoding, userinfo, error } = userlogin
+const EmpDashboard = ({ history }) => {
+//   const userlogin = useSelector((state) => state.userlogin);
+//   let { laoding, userinfo, error } = userlogin;
   // const emploginn = useSelector((state) => state.emplogin);
   // let { emploading, empinfo, emperror } = emploginn;
 
-if(userinfo){
-  let {isAdmin} = userinfo
-
-}
-useEffect(() => {
-  if(!userinfo){
-     
-    history.push('/')
-  }  
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [history])
+//   if (userinfo) {
+//     let { isAdmin } = userinfo;
+//   }
   
-   const location = useLocation();
-   console.log(location.pathname);
+  // useEffect(() => {
+  //   if ( !empinfo) {
+  //     history.push("/");
+  //   }
+    
+  // }, [history]);
+
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     // <Layout>
     //   <Appsidebar handleClick={handleMenuClick} />
@@ -60,19 +59,11 @@ useEffect(() => {
       <Appsidebar />
       <Layout className="site-layout">
         <Appheader />
-        {/* {location.pathname.includes(ONBOADING) ? (
-          <Onboarding />
-        ) : location.pathname.includes(SETTING) ? (
-          <AppSetting />
-        ) : (
-          <Home />
-        )} */}
-        {location.pathname.includes(ONBOADING) && userinfo ? (
-          <Onboarding />
-        ) : location.pathname.includes(SETTING) && userinfo ? (
-          <AppSetting />
-        ) : location.pathname.includes(PAYSLIP) && userinfo ? (
-          <AppPayslip />
+      
+       { location.pathname.includes(PROFILE) ? (
+          <AppProfile />
+        ) : location.pathname.includes(DIRECTORY) ? (
+          <AppDirectory/>
         ) : (
           <Home />
         )}
@@ -82,4 +73,4 @@ useEffect(() => {
   );
 };
 
-export default Dashboard;
+export default EmpDashboard;

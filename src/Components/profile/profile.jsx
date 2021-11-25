@@ -1,74 +1,30 @@
-/* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-// import moment from "moment";
-// import axios from "axios";
+
+import React from "react";
 import {
-  // Radio,
   Divider,
-  // Button,
   Row,
   Col,
   Form,
-  // Upload,
-  // message,
-  // Input,
-  // DatePicker,
-  // Select,
-  // Table, Modal
 } from "antd";
-// import {
-//   UploadOutlined,
-//   CheckOutlined,
-//   CloseOutlined,
-// } from "@ant-design/icons";
 import "./Profile.scss";
 import "antd/dist/antd.css";
 
-import {useDispatch, useSelector} from 'react-redux'
-import {clientonboard} from '../../action/useraction'
+// import {useDispatch, useSelector} from 'react-redux'
+// import {clientonboard} from '../../action/useraction'
 
-const currency = ["rupiya", "lira"];
+// const currency = ["rupiya", "lira"];
 
 
-const paymentterm = ["Upon receipt", "Advance payment"];
+// const paymentterm = ["Upon receipt", "Advance payment"];
 
 
 const Profile = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [loading, setLoading] = useState(false);
-  const [form] = Form.useForm();
+  
+  // const [loading, setLoading] = useState(false);
+  // const [form] = Form.useForm();
  
  
-  // const [employee, setEmployee] = useState({
-  //   empFirstName: "robert",
-  //   empLastName: "",
-  //   phnoeNumber: "",
-  //   gender: "",
-  //   address1: "",
-  //   address2: "",
-  //   dateOfBirth: "",
-  //   empId: "",
-  //   empEmail: "",
-  //   joiningDate: "",
-  //   relievingDate: "",
-  //   managerEmail: "",
-  //   experience: "",
-  //   qualication: "",
-  //   bankAccountNo: "",
-  //   ifscCode: "",
-  //   bankName: "",
-  //   branchName: "",
-  //   employeement: "",
-  //   designation: {
-  //     designationName: "",
-  //   },
-  //   roles: {
-  //     roleName: "",
-  //   },
-  //   department: {
-  //     departmentName: "",
-  //   },
-  // });
+  
   // const dispatch = useDispatch()
 
 
@@ -83,38 +39,38 @@ const Profile = () => {
 //   console.log(employee);
 
 
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  // const onFinish = (values) => {
+  //   console.log("Success:", values);
 
       
       
       
-    form.resetFields();
+  //   form.resetFields();
     
     
     
     
-  }
+  // }
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  // const onFinishFailed = (errorInfo) => {
+  //   console.log("Failed:", errorInfo);
   
-  };
+  // };
 
   // let handleclear = ()=>{
   //   form.resetFields();    
   // }  
-  let clearform = ()=>{
-    form.resetFields();
+  // let clearform = ()=>{
+  //   form.resetFields();
            
-  }
+  // }
  
 
-  const [value, setValue] = React.useState(1);
-  const onChange = (e) => {
-    console.log("radio checked", e.target.value);
-    setValue(e.target.value);
-  };
+  // const [value, setValue] = React.useState(1);
+  // const onChange = (e) => {
+  //   console.log("radio checked", e.target.value);
+  //   setValue(e.target.value);
+  // };
   return (
     <div>
         <div className="user_details">

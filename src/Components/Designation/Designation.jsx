@@ -218,20 +218,20 @@ const Designation = () => {
               autoComplete="off"
             >
               <Form.Item
-                label="Designation Id"
+                label="Designation ID"
                 value={designationId}
                 name="designationId"
                 onChange={handelDesignationId}
                 rules={[
                   {
                     required: true,
-                    message: "Please input Designation Id!",
+                    message: "Please input Designation ID!",
                   },
                 ]}
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                  <Input />
+                <Input />
                 {/* </div> */}
               </Form.Item>
               <Form.Item
@@ -248,7 +248,7 @@ const Designation = () => {
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                  <Input />
+                <Input />
                 {/* </div> */}
               </Form.Item>
 
@@ -260,36 +260,33 @@ const Designation = () => {
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik"> &nbsp;&nbsp;</span> */}
-                  <Input.TextArea />
+                <Input.TextArea />
+                <div className="degn_textarea">
+                  0 characters remaining of 100 characters
+                </div>
+
                 {/* </div> */}
               </Form.Item>
-              <div className="degn_textarea">
-                0 characters remaining of 100 characters
-              </div>
 
               <Row>
                 <Col span={19}>
-                  <Form.Item>
-                    <Button
-                      className="cancelbtn"
-                      key="back"
-                      icon={<CloseOutlined />}
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </Button>
-                  </Form.Item>
+                  <Button
+                    className="cancelbtn"
+                    key="back"
+                    icon={<CloseOutlined />}
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </Button>
                 </Col>
                 <Col span={5}>
-                  <Form.Item>
-                    <Button
-                      htmlType="submit"
-                      className="savebtn"
-                      icon={<CheckOutlined />}
-                    >
-                      Save
-                    </Button>
-                  </Form.Item>
+                  <Button
+                    htmlType="submit"
+                    className="savebtn"
+                    icon={<CheckOutlined />}
+                  >
+                    Save
+                  </Button>
                 </Col>
               </Row>
             </Form>

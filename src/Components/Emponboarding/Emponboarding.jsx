@@ -31,6 +31,7 @@ const Designation = [
   "Junior Developer",
   "Senior Developer",
 ];
+const maritalstatus=["Single","Married"]
 const bloodGrouptype = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
 
 const Emponboarding = () => {
@@ -120,6 +121,7 @@ const onChangeimg = (info) => {
       empFirstName: values.empFirstName,
       empLastName: values.empLastName,
       phnoeNumber: values.phnoeNumber,
+      personalEmail:values.personalEmail,
       gender: values.gender,
       address1: values.address1,
       address2: values.address2,
@@ -271,6 +273,19 @@ const onChangeimg = (info) => {
               </Form.Item>
 
               <Form.Item
+                name="personalEmail"
+                label="Personal Email"
+                rules={[
+                  {
+                    type: "email",
+                    message: "Please input Personal Email Address!",
+                  },
+                ]}
+              >
+                <Input placeholder="Personal Email Address" />
+              </Form.Item>
+
+              <Form.Item
                 name="empBloodGroup"
                 label="Blood Group"
                 rules={[
@@ -310,20 +325,20 @@ const onChangeimg = (info) => {
             </Col>
             <Col span={12}>
               <Form.Item
-                label="Address line 1"
+                label="Address Line 1"
                 name="address1"
                 rules={[
                   {
                     required: true,
-                    message: "Please input Address 1!",
+                    message: "Please input Address Line 1!",
                   },
                 ]}
               >
-                <Input placeholder="Address line 1" />
+                <Input placeholder="Address Line 1" />
               </Form.Item>
 
-              <Form.Item label="Address line 2" name="address2">
-                <Input placeholder="Address line 2" />
+              <Form.Item label="Address Line 2" name="address2">
+                <Input placeholder="Address Line 2" />
               </Form.Item>
 
               <Form.Item
@@ -337,15 +352,15 @@ const onChangeimg = (info) => {
                 ]}
               >
                 <DatePicker
-                  className="datepicker"
+                  // className="datepicker"
                   placeholder="DD/MM/YYYY"
                   style={{ width: "100%" }}
                 />
               </Form.Item>
 
               <Form.Item
-                label="Marital Status"
                 name="martialStatus"
+                label="Marital Status"
                 rules={[
                   {
                     required: true,
@@ -353,12 +368,20 @@ const onChangeimg = (info) => {
                   },
                 ]}
               >
-                <Input placeholder="Martial Status" />
+                <Select placeholder="Select Martial Status">
+                  {maritalstatus.map((fr, index) => {
+                    return (
+                      <Select.Option key={index} value={fr}>
+                        {fr}
+                      </Select.Option>
+                    );
+                  })}
+                </Select>
               </Form.Item>
 
               <Form.Item name="anniversary" label="Marriage Annivarsary">
                 <DatePicker
-                  className="datepicker"
+                  // className="datepicker"
                   placeholder="DD/MM/YYYY"
                   style={{ width: "100%" }}
                 />
@@ -411,7 +434,7 @@ const onChangeimg = (info) => {
                   <Input placeholder="Email Address" />
                 </Form.Item>
 
-                <Form.Item label="Date of joining" name="joiningDate">
+                <Form.Item label="Joining Date" name="joiningDate">
                   <DatePicker
                     style={{ width: "100%" }}
                     // className="datepicker"
@@ -581,6 +604,34 @@ const onChangeimg = (info) => {
             <Row>
               <Col span={12}>
                 <Form.Item
+                  label="Account No."
+                  name="bankAccountNo"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input Bank Account No!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="Bank Account No." />
+                </Form.Item>
+
+                <Form.Item
+                  label="IFSC Code"
+                  name="ifscCode"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input IFSC Code!",
+                    },
+                  ]}
+                >
+                  <Input placeholder="IFSC Code" />
+                </Form.Item>
+              </Col>
+
+              <Col span={12}>
+                <Form.Item
                   label="Bank Name"
                   name="bankName"
                   rules={[
@@ -605,7 +656,6 @@ const onChangeimg = (info) => {
                 >
                   <Input placeholder="Branch Name" />
                 </Form.Item>
-
                 <Form.Item
                   label="PAN No."
                   name="pan"
@@ -617,33 +667,6 @@ const onChangeimg = (info) => {
                   ]}
                 >
                   <Input placeholder="PAN No." />
-                </Form.Item>
-              </Col>
-
-              <Col span={12}>
-                <Form.Item
-                  label="IFSC Code"
-                  name="ifscCode"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input IFSC Code!",
-                    },
-                  ]}
-                >
-                  <Input placeholder="IFSC Code" />
-                </Form.Item>
-                <Form.Item
-                  label="Bank Account No."
-                  name="bankAccountNo"
-                  rules={[
-                    {
-                      required: true,
-                      message: "Please input Bank Account No!",
-                    },
-                  ]}
-                >
-                  <Input placeholder="Bank Account No." />
                 </Form.Item>
               </Col>
             </Row>

@@ -219,20 +219,20 @@ const handelDepartmentChange = (e) => {
               autoComplete="off"
             >
               <Form.Item
-                label="Department Id"
+                label="Department ID"
                 value={departmentId}
                 name="departmentId"
                 onChange={handelDepartmentIdChange}
                 rules={[
                   {
                     required: true,
-                    message: "Please input Department Id!",
+                    message: "Please input Department ID!",
                   },
                 ]}
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                  <Input />
+                <Input />
                 {/* </div> */}
               </Form.Item>
               <Form.Item
@@ -249,32 +249,28 @@ const handelDepartmentChange = (e) => {
               >
                 {/* <div className="wrapasterik">
                   <span className="asterik">*</span> */}
-                  <Input />
+                <Input />
                 {/* </div> */}
               </Form.Item>
               <Row>
                 <Col span={19}>
-                  <Form.Item>
-                    <Button
-                      className="cancelbtn"
-                      key="back"
-                      icon={<CloseOutlined />}
-                      onClick={handleCancel}
-                    >
-                      Cancel
-                    </Button>
-                  </Form.Item>
+                  <Button
+                    className="cancelbtn"
+                    key="back"
+                    icon={<CloseOutlined />}
+                    onClick={handleCancel}
+                  >
+                    Cancel
+                  </Button>
                 </Col>
                 <Col span={5}>
-                  <Form.Item>
-                    <Button
-                      htmlType="submit"
-                      className="savebtn"
-                      icon={<CheckOutlined />}
-                    >
-                      Save
-                    </Button>
-                  </Form.Item>
+                  <Button
+                    htmlType="submit"
+                    className="savebtn"
+                    icon={<CheckOutlined />}
+                  >
+                    Save
+                  </Button>
                 </Col>
               </Row>
             </Form>

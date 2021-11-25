@@ -1,15 +1,28 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
-
-import { Table, Avatar } from "antd";
+import { Table, Avatar, Input, Button, Space } from "antd";
+// import { SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
+const { Search } = Input;
 const Employeelist = () => {
   const [dataSourse, setdataSourse] = useState([]);
   const [loading, setloading] = useState(false);
+  // const [searchState, setSearchState] = useState({
+  //   searchText: "",
+  //   searchedColumn: "",
+  // });
+
+
+
+  
+
+
+
+
+
   useEffect(() => {
     setloading(true);
-
     axios
       .get(
         "https://hutechpayrollapp.azurewebsites.net/application/onboardedEmployees"
@@ -26,66 +39,55 @@ const Employeelist = () => {
       });
   }, []);
   const handleDes = (text, record) => {
+  
     return <span>{record?.department?.departmentName} </span>;
   };
   const handleDes2 = (text, record) => {
     return <span>{record?.designation?.designationName} </span>;
   };
+const onSearch = (value) => console.log(value);
 
   const handleimage = (text, record) => {
+      console.log(record.empFirstName);
+   var  fc=record.empFirstName
+    var firstchar = fc.charAt(0)
+     var lc = record.empLastName;
+     var lastchar = lc.charAt(0);
     return (
       <span>
-        {record?.image ? <Avatar src={record.image} /> : null}
-        {record?.empFirstName}
+        {record?.image ? (
+          <Avatar src={record.image} />
+        ) : (
+          <Avatar
+            style={{
+              background:
+                "linear-gradient(147.6deg, #032848 -9.8%, #043968 117.16%)",
+            }}
+          >
+            {firstchar}
+            {lastchar}
+          </Avatar>
+        )}
+        <span>
+          {" "}
+          {record?.empFirstName} {record?.empLastName}
+        </span>
       </span>
     );
   };
-  // axios.all([])
-  // let data = [
-  //     {
-  //         empid:'1',
-  //         name:'robert',
-
-  //         email:'abc123@gmail.com',
-
-  //         phone:'123456',
-  //         designation:'hr',
-  //         manageremail:'abc123@gmail.com',
-
-  //         employee_type:'parttime',
-  //         department:'civil',
-  //         placeofworking:'banglore',
-  //         key:1
-
-  //     },
-  //     {
-  //         empid:'2',
-  //         name:'aron',
-
-  //         email:'abc123@gmail.com',
-
-  //         phone:'123456',
-  //         designation:'hr',
-  //         manageremail:'abc123@gmail.com',
-
-  //         employee_type:'parttime',
-  //         department:'civil',
-  //         placeofworking:'banglore',
-
-  //         key:1
-  //     },
-  // ]
-  // striped
+ 
   let columns = [
     {
-      title: "Employee ID",
+      title: "ID",
       dataIndex: "empId",
       key: "key",
+      fixed: "left",
     },
     {
-      title: "name",
+      title: "Employee Name",
       dataIndex: "empFirstName",
       key: "key",
+      fixed: "left",
       render: (text, record) => handleimage(text, record),
       // render:(text, record)=>{
       //   return (
@@ -101,55 +103,67 @@ const Employeelist = () => {
       // }
     },
 
+    // {
+    //   title: "Email",
+    //   dataIndex: "empEmail",
+    //   key: "key",
+    // },
+    // {
+    //   title: "Phone",
+    //   dataIndex: "phnoeNumber",
+    //   key: "key",
+    // },
     {
-      title: "Email",
-      dataIndex: "empEmail",
-      key: "key",
-    },
-    {
-      title: "Phone",
-      dataIndex: "phnoeNumber",
-      key: "key",
-    },
-    {
-      title: "designation",
-      dataIndex: "designation",
-      key: "key",
-      render: (text, record) => handleDes2(text, record),
-    },
-    {
-      title: "manageremail",
-      dataIndex: "managerEmail",
-      key: "key",
-    },
-
-    {
-      title: "employee_type",
-      dataIndex: "employeement",
-      key: "key",
-    },
-    {
-      title: "department",
+      title: "Department",
       dataIndex: "department",
       key: "key",
       render: (text, record) => handleDes(text, record),
     },
     {
-      title: "placeofworking",
+      title: "Designation",
+      dataIndex: "designation",
+      key: "key",
+      render: (text, record) => handleDes2(text, record),
+    },
+    {
+      title: "Manageremail",
+      dataIndex: "managerEmail",
+      key: "key",
+    },
+
+    // {
+    //   title: "employee_type",
+    //   dataIndex: "employeement",
+    //   key: "key",
+    // },
+
+    {
+      title: "Location",
       dataIndex: "address1",
       key: "key",
     },
   ];
   return (
-    <div>
-      <Table
-        dataSource={dataSourse}
-        loading={loading}
-        columns={columns}
-        pagination={{ pageSize: 15 }}
-        scroll={{ x: 400 }}
-      ></Table>
-    </div>
+    <>
+      <div style={{ textAlign: "left",marginBottom:"2rem" }}>
+        {" "}
+        <Search
+          placeholder="Search"
+          allowClear
+          onSearch={onSearch}
+          style={{ width: 340 }}
+        />
+      </div>
+      <div>
+        <Table
+          dataSource={dataSourse}
+          loading={loading}
+          columns={columns}
+          pagination={{ pageSize: 15 }}
+          scroll={{ x: 400 }}
+        ></Table>
+      </div>
+    </>
   );
 };
 
