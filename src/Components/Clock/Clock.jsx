@@ -14,6 +14,7 @@ const Clock = () => {
     <div>
       <span>
         {hour}:{minute}:{second}:{milisecond}
+        {hour}:{minute}:{second}:{milisecond}
       </span>
       <Button onClick={handelClock} className="savebtn"></Button>
     </div>
