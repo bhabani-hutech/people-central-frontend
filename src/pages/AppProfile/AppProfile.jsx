@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Profile from "../../Components/profile/profile";
 import Employeelist from "../../Components/employeelist/employeelist";
-import Clientonboarding from "../../Components/Clientonboard/Clientonboarding";
+import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
 import Payslip from "../../Components/payslip/payslip";
 const { Content } = Layout;
 

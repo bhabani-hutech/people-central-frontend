@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import Employeelist from "../../Components/employeelist/employeelist";
 import Holiday from "../../Components/holiday/holiday";
-import Clientonboarding from "../../Components/Clientonboard/Clientonboarding";
+import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
 
 const { Content } = Layout;
 
