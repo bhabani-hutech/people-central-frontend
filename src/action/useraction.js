@@ -9,7 +9,7 @@ export let userlogin = (userName, password) => async (dispatch) => {
     };
 
     let { data } = await axios.post(
-      "https://hutechpayrollapp.azurewebsites.net/application/logintoken",
+      "https://peoplecentral.herokuapp.com/application/logintoken",
       { userName, password },
       config
     );
@@ -40,7 +40,7 @@ export let clientonboard = (client) => async (dispatch, getState) => {
     };
 
     let { data } = await axios.post(
-      "https://hutechpayrollapp.azurewebsites.net/application/addClient",
+      "https://peoplecentral.herokuapp.com/application/addClient",
       client,
       config
     );

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import {
   Divider,
@@ -34,6 +35,7 @@ const Clientonboarding = () => {
     console.log("Success:", values);
     let website = values.website;
     let urlcheck =
+      // eslint-disable-next-line no-useless-escape
       /[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi;
     if (!website.match(urlcheck)) {
       alert("wrong url");
@@ -100,7 +102,7 @@ const Clientonboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input Customer Came!",
+                    message: "Please input Customer Name!",
                   },
                 ]}
               >
@@ -172,7 +174,7 @@ const Clientonboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input address!",
+                    message: "Please input Address!",
                   },
                 ]}
               >
@@ -188,7 +190,7 @@ const Clientonboarding = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input payment term",
+                    message: "Please input Payment Term",
                   },
                 ]}
               >

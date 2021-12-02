@@ -72,7 +72,7 @@ const Appsidebar = () => {
         collapsible
         collapsed={collapsed}
       >
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={["2"]}>
+        <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
           <Menu.Item key="1">
             {React.createElement(collapsed ? MenuOutlined : MenuOutlined, {
               className: "trigger",

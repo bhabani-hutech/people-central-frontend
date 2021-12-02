@@ -36,16 +36,16 @@ const Login = () => {
     if(userinfo){
       history.push('/dashboard') 
     }
-    else {
-       history.push("/empdashboard");
-    }
+    // else {
+    //    history.push("/empdashboard");
+    // }
   }, [history, userinfo])
 
-  // useEffect(() => {
-  //   if (!userinfo) {
-  //     history.push("/");
-  //   }
-  // }, [history]);
+  useEffect(() => {
+    if (!userinfo) {
+      history.push("/");
+    }
+  }, [history]);
  
  
   let dispatch = useDispatch()
@@ -121,7 +121,7 @@ const Login = () => {
           </div>
         </Form.Item>
 
-        <Form.Item>
+        
           <Button
             className="loginbtn"
             block
@@ -130,7 +130,7 @@ const Login = () => {
           >
             {LOG_IN_LABEL}
           </Button>
-        </Form.Item>
+       
       </Form>
     </div>
   );

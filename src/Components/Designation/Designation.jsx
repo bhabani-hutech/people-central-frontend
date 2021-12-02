@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Row, Col, Divider, Table, Button, Modal, Form, Input } from "antd";
@@ -20,7 +21,7 @@ const columns = [
     key: "key",
   },
   {
-    title: "Desgnation Id",
+    title: "Desgnation ID",
     dataIndex: "viewDesgnId",
     key: "designationid",
   },
@@ -34,34 +35,34 @@ const columns = [
     dataIndex: "viewDesgnDescription",
     key: "description",
   },
-  {
-    title: "Action",
-    dataIndex: "action",
-    key: "action",
-    render: (action) => (
-      // action === true
-      <>
-        <span>
-          <img
-            alt="edit"
-            src={edit}
-            width="35px"
-            height="36px"
-            onClick={handleDesignationEdit}
-          />
-        </span>
-        <span style={{ marginLeft: "5%" }}>
-          <img
-            alt="delete"
-            src={deleteimg}
-            width="35px"
-            height="36px"
-            onClick={handleDesignationdelete}
-          />
-        </span>
-      </>
-    ),
-  },
+  // {
+  //   title: "Action",
+  //   dataIndex: "action",
+  //   key: "action",
+  //   render: (action) => (
+  //     // action === true
+  //     <>
+  //       <span>
+  //         <img
+  //           alt="edit"
+  //           src={edit}
+  //           width="35px"
+  //           height="36px"
+  //           onClick={handleDesignationEdit}
+  //         />
+  //       </span>
+  //       <span style={{ marginLeft: "5%" }}>
+  //         <img
+  //           alt="delete"
+  //           src={deleteimg}
+  //           width="35px"
+  //           height="36px"
+  //           onClick={handleDesignationdelete}
+  //         />
+  //       </span>
+  //     </>
+  //   ),
+  // },
 ];
 
 const Designation = () => {
@@ -83,7 +84,7 @@ const Designation = () => {
     setLoading(true);
     axios
       .get(
-        "https://hutechpayrollapp.azurewebsites.net/application/viewDesignation"
+        "https://peoplecentral.herokuapp.com/application/viewDesignation"
       )
 
       .then((response) => {
@@ -114,7 +115,7 @@ const Designation = () => {
     // };
     axios
       .post(
-        "https://hutechpayrollapp.azurewebsites.net/application/createDesignation",
+        "https://peoplecentral.herokuapp.com/application/createDesignation",
         // designationDetails,
         values,
         { headers: { "Content-Type": "application/json" } }

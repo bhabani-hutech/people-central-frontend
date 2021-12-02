@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import "./Appheader.scss";
 import { useHistory } from "react-router-dom";
-import Clock from "../Clock/Clock";
+// import Clock from "../Clock/Clock";
 import { SettingOutlined, LogoutOutlined } from "@ant-design/icons";
 
 const d = new Date();
@@ -68,7 +68,7 @@ const Appheader = () => {
             <img src={img4} alt="logo" onClick={handelBack} />
           </div>
           <div className="webclock">
-            <Clock />
+            {/* <Clock /> */}
           </div>
           <div className="dropdown">
             <Dropdown overlay={menu} trigger={["click"]}>

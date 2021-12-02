@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from "react";
 import moment from "moment";
 import {
@@ -136,7 +137,7 @@ const Payslip = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input employee id",
+                    message: "Please input Employee ID",
                   },
                 ]}
               >
@@ -145,18 +146,16 @@ const Payslip = () => {
               </Form.Item>
 
               <Form.Item
-                label="Consultant name"
+                label="Consultant Name"
                 name="consultant_name"
                 rules={[
                   {
                     required: true,
-                    message: "Please input consultant name",
+                    message: "Please input Consultant Name",
                   },
                 ]}
               >
-             
                 <Input placeholder="Consultant Name" />
-              
               </Form.Item>
               <Form.Item
                 label="Designation"
@@ -164,13 +163,11 @@ const Payslip = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input designation name",
+                    message: "Please input Designation Name",
                   },
                 ]}
               >
-               
                 <Input placeholder="Designation Name" />
-               
               </Form.Item>
               <Form.Item
                 name="Employee Type"
@@ -178,16 +175,14 @@ const Payslip = () => {
                 rules={[
                   {
                     required: true,
-                    message: "Please input your EMP type!",
+                    message: "Please input EMP Type!",
                   },
                 ]}
               >
-               
                 <Input placeholder="EMP Type" />
-             
               </Form.Item>
-             
-              <Space direction="vertical" size={10}>
+
+              {/* <Space direction="vertical" size={10}>
                 <RangePicker
                   ranges={{
                     Today: [moment(), moment()],
@@ -198,41 +193,37 @@ const Payslip = () => {
                   }}
                   onChange={onChange}
                 />{" "}
-              </Space>
+              </Space> */}
               <Form.Item
                 name="department"
                 label="Department"
                 rules={[
                   {
                     required: true,
-                    message: "Please input your department",
+                    message: "Please input Department",
                   },
                 ]}
               >
-               
-                <Input placeholder="department" />
-              
+                <Input placeholder="Department" />
               </Form.Item>
             </Col>
 
             <Col span={12}>
               <Form.Item
-                label="No of days in month"
+                label="No of Days in Month"
                 name="no_day"
                 rules={[
                   {
                     required: true,
-                    message: "Please input no of day",
+                    message: "Please Input No of Day",
                   },
                 ]}
               >
-                
-                <Input placeholder="Address line 1" />
-              
+                <Input placeholder="No. of Day" />
               </Form.Item>
               <Form.Item
                 name="doj"
-                label="Date of join"
+                label="Date of Join"
                 rules={[
                   {
                     required: true,
@@ -242,30 +233,22 @@ const Payslip = () => {
                 <DatePicker
                   // className="datepicker"
                   placeholder="DD/MM/YYYY"
-                  // style={{ width: "100%" }}
+                  style={{ width: "100%" }}
                 />
               </Form.Item>
 
-              <Form.Item label="Working day" name="working_day">
-              
-                <Input placeholder="" />
-               
+              <Form.Item label="Working Day" name="working_day">
+                <Input placeholder="Working Day" />
               </Form.Item>
 
-              <Form.Item label="ESIC number" name="esic_number">
-                
-                <Input placeholder="ESIC number" />
-            
+              <Form.Item label="ESIC Number" name="esic_number">
+                <Input placeholder="ESIC Number" />
               </Form.Item>
-              <Form.Item label="total Arrear day" name="arrear">
-               
-                <Input placeholder="" />
-             
+              <Form.Item label="Total Arrear Day" name="arrear">
+                <Input placeholder="Arrear Day" />
               </Form.Item>
-              <Form.Item label="Loss of pay" name="lop">
-             
+              <Form.Item label="Loss of Pay" name="lop">
                 <Input placeholder="LOP" />
-               
               </Form.Item>
 
               {/* <Form.Item
@@ -312,10 +295,7 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
                 <Input placeholder="Account number" />
-                {/* </div> */}
               </Form.Item>
               <Form.Item
                 label="Bank Name"
@@ -327,10 +307,7 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
                 <Input placeholder="Bank name" />
-                {/* </div> */}
               </Form.Item>
               <Form.Item
                 label="Branch Name"
@@ -342,10 +319,7 @@ const Payslip = () => {
                   },
                 ]}
               >
-                {/* <div className="wrapasterik">
-                  <span className="asterik">*</span> */}
                 <Input placeholder="Branch name" />
-                {/* </div> */}
               </Form.Item>
             </Col>
             <Col span={12}></Col>

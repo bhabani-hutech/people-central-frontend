@@ -24,9 +24,7 @@ const Employeelist = () => {
   useEffect(() => {
     setloading(true);
     axios
-      .get(
-        "https://hutechpayrollapp.azurewebsites.net/application/onboardedEmployees"
-      )
+      .get("https://peoplecentral.herokuapp.com/application/onboardedEmployees")
       .then((res) => {
         console.log(res.data);
         setdataSourse(res.data);

@@ -23,7 +23,7 @@ import "antd/dist/antd.css";
 
 const emptype = ["Part Time", "Full Time", "Contract"];
 const Department = ["Default", "Marketing", "Development"];
-const permission = ["Admin", "Employee", "Manager"];
+const permission = ["admin", "employee", "manager"];
 const Designation = [
   "HRBPA",
   "Human Resources",
@@ -155,7 +155,7 @@ const onChangeimg = (info) => {
 
     axios
       .post(
-        "https://hutechpayrollapp.azurewebsites.net/application/addEmployee",
+        "https://peoplecentral.herokuapp.com/application/addEmployee",
         employeeDetails,
         {
           headers: { "Content-Type": "application/json" },
@@ -171,7 +171,7 @@ const onChangeimg = (info) => {
 
     axios
       .put(
-        `https://hutechpayrollapp.azurewebsites.net/application/addMultipartfile/${values.empId}`,
+        `https://peoplecentral.herokuapp.com/application/addMultipartfile/${values.empId}`,
         formData,
         {
           headers: {
