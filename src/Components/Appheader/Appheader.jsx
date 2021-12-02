@@ -15,6 +15,7 @@ import { SettingOutlined, LogoutOutlined } from "@ant-design/icons";
 const d = new Date();
 let day = d.toDateString();
 console.log(day);
+
  
 
 const { Header } = Layout;
