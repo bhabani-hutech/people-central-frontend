@@ -43,6 +43,9 @@
   border-radius:5px;
   // padding:2%;
 }
+.ant-form-item-explain.ant-form-item-explain-error{
+text-align: left;
+}
 @media (max-width: 400px) {
  .form_container {
     width: 10rem;
