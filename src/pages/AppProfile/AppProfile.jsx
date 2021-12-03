@@ -1,19 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./AppProfile.scss";
-import AppFooter from "../../Components/Appfooter/Appfooter";
-import Emponboarding from "../../Components/Emponboarding/Emponboarding";
-import Designation from "../../Components/Designation/Designation";
-import Department from "../../Components/Department/Department";
+import React from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import AppFooter from "../../Components/Appfooter/Appfooter";
 import Profile from "../../Components/profile/profile";
-import Employeelist from "../../Components/employeelist/employeelist";
-import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
-import Payslip from "../../Components/payslip/payslip";
+import "./AppProfile.scss";
 const { Content } = Layout;
 
 const { TabPane } = Tabs;

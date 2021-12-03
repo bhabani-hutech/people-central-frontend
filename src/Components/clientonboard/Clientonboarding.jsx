@@ -1,22 +1,14 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import {
-  Divider,
-  Button,
-  Row,
-  Col,
-  Form,
-  message,
-  Input,
-  Select,
-  // Table, Modal
-} from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import "./Clientonboarding.scss";
+import {
+    Button, Col, Divider, Form, Input, Row, Select
+} from "antd";
 import "antd/dist/antd.css";
-
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clientonboard } from "../../action/useraction";
+import "./Clientonboarding.scss";
+
 const currency = ["rupiya", "lira"];
 const paymentterm = ["Upon receipt", "Advance payment"];
 

@@ -1,23 +1,12 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./AppDirectory.scss";
-import AppFooter from "../../Components/Appfooter/Appfooter";
-import Emponboarding from "../../Components/Emponboarding/Emponboarding";
-// import Designation from "../../Components/Designation/Designation";
-// import Role from "../../Components/Role/Role";
-// import Department from "../../Components/Department/Department";
-// import Employeement from "../../Components/Employeement/Employeement";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AppFooter from "../../Components/Appfooter/Appfooter";
 import Employeelist from "../../Components/employeelist/employeelist";
-// import Holiday from "../../Components/holiday/holiday";
-import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
-import Profile from "../../Components/profile/profile";
+import "./AppDirectory.scss";
 
-// import {userlogin} from '../../action/useraction'
-import Payslip from "../../Components/payslip/payslip";
 
 const { Content } = Layout;
 const { TabPane } = Tabs;

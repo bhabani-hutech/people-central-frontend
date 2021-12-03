@@ -1,23 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
-import moment from "moment";
 import {
-  Divider,
-  Button,
-  Row,
-  Col,
-  Form,
-  Input,
-  DatePicker,
-  Space,
- 
-} from "antd";
-import {
-  CheckOutlined,
-  CloseOutlined,
+    CheckOutlined,
+    CloseOutlined
 } from "@ant-design/icons";
-import "./Payslip.scss";
+import {
+    Button, Col, DatePicker, Divider, Form,
+    Input, Row
+} from "antd";
 import "antd/dist/antd.css";
+import React, { useState } from "react";
+import "./Payslip.scss";
 
 // import { useDispatch, useSelector } from "react-redux";
 // import { clientonboard } from "../../action/useraction";

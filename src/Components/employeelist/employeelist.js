@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
+import { Avatar, Input, Table } from "antd";
 import "antd/dist/antd.css";
-import { Table, Avatar, Input, Button, Space } from "antd";
 // import { SearchOutlined } from "@ant-design/icons";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 const { Search } = Input;
 const Employeelist = () => {
   const [dataSourse, setdataSourse] = useState([]);

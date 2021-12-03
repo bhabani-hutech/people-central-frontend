@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import { CheckCircleFilled } from "@ant-design/icons";
+import { Button, Form, Input } from "antd";
 // import { useHistory } from "react-router-dom";
 import "antd/dist/antd.css";
-import "../Login/login.scss";
+import axios from "axios";
+import React, { useEffect } from "react";
 import constants from "../../constants/Constants";
-import { Form, Input, Button } from "antd";
-import { CheckCircleFilled } from "@ant-design/icons";
+import "../Login/login.scss";
 
 const {
   CREATE_PASSWORD,

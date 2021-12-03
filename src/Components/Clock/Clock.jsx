@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
 import { Button } from "antd";
 import "antd/dist/antd.css";
+import React, { useState } from "react";
 const Clock = () => {
   const [hour, setHour] = useState(0);
   const [minute, setMinute] = useState(0)

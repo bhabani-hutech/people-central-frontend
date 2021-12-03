@@ -1,7 +1,8 @@
-import './App.css';
 import constants from "./constants/Constants";
 import React, { Suspense, lazy } from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
+import "antd/dist/antd.css";
+import "./App.css";
 const Loginbase = lazy(() => import("./pages/Loginbase/Loginbase"));
 const EmpDashboard = lazy(() => import("./pages/EmpDashboard/EmpDashboard"));
 const Dashboard = lazy(() => import("./pages/Dashboard/Dashboard"));

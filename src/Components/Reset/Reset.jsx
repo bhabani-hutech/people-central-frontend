@@ -1,8 +1,8 @@
-import React from "react";
+import { Button, Form, Input } from "antd";
 import "antd/dist/antd.css";
+import React from "react";
 import constants from "../../constants/Constants";
 import "../Login/login.scss";
-import { Form, Input, Button } from "antd";
 const { EMAIL_PLACEHOLDER, SUBMIT_BTN } = constants;
 const Reset = () => {
  const onFinish = (values) => {

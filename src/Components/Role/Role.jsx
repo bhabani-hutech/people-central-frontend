@@ -1,21 +1,15 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { CheckOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
 import {
-  Row,
-  Col,
-  Divider,
-  Table,
-  Button,
-  Modal,
-  Form,
-  Input,
- 
+    Button, Col,
+    Divider, Form,
+    Input, Modal, Row, Table
 } from "antd";
 import "antd/dist/antd.css";
-import "../Role/Role.scss";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import deleteimg from "../../assets/images/delete.png";
 import edit from "../../assets/images/edit.png";
-import { CheckOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import "../Role/Role.scss";
 
 function handleRoleEdit(checked) {
   console.log(`switch to ${checked}`);

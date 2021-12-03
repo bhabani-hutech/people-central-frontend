@@ -1,15 +1,15 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
-import "../Home/Home.scss";
-import "../../pages/Dashboard/Dashboard.scss";
-import setting from "../../assets/images/setting.png";
-import EmpOnboard from "../../assets/images/emponboard.png";
-import profile from "../../assets/images/profileicon.png";
-import directory from "../../assets/images/directory.png";
-import { useHistory } from "react-router-dom";
 import { Layout } from "antd";
+import React from "react";
+import { useSelector } from 'react-redux';
+import { useHistory } from "react-router-dom";
+import directory from "../../assets/images/directory.png";
+import EmpOnboard from "../../assets/images/emponboard.png";
 import banner from "../../assets/images/Group 235.png";
-import {useSelector} from 'react-redux'
+import profile from "../../assets/images/profileicon.png";
+import setting from "../../assets/images/setting.png";
+import "../../pages/Dashboard/Dashboard.scss";
+import "../Home/Home.scss";
 const { Content } = Layout;
 
 const Home = () => {

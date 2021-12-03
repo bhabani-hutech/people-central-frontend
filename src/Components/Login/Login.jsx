@@ -1,19 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React,{useEffect} from "react";
-import constants from "../../constants/Constants";
-
-
+import { Button, Checkbox, Form, Input } from "antd";
 import "antd/dist/antd.css";
-import "./login.scss";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from "react-router-dom";
-import { Form, Input, Button, Checkbox } from "antd";
-import {useDispatch, useSelector} from 'react-redux'
-
-
 // import axios from "axios";
+import { userlogin } from '../../action/useraction';
+import constants from "../../constants/Constants";
+import "./login.scss";
 
-import {userlogin} from '../../action/useraction'
+
+
+
 const {
   ROUTES: { RESET },
   REMEMBER_ME_LABEL,

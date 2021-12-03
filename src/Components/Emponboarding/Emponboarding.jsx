@@ -1,25 +1,15 @@
-import React, { useState } from "react";
-import moment from "moment";
-import axios from "axios";
 import {
-  Radio,
-  Divider,
-  Button,
-  Row,
-  Col,
-  Form,
-  Upload,
-  Input,
-  DatePicker,
-  Select,
-} from "antd";
-import {
-  UploadOutlined,
-  CheckOutlined,
-  CloseOutlined,
+    CheckOutlined,
+    CloseOutlined, UploadOutlined
 } from "@ant-design/icons";
-import "./Emponboarding.scss";
+import {
+    Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select, Upload
+} from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
+import moment from "moment";
+import React, { useState } from "react";
+import "./Emponboarding.scss";
 
 const emptype = ["Part Time", "Full Time", "Contract"];
 const Department = ["Default", "Marketing", "Development"];

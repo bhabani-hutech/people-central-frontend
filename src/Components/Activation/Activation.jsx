@@ -1,7 +1,7 @@
-import React from "react";
-import "antd/dist/antd.css";
-import "../Login/login.scss";
 import { Button } from "antd";
+import "antd/dist/antd.css";
+import React from "react";
+import "../Login/login.scss";
 const Activation = () => {
 
   return (

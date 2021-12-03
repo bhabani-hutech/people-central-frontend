@@ -1,18 +1,18 @@
-import React from "react";
+import { Col, Row } from "antd";
 import "antd/dist/antd.css";
+import React from "react";
+import { useLocation } from "react-router-dom";
+import img4 from "../../assets/images/Grouplogo.png";
+import img2 from "../../assets/images/Groups.png";
+import img1 from "../../assets/images/Rectangle.png";
+import img3 from "../../assets/images/Vector.png";
+import Activation from "../../Components/Activation/Activation";
+import Create from "../../Components/Create/Create";
+import Forgot from "../../Components/Forgot/Forgot";
+import Login from "../../Components/Login/Login";
+import Reset from "../../Components/Reset/Reset";
 import constants from "../../constants/Constants";
 import "../Loginbase/Loginbase.scss";
-import Login from "../../Components/Login/Login";
-import {Row, Col } from "antd";
-import img1 from "../../assets/images/Rectangle.png";
-import img2 from "../../assets/images/Groups.png";
-import img3 from "../../assets/images/Vector.png";
-import img4 from "../../assets/images/Grouplogo.png";
-import { useLocation } from "react-router-dom";
-import Reset from "../../Components/Reset/Reset";
-import Forgot from "../../Components/Forgot/Forgot";
-import Create from "../../Components/Create/Create";
-import Activation from "../../Components/Activation/Activation";
 const {
   ROUTES: { FORGOTPASSWORD, RESET, CREATE,ACTIVATION },
   LOGIN_SUBHEADING_LABEL1,

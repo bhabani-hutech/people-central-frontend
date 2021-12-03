@@ -1,13 +1,10 @@
 
-import React from "react";
 import {
-  Divider,
-  Row,
-  Col,
-  Form,
+    Col, Divider, Form, Row
 } from "antd";
-import "./Profile.scss";
 import "antd/dist/antd.css";
+import React from "react";
+import "./Profile.scss";
 
 // import {useDispatch, useSelector} from 'react-redux'
 // import {clientonboard} from '../../action/useraction'

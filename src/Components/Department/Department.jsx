@@ -1,12 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Row, Col, Divider, Table, Button, Modal, Form, Input } from "antd";
+import { CheckOutlined, CloseOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Col, Divider, Form, Input, Modal, Row, Table } from "antd";
 import "antd/dist/antd.css";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import "../Department/Department.scss";
-import deleteimg from "../../assets/images/delete.png";
-import edit from "../../assets/images/edit.png";
-import { PlusOutlined, CheckOutlined, CloseOutlined } from "@ant-design/icons";
 // import Adddepartment from "./Adddepartment";
 
 function handleDepartmentEdit(checked) {

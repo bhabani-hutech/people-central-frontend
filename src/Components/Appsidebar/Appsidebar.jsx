@@ -1,21 +1,16 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from "react";
+import {
+    LogoutOutlined, MenuOutlined, ReconciliationOutlined, SettingOutlined, UserOutlined
+} from "@ant-design/icons";
 import { Layout, Menu } from "antd";
 import "antd/dist/antd.css";
-import {
-  MenuOutlined,
-  UserOutlined,
-  SettingOutlined,
-  LogoutOutlined,
-  ReconciliationOutlined,
-  // DownOutlined,
-} from "@ant-design/icons";
-
+import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { userlogout } from "../../action/useraction";
 import "../Appsidebar/Appsidebar.scss";
 
-import { useDispatch, useSelector } from "react-redux";
-import { userlogout } from "../../action/useraction";
-import { useHistory } from "react-router-dom";
+
 
 const { Sider } = Layout;
 

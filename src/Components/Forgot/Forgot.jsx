@@ -1,8 +1,8 @@
-import React from "react";
+import { Button, Form, Input } from "antd";
 import "antd/dist/antd.css";
-import "../Login/login.scss";
+import React from "react";
 import constants from "../../constants/Constants";
-import { Form, Input, Button } from "antd";
+import "../Login/login.scss";
 const {
   PASSWORD: { NEW_PASSWORD, CONFIRM_PASSWORD },
   NEW_PASSWORD_PLACEHOLDER,

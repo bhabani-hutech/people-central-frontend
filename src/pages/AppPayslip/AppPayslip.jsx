@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { useState, useEffect } from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./AppPayslip.scss";
-import AppFooter from "../../Components/Appfooter/Appfooter";
-import { useSelector } from "react-redux";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import AppFooter from "../../Components/Appfooter/Appfooter";
 import Payslip from "../../Components/payslip/payslip";
+import "./AppPayslip.scss";
 
 const { Content } = Layout;
 const { TabPane } = Tabs;

@@ -1,16 +1,14 @@
-import React from "react";
-import img4 from "../../assets/images/logo.png";
-import { Dropdown, Menu, Layout } from "antd";
-import calling from "../../assets/images/Calling.png";
-import profile from "../../assets/images/profile.png";
-import "antd/dist/antd.css";
 import {
-  DownOutlined,
+  DownOutlined, LogoutOutlined, SettingOutlined
 } from "@ant-design/icons";
-import "./Appheader.scss";
+import { Dropdown, Layout, Menu } from "antd";
+import "antd/dist/antd.css";
+import React from "react";
 import { useHistory } from "react-router-dom";
-// import Clock from "../Clock/Clock";
-import { SettingOutlined, LogoutOutlined } from "@ant-design/icons";
+import calling from "../../assets/images/Calling.png";
+import img4 from "../../assets/images/logo.png";
+import profile from "../../assets/images/profile.png";
+import "./Appheader.scss";
 
 const d = new Date();
 let day = d.toDateString();

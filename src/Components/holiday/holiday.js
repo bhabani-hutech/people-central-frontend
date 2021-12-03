@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { Button, Form, Input } from "antd";
 import React, { useState } from "react";
-import { Form, Input, Button } from "antd";
 
-import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
 const Holiday = () => {
   const [componentSize, setComponentSize] = useState("default");
 

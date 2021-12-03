@@ -1,20 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-unused-vars */
-import React,{useEffect} from "react";
 import { Layout, Tabs } from "antd";
 import "antd/dist/antd.css";
-import "./AppSetting.scss";
-import AppFooter from "../../Components/Appfooter/Appfooter";
-import Emponboarding from "../../Components/Emponboarding/Emponboarding";
-import Designation from "../../Components/Designation/Designation";
-// import Role from "../../Components/Role/Role";
-import Department from "../../Components/Department/Department";
+import React, { useEffect } from "react";
 // import Employeement from "../../Components/Employeement/Employeement";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Employeelist from "../../Components/employeelist/employeelist";
+import AppFooter from "../../Components/Appfooter/Appfooter";
+// import Role from "../../Components/Role/Role";
+import Department from "../../Components/Department/Department";
+import Designation from "../../Components/Designation/Designation";
 import Holiday from "../../Components/holiday/holiday";
-import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
+import "./AppSetting.scss";
 
 const { Content } = Layout;
 
