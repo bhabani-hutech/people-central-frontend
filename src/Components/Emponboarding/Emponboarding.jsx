@@ -1,33 +1,85 @@
+import React, { useEffect, useState } from "react";
 import {
-    CheckOutlined,
-    CloseOutlined, UploadOutlined
+  CheckOutlined,
+  CloseOutlined,
+  UploadOutlined,
 } from "@ant-design/icons";
 import {
-    Button, Col, DatePicker, Divider, Form, Input, Radio, Row, Select, Upload
+  Button,
+  Col,
+  DatePicker,
+  Divider,
+  Form,
+  Input,
+  Radio,
+  Row,
+  Select,
+  Upload,
 } from "antd";
 import "antd/dist/antd.css";
 import axios from "axios";
 import moment from "moment";
-import React, { useState } from "react";
+
 import "./Emponboarding.scss";
 
 const emptype = ["Part Time", "Full Time", "Contract"];
-const Department = ["Default", "Marketing", "Development"];
+// const Department = ["Default", "Marketing", "Development"];
 const permission = ["admin", "employee", "manager"];
-const Designation = [
-  "HRBPA",
-  "Human Resources",
-  "Developer",
-  "Junior Developer",
-  "Senior Developer",
-];
-const maritalstatus=["Single","Married"]
-const bloodGrouptype = ["A+","A-","B+","B-","AB+","AB-","O+","O-"]
+// const Designation = [
+//   "HRBPA",
+//   "Human Resources",
+//   "Developer",
+//   "Junior Developer",
+//   "Senior Developer",
+// ];
+const maritalstatus = ["Single", "Married"];
+const bloodGrouptype = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 
 const Emponboarding = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState(false);
+  const [designationName, setDesignationName] = useState([]);
+  const [departmentName, setDepartmentName] = useState([]);
   const [form] = Form.useForm();
+useEffect(() => {
+  setLoading(true);
+  axios
+    .get("https://peoplecentral.herokuapp.com/application/viewDepartment")
+
+    .then((response) => {
+      let itemlist = response.data.map((item) => item);
+      let deptdata = itemlist.map((item) => item.departmentName);
+      console.log("response array", deptdata);
+      setDepartmentName(deptdata);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
+}, []);
+  
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get("https://peoplecentral.herokuapp.com/application/viewDesignation")
+
+      .then((response) => {
+      
+        let itemlist = response.data.map((item) => item)
+          let degndata = itemlist.map((item) => item.designationName);
+        console.log("response array", degndata);
+        setDesignationName(degndata);
+        })
+  
+       .catch((err) => {
+         console.log(err);
+       })
+       .finally(() => {
+         setLoading(false);
+       });
+   }, []);
 
   const [fileUpload, setFileupload] = useState({
     selectedFile: null,
@@ -47,25 +99,25 @@ const Emponboarding = () => {
       onSuccess("ok");
     }, 0);
   };
-const onChangeimg = (info) => {
-  const nextImgState = {};
-  switch (info.file.status) {
-    case "uploading":
-      nextImgState.selectedImgList = [info.file];
+  const onChangeimg = (info) => {
+    const nextImgState = {};
+    switch (info.file.status) {
+      case "uploading":
+        nextImgState.selectedImgList = [info.file];
 
-      break;
-    case "done":
-      nextImgState.selectedImg = info.file;
-      nextImgState.selectedImgList = [info.file];
-      break;
+        break;
+      case "done":
+        nextImgState.selectedImg = info.file;
+        nextImgState.selectedImgList = [info.file];
+        break;
 
-    default:
-      // error or removed
-      nextImgState.selectedImg = null;
-      nextImgState.selectedImgList = [];
-  }
-  setImgupload(() => nextImgState);
-};
+      default:
+        // error or removed
+        nextImgState.selectedImg = null;
+        nextImgState.selectedImgList = [];
+    }
+    setImgupload(() => nextImgState);
+  };
 
   const onChangefile = (info) => {
     const nextState = {};
@@ -87,7 +139,6 @@ const onChangeimg = (info) => {
     setFileupload(() => nextState);
   };
 
-
   const onFinish = (values) => {
     console.log("Success:", values);
     const formData = new FormData();
@@ -96,8 +147,7 @@ const onChangeimg = (info) => {
     console.log(values.image.file);
     console.log(values.resume.file);
 
-
-   const Mdate = moment(new Date(values.anniversary));
+    const Mdate = moment(new Date(values.anniversary));
     const Jdate = moment(new Date(values.joiningDate._d));
     const Rdate = moment(new Date(values.relievingDate._d));
     const Bdate = moment(new Date(values.dateOfBirth._d));
@@ -111,7 +161,7 @@ const onChangeimg = (info) => {
       empFirstName: values.empFirstName,
       empLastName: values.empLastName,
       phnoeNumber: values.phnoeNumber,
-      personalEmail:values.personalEmail,
+      personalEmail: values.personalEmail,
       gender: values.gender,
       address1: values.address1,
       address2: values.address2,
@@ -158,7 +208,8 @@ const onChangeimg = (info) => {
         console.log(err);
       });
 
-
+    
+    
     axios
       .put(
         `https://peoplecentral.herokuapp.com/application/addMultipartfile/${values.empId}`,
@@ -182,7 +233,7 @@ const onChangeimg = (info) => {
       setLoading(false);
       form.resetFields();
     }, 3000);
-  };;;
+  };
 
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
@@ -467,7 +518,19 @@ const onChangeimg = (info) => {
                     placeholder="Select Designation"
                     // className="empdropdown"
                   >
-                    {Designation.map((fr, index) => {
+                    {/* {designation.map((fr, index) => {
+                      return (
+                        <Select.Option key={index} value={fr}>
+                          {fr.desgnName}
+                        </Select.Option>
+                      );
+                    })} */}
+                    {/* <Select.Option value={designationName}>
+                      
+                        <li>{designationName}</li>
+                      
+                    </Select.Option> */}
+                    {designationName.map((fr, index) => {
                       return (
                         <Select.Option key={index} value={fr}>
                           {fr}
@@ -491,7 +554,7 @@ const onChangeimg = (info) => {
                     placeholder="Select Department"
                     // className="empdropdown"
                   >
-                    {Department.map((fr, index) => {
+                    {departmentName.map((fr, index) => {
                       return (
                         <Select.Option key={index} value={fr}>
                           {fr}
