@@ -9,22 +9,28 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import {userloginreducer, clientreducer} from './reducer/userreducer'
+import {userloginreducer, clientreducer, paysleeplistreducer, sheetuploadreducer, userlistreducer, userupdatereducer} from './reducer/userreducer'
 
 let reducer = combineReducers({  
   userlogin:userloginreducer, 
-  clientcreate:clientreducer
+  clientcreate:clientreducer,
 
+  
+  payslip:paysleeplistreducer,
 
+  sheetupload:sheetuploadreducer,
+  
+  userlist:userlistreducer,
+  userupdate:userupdatereducer
 })
-
-
-
 let userinfofromstorage = localStorage.getItem('userinfo') ? JSON.parse(localStorage.getItem('userinfo')) : null
 let intialstate = {
 userlogin:{ userinfo:userinfofromstorage},
 }
 let middleware = [thunk]
+
+
+
 let store = createStore(reducer, intialstate, composeWithDevTools(applyMiddleware(...middleware)))
 
 ReactDOM.render(

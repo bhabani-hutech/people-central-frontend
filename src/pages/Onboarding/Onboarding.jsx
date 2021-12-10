@@ -20,8 +20,15 @@ import Profile from '../../Components/profile/profile'
 
 import {userlogin} from '../../action/useraction' 
 import Payslip from "../../Components/payslip/payslip";
+import Sheetinfo from '../../Components/sheetinfo/empinfo'
+import Fileupload from '../../Components/fileupload/fileupload'
+
+import Userlist from '../../Components/userlist/userlist'
+// import Payupload from '../../Components/fileupload/Payupload'
+
 
 const { Content } = Layout;
+
 const { TabPane } = Tabs;
 
 const Onboarding = () => {
@@ -33,7 +40,7 @@ const Onboarding = () => {
   const userloginn = useSelector(state => state.userlogin)
   let history = useHistory()
   let {loading:userloading, userinfo, error} = userloginn
-  let {isAdmin} = userinfo
+  let {isAdmin, ishr} = userinfo
   console.log(isAdmin)
   
   
@@ -64,35 +71,41 @@ const Onboarding = () => {
               <Clientonboarding /> 
              </TabPane>
               } */}
+               {isAdmin && 
+               <TabPane tab="Client Onboarding" key="1">
+              
+               <Clientonboarding /> 
+              </TabPane> 
+               }
+              {isAdmin && 
+              <TabPane tab="Employee Onboarding" key="2">
+              <Emponboarding />
+             </TabPane>
+              }
                
-              <TabPane tab="Client Onboarding" key="1">
-              <Clientonboarding /> 
-             </TabPane>
-            
-              
-               <TabPane tab="Employee Onboarding" key="2">
-               <Emponboarding />
-             </TabPane>
-              
-             
-                
+             {isAdmin && 
               <TabPane tab="Designation" key="3">
+            
+            
               <Designation/>
             </TabPane>
+             
+             } 
+             {isAdmin && 
+             <TabPane tab="Role" key="4">
+             
+             
+             <Role/>
+           </TabPane>
+             }
+              
               
                
-              <TabPane tab="Role" key="4">
-              <Role/>
-            </TabPane>
-              
-               
-              <TabPane tab="Department" key="5">
+              {/* <TabPane tab="Department" key="5">
               <Department/>
             </TabPane>
               
-              
-              <TabPane tab="view all employee" key="6">
-                
+              <TabPane tab="view all employee" key="6">       
               <Employeelist /> 
              </TabPane>
               
@@ -109,10 +122,38 @@ const Onboarding = () => {
               </TabPane>
                       
               <TabPane tab="payslip" key="9">
-              
               <Payslip />
-            </TabPane>
+              </TabPane> */}
+              
 
+              
+
+
+              {isAdmin && 
+              <TabPane tab='userlist' key='14'>
+              <Userlist />
+                
+              </TabPane>              
+              
+              }
+
+              {ishr && 
+              
+              <TabPane tab='Sheet upload' key='12'>
+                
+                {/* <Payupload /> */}
+                <Fileupload />
+              </TabPane>
+              }
+              {ishr && 
+              <TabPane tab='Employee payslip' key='10'>
+              <Sheetinfo />
+              </TabPane>
+              }
+
+
+
+              
               {/* <TabPane tab="employee profile" key="8">
                <Profile /> 
               </TabPane> */}
@@ -124,5 +165,4 @@ const Onboarding = () => {
     </>
   );
 };
-
 export default Onboarding;
