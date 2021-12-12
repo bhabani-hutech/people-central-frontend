@@ -9,13 +9,16 @@ import {Provider} from 'react-redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 
-import {userloginreducer, clientreducer} from './reducer/userreducer'
+import {userloginreducer, clientreducer, paysleeplistreducer, sheetuploadreducer} from './reducer/userreducer'
+
 
 let reducer = combineReducers({  
   userlogin:userloginreducer, 
-  clientcreate:clientreducer
+  clientcreate:clientreducer,
 
+  payslip:paysleeplistreducer,
 
+  sheetupload:sheetuploadreducer
 })
 
 

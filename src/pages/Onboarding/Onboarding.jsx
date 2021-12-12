@@ -12,12 +12,15 @@ import AppFooter from "../../Components/Appfooter/Appfooter";
 import Clientonboarding from "../../Components/clientonboard/Clientonboarding";
 import Employeelist from "../../Components/employeelist/employeelist";
 import Emponboarding from "../../Components/Emponboarding/Emponboarding";
+import Sheetinfo from '../../Components/sheetinfo/empinfo'
+import Fileupload from '../../Components/fileupload/fileupload'
+
+
 import "./Onboarding.scss";
 
-
 const { Content } = Layout;
-const { TabPane } = Tabs;
 
+const { TabPane } = Tabs;
 const Onboarding = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setloading] = useState(false);
@@ -64,6 +67,13 @@ const Onboarding = () => {
                   <TabPane tab="Client Onboarding" key="3">
                     <Clientonboarding />
                   </TabPane>
+                  <TabPane tab='Sheet upload' key='5'>
+                    <Fileupload />
+                  </TabPane>
+                  <TabPane tab='Employee Payslip' key='6'>
+                    <Sheetinfo />
+                  </TabPane>
+                 
                 </>
               ) : (
                 <TabPane tab="View Onboarded Employee" key="1">

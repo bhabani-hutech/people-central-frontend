@@ -25,6 +25,62 @@ export let userlogin = (userName, password) => async (dispatch) => {
     });
   }
 };
+export let listpaysleep = ()=> async(dispatch, getState)=>{
+
+  let { userlogin: {userinfo}, } = getState()
+  let config = {
+    headers: {
+        'Content-Type':'application/json',
+
+        Authorization: `Bearer ${userinfo.token}`
+    }  
+  
+   }   
+    try {
+    dispatch({type:'PAYSLEEP_LIST_REQUEST'})
+
+
+
+    
+    
+    let {data} = await axios.get('/api/file/getsheet',config)
+     dispatch({type:'PAYSLEEP_LIST_SUCCESS',payload:data})
+     } 
+catch (err) {
+        
+    dispatch({type:'PAYSLEEP_LIST_FAIL', payload:err.responce && err.responce.data.message ? 
+    
+    err.responce.data.message : err.message
+    })
+ 
+  }  
+
+}
+
+export let uploadsheet = (empsheet)=> async(dispatch, getState)=>{
+  let { userlogin: {userinfo}, } = getState()
+  
+  let config = {
+    headers: {
+      
+      'Content-Type':'application/json',
+        Authorization: `Bearer ${userinfo.token}`
+    }  
+   }   
+    try {
+    dispatch({type:'SHEET_UPLOAD_REQUEST'})
+    let {data} = await axios.post('/api/file/fileupload', empsheet,config)
+     
+    dispatch({type:'SHEET_UPLOAD_SUCCESS',payload:data})
+  
+  } 
+catch (err) {    
+    dispatch({type:'SHEET_UPLOAD_FAIL', payload:err.responce && err.responce.data.message ? 
+    err.responce.data.message : err.message
+    })
+ 
+  }  
+}  
 
 export let clientonboard = (client) => async (dispatch, getState) => {
   try {
