@@ -11,11 +11,14 @@ import {uploadsheet} from '../../action/useraction'
 
 
 
-import {Button, Row, Divider, Input, Typography} from 'antd'
-let {Title} = Typography
-const Fileupload = () => {
+import {Button, Row, Divider, Input, Typography, Alert, message} from 'antd'
+import {saveAs} from 'file-saver'
+let {Title, Link} = Typography
 
-    
+
+
+
+const Fileupload = () => {
     
     const [file, setfile] = useState('')
     
@@ -23,10 +26,34 @@ const Fileupload = () => {
     
     var datasend = null
     let uploadfile = ({ target: { files }})=>{
-     let data = new FormData()
+    
+      let data = new FormData()
+     data.append('empsheet', files[0]) 
+    //  console.log(data.get('empsheet').name)
      
-     data.append('empsheet', files[0])
+     let filename = data.get('empsheet').name
      
+     if(!filename.toLowerCase().endsWith('.xlsx')){
+     
+      // console.log(filename)
+       
+
+      message.error('File selected is not in an accepted format')
+      
+      // alert('not exel')
+      
+      // <Alert message='not exel' type='warning'></Alert>
+
+
+
+
+
+
+      document.getElementById('ecelfile').value = '' 
+      data.delete('empsheet')
+    }
+     
+    //  console.log()
      datasend = data
 
      
@@ -50,7 +77,6 @@ const Fileupload = () => {
 
     const dispatch = useDispatch()
    
-   
     useEffect(() => {
       
         if(!userinfo){
@@ -64,24 +90,47 @@ const Fileupload = () => {
     //  let useerlogout = ()=>{
   
     //   dispatch(userlogout())
-  
-    //   }    
+   
+    const handleclick = ()=>{
+      // axios.post('https://payrolapp.herokuapp.com/api/file/createpdf', emp).then(()=>{
+        axios.get('https://payrolapp.herokuapp.com/api/file/getsample', {responseType:'blob'}).then((res)=>{
+    
+          let exelblob = new Blob([res.data], {type:'application/xlsx'})        
+            saveAs(exelblob, 'employe.xlsx')
+       
+          })  
+        // })  
+        // console.log(emp)
+      // console.log(employee)
+    }    
+
     let filesubmit = (e)=>{
      e.preventDefault()     
     console.log(file)
     if(!datasend){
-     
-      alert('file not selected')
-    }
-    
-    console.log(datasend)   
+      
+      
 
+      message.error('Please select payrol')
+      // alert('file not selected')
+   
+      
+
+
+    
+    
+    }
+    console.log(datasend)  
+    
     dispatch(uploadsheet(datasend))
     
-    
     // if(success){
-      alert('file uploaded')
-      window.location.reload()
+      // alert('file uploaded')
+      message.success('File uploaded successfully')
+    
+    
+      history.push('/onboarding')
+      // window.location.reload()
       // navigate('/sheetinfo')    
     
     
@@ -95,10 +144,19 @@ const Fileupload = () => {
     
     //  console.log(filename)
     }
+    
+    
+    
+    
     let clear = ()=>{ 
       setfile('')
+      document.getElementById('descr').value = '' 
+         
       setdescription('')   
-      window.location.reload()
+      history.push('/onboarding')
+      
+      
+      // window.location.reload()
     }
 
     return (     
@@ -110,7 +168,7 @@ const Fileupload = () => {
     <h2 style={{textAlign:'start'}}>Upload Payrol Sheet</h2> 
      <Divider />  
 
-    <div style={{ display:'flex', alignItems:'center', justifyContent:'flex-start', marginLeft:'10rem'}}> 
+    <div style={{ display:'flex', alignItems:'center', justifyContent:'flex-start', marginLeft:'10rem', marginTop:'5rem'}}> 
     <form onSubmit={filesubmit}>
       <Row style={{marginRight:'26rem', marginBottom:'10px'}}>
     
@@ -120,20 +178,35 @@ const Fileupload = () => {
     
 
 
-    <Title level={5}>Select Payrol </Title>&nbsp;
-    <input type="file" onChange={uploadfile}/>  
+    <Title level={4}>Select Payrol </Title>&nbsp;
+    <input id='ecelfile' type="file" onChange={uploadfile} />  
     
+         
+      </Row>
+     <Row>
+     <Typography style={{fontSize:'15px'}}>[only xlsx formats are supported]</Typography>    
+  
+  
+      </Row> 
+     
+    <Row>
 
+     <Typography style={{fontSize:'15px'}}>Maximum Upload File Size is 5mb</Typography>   
 
-    </Row>
+    </Row> 
+     <Row>
+    <Link style={{fontSize:'15px'}} onClick={handleclick}>Download Sample Template for import</Link>         
+     
+     </Row>
     <Row>
     {/* <input type="text" placeholder='description' style={{height:'4.2rem', width:'21rem'}}/> */}
-    <Title level={5}>Description</Title>&nbsp;
-    {/* <p style={{ fontWeight:'bold'}}>Description</p>&nbsp; */}
+    <Title level={4}>Description</Title>&nbsp;
+    {/* <p style={{ fontWeight:'bold'}}>Description</p>&nbsp; */}    
+    <Input id='descr' placeholder='description' style={{width:'50%', marginBottom:'10px'}}/>
     
-    <Input placeholder='description' style={{width:'50%', marginBottom:'10px'}}/>
     </Row>
    
+      
     <Button htmlType='submit' type='primary'>Add file</Button> &nbsp;
     <Button onClick={clear}>Cancel</Button>
     
@@ -170,6 +243,8 @@ const Fileupload = () => {
     {/* </Container>     */}
         </div>
     )
-}
+
+  
+  }
 
 export default Fileupload

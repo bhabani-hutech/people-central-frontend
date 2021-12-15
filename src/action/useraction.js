@@ -42,8 +42,8 @@ export let listpaysleep = ()=> async(dispatch, getState)=>{
 
 
     
-    
-    let {data} = await axios.get('/api/file/getsheet',config)
+    // https://payrolapp.herokuapp.com
+    let {data} = await axios.get('https://payrolapp.herokuapp.com/api/file/getsheet',config)
      dispatch({type:'PAYSLEEP_LIST_SUCCESS',payload:data})
      } 
 catch (err) {
@@ -69,7 +69,8 @@ export let uploadsheet = (empsheet)=> async(dispatch, getState)=>{
    }   
     try {
     dispatch({type:'SHEET_UPLOAD_REQUEST'})
-    let {data} = await axios.post('/api/file/fileupload', empsheet,config)
+    // https://payrolapp.herokuapp.com/api/file/fileupload
+    let {data} = await axios.post('https://payrolapp.herokuapp.com/api/file/fileupload', empsheet,config)
      
     dispatch({type:'SHEET_UPLOAD_SUCCESS',payload:data})
   

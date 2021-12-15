@@ -2,7 +2,7 @@
   width: 100%;
   position: fixed;
   top: 0;
-  z-index: 9999;
+  /* z-index: 9999; */
 }
 
 .header {
@@ -85,7 +85,7 @@
 }
 
 .ant-dropdown {
-  z-index: 9999;
+  /* z-index: 9999; */
 }
 
 @media (max-width: 1200px) {

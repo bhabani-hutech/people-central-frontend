@@ -67,7 +67,7 @@ const Onboarding = () => {
                   <TabPane tab="Client Onboarding" key="3">
                     <Clientonboarding />
                   </TabPane>
-                  <TabPane tab='Sheet upload' key='5'>
+                  <TabPane tab='Sheet Upload' key='5'>
                     <Fileupload />
                   </TabPane>
                   <TabPane tab='Employee Payslip' key='6'>

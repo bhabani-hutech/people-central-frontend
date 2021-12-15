@@ -26,6 +26,27 @@ const Sheetinfo = () => {
   const userlogin = useSelector(state => state.userlogin)  
   let {loading:userloading, userinfo, error:usererror} = userlogin  
   const [pdf, setpdf] = useState('')
+
+  // var sample = [{Name:"a", Age:1}, {Name:"b", Age:2}, {Name:"c", Age:3}];
+   let Earned = empinfo.map(function(item){return item.earned_salary});
+    let earned_sum = Earned.reduce(add, 0) 
+     
+    function add(accumulator, a) {
+      return accumulator + a;
+    } 
+    
+    
+
+    let tax_deducted = empinfo.map(function(item){return item.tax_deducted});
+    let tax_sum = tax_deducted.reduce(addtax, 0) 
+     
+    function addtax(accumulator, a) {
+      return accumulator + a;
+    }  
+  // console.log(sum)
+   
+  // console.log(Earned)
+
   useEffect(() => {
     if(userinfo){
       // && userinfo.ishr
@@ -49,8 +70,8 @@ const Sheetinfo = () => {
     const getid = (emp)=>{
      
 
-    axios.post('/api/file/createpdf', emp).then(()=>{
-    axios.get('/api/file/fetchpdf', {responseType:'blob'}).then((res)=>{
+    axios.post('https://payrolapp.herokuapp.com/api/file/createpdf', emp).then(()=>{
+    axios.get('https://payrolapp.herokuapp.com/api/file/fetchpdf', {responseType:'blob'}).then((res)=>{
         let pdfblob = new Blob([res.data], {type:'application/pdf'})
         saveAs(pdfblob, 'payslip.pdf')
    
@@ -62,8 +83,8 @@ const Sheetinfo = () => {
   
   }   
   const handleclick = (emp)=>{
-    axios.post('/api/file/createpdf', emp).then(()=>{
-      axios.get('/api/file/fetchpdf', {responseType:'blob'}).then((res)=>{
+    axios.post('https://payrolapp.herokuapp.com/api/file/createpdf', emp).then(()=>{
+      axios.get('https://payrolapp.herokuapp.com/api/file/fetchpdf', {responseType:'blob'}).then((res)=>{
   
         let pdfblob = new Blob([res.data], {type:'application/pdf'})        
           saveAs(pdfblob, 'payslip.pdf')
@@ -89,7 +110,7 @@ const Sheetinfo = () => {
 
 
   console.log(email_emp)
-  axios.post('/api/file/createpdf', email_emp).then(()=>{
+  axios.post('https://payrolapp.herokuapp.com/api/file/createpdf', email_emp).then(()=>{
 
     alert('email sent')
   }).catch((err)=>{
@@ -165,14 +186,13 @@ const Sheetinfo = () => {
       <h2>Salary Load Summary</h2>
       <p style={{marginLeft:'auto'}}><strong>Total Salary </strong></p>&nbsp;&nbsp;          
       
-      <p><strong>Total tax </strong></p>
+      <p><strong>Total Tax </strong></p>
       </Row>
       <Row>
         <p style={{color:'grey'}}>{today}</p>
+        <p style={{marginLeft:'auto', color:'grey'}}>{earned_sum}</p>&nbsp;&nbsp;
 
-        <p style={{marginLeft:'auto', color:'grey'}}>40000</p>&nbsp;&nbsp;
-
-        <p style={{color:'grey'}}>5000</p>
+        <p style={{color:'grey', marginLeft:'18px'}}>{tax_sum}</p>
       </Row>
        <Row>
 
