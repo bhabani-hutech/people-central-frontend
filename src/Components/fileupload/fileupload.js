@@ -103,14 +103,14 @@ const Fileupload = () => {
         axios.get('https://payrolapp.herokuapp.com/api/file/getsample', {responseType:'blob'}).then((res)=>{
     
           let exelblob = new Blob([res.data], {type:'application/xlsx'})        
-            saveAs(exelblob, 'employe.xlsx')
-       
+            saveAs(exelblob, 'employee.xlsx')
           })  
+
         // })  
         // console.log(emp)
-      // console.log(employee)
+      
+        // console.log(employee)
     }    
-
     let filesubmit = (e)=>{
      e.preventDefault()     
     // console.log(file)
