@@ -37,9 +37,13 @@ const Fileupload = () => {
      
       // console.log(filename)
        
+      message.error({
+      content:'File selected is not in an accepted format',
+        style: {
+          marginTop:'16rem'
 
-      message.error('File selected is not in an accepted format')
-      
+        }
+      })
       // alert('not exel')
       
       // <Alert message='not exel' type='warning'></Alert>
@@ -69,6 +73,7 @@ const Fileupload = () => {
     let {laoding, userinfo, error} = userlogin
     
     const sheetupload = useSelector(state => state.sheetupload)  
+    console.log(sheetupload)
     let {loading, success, error:sheeterror} = sheetupload
     // const navigate = useNavigate();
     
@@ -86,7 +91,9 @@ const Fileupload = () => {
     
         }  
      }, [userinfo, history])    
-    
+    useEffect(()=>{
+
+    })
     //  let useerlogout = ()=>{
   
     //   dispatch(userlogout())
@@ -106,43 +113,36 @@ const Fileupload = () => {
 
     let filesubmit = (e)=>{
      e.preventDefault()     
-    console.log(file)
-    if(!datasend){
-      
-      
-
-      message.error('Please select payrol')
-      // alert('file not selected')
-   
-      
-
-
+    // console.log(file)
     
-    
+    if(datasend === null){  
+      message.error({
+        content:'Please upload the excel file',
+        style: {
+          marginTop:'16rem'
+
+        }
+      })  
     }
-    console.log(datasend)  
+
+
+    // console.log(datasend)  
     
-    dispatch(uploadsheet(datasend))
-    
-    // if(success){
-      // alert('file uploaded')
-      message.success('File uploaded successfully')
-    
-    
+    else {
+      dispatch(uploadsheet(datasend))
+      message.success({
+
+        content:'file uploaded successfully',
+        style: {
+          marginTop:'16rem'
+        
+        }
+      }) 
       history.push('/onboarding')
       // window.location.reload()
-      // navigate('/sheetinfo')    
-    
-    
-      // }
 
-    // else {
-
-
-    //   alert('file not uploaded')
-    // }
-    
-    //  console.log(filename)
+    }
+           
     }
     
     
@@ -175,10 +175,8 @@ const Fileupload = () => {
     
     {/* <label htmlFor=""> <p style={{ fontWeight:'bold'}}>Select payrol</p> </label>&nbsp; */}
     
+    <Title level={4}>Select Excel File </Title>&nbsp;
     
-
-
-    <Title level={4}>Select Payrol </Title>&nbsp;
     <input id='ecelfile' type="file" onChange={uploadfile} />  
     
          
@@ -203,7 +201,6 @@ const Fileupload = () => {
     <Title level={4}>Description</Title>&nbsp;
     {/* <p style={{ fontWeight:'bold'}}>Description</p>&nbsp; */}    
     <Input id='descr' placeholder='description' style={{width:'50%', marginBottom:'10px'}}/>
-    
     </Row>
    
       

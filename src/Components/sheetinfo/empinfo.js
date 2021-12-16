@@ -12,11 +12,13 @@ import {saveAs} from 'file-saver'
 import {Table, Row, Col, DatePicker, Divider} from 'antd'
 
 import {FilePdfFilled, FilePdfOutlined} from '@ant-design/icons'
-const Sheetinfo = () => {
+const Sheetinfo = ({callapi}) => {
   const dispatch = useDispatch()
   
   
   // let navigate =  useNavigate()
+  
+  console.log(callapi)
   
   let history = useHistory()    
 
@@ -48,17 +50,30 @@ const Sheetinfo = () => {
   // console.log(Earned)
 
   useEffect(() => {
-    if(userinfo){
-      // && userinfo.ishr
-      dispatch(listpaysleep())                    
-            
-   }
+    if(userinfo){      
+      dispatch(listpaysleep())                            
+   
+   
+    }
+  //  else if(callapi === true){
+     
+  //   dispatch(listpaysleep())                            
+
+  //  }
    else {
     history.push('/')
   }
  
   }, [dispatch, userinfo])  
-   
+   useEffect(() => {
+    
+    
+    console.log(callapi)
+    if(callapi){
+    dispatch(listpaysleep())                            
+           
+    }
+   }, [callapi])
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!

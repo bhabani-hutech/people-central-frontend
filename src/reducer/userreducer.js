@@ -47,7 +47,7 @@ export let paysleeplistreducer = (state= {empinfo:[]}, action)=>{
         return { loading:true, empinfo:[]}  
     case  'PAYSLEEP_LIST_SUCCESS':
     
-    return { loading:false, empinfo: action.payload}  
+    return { loading:false, empinfo: action.payload }  
     case 'PAYSLEEP_LIST_FAIL':
             return { loading:false, error: action.payload}  
                          

@@ -24,9 +24,24 @@ const { TabPane } = Tabs;
 const Onboarding = () => {
   // eslint-disable-next-line no-unused-vars
   const [loading, setloading] = useState(false);
+  const [callapi, setcallapi] = useState(false)
+  const [keey, setkeey] = useState(1)
   function callback(key) {
+   setkeey(key)
+    if(key === '6'){
+     console.log(key)
+     
+     setcallapi(true)
+     
+    }
+    else {
+      setcallapi(false)
+    }
+
     console.log(key);
   }
+
+  // console.log(callapi)
   const userloginn = useSelector((state) => state.userlogin);
   // const emploginn = useSelector((state) => state.emplogin);
   let history = useHistory();
@@ -34,7 +49,7 @@ const Onboarding = () => {
   // let { loading: emploading, empinfo, emperror } = emploginn;
   let { isAdmin } = userinfo;
   //  let { isEmp } = empinfo;
-  console.log(isAdmin);
+  // console.log(isAdmin);
 
   // console.log(isEmp);
 
@@ -54,6 +69,7 @@ const Onboarding = () => {
             <Tabs
               className="layout-content-heading"
               defaultActiveKey="1"
+              activeKey={keey}
               onChange={callback}
             >
               {isAdmin ? (
@@ -71,7 +87,7 @@ const Onboarding = () => {
                     <Fileupload />
                   </TabPane>
                   <TabPane tab='Employee Payslip' key='6'>
-                    <Sheetinfo />
+                    <Sheetinfo callapi={callapi} />
                   </TabPane>
                  
                 </>
@@ -102,5 +118,7 @@ const Onboarding = () => {
     </>
   );
 };
+
+
 
 export default Onboarding;
