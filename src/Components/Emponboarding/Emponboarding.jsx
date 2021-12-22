@@ -246,7 +246,7 @@ useEffect(() => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
-
+const dateFormatList = ["DD/MM/YYYY", "DD/MM/YY"];
   return (
     <div>
       <Form
@@ -393,10 +393,16 @@ useEffect(() => {
                 ]}
               >
                 <DatePicker
+                  // defaultValue={moment("01/01/2015", dateFormatList[0])}
+                  placeholder="DD/MM/YYYY"
+                  format={dateFormatList}
+                  style={{ width: "100%" }}
+                />
+                {/* <DatePicker
                   // className="datepicker"
                   placeholder="DD/MM/YYYY"
                   style={{ width: "100%" }}
-                />
+                /> */}
               </Form.Item>
 
               <Form.Item
@@ -422,10 +428,16 @@ useEffect(() => {
 
               <Form.Item name="anniversary" label="Marriage Annivarsary">
                 <DatePicker
+                  // defaultValue={moment("01/01/2015", dateFormatList[0])}
+                  placeholder="DD/MM/YYYY"
+                  format={dateFormatList}
+                  style={{ width: "100%" }}
+                />
+                {/* <DatePicker
                   // className="datepicker"
                   placeholder="DD/MM/YYYY"
                   style={{ width: "100%" }}
-                />
+                /> */}
               </Form.Item>
 
               <Form.Item label="Image" name="image">
@@ -477,10 +489,16 @@ useEffect(() => {
 
                 <Form.Item label="Joining Date" name="joiningDate">
                   <DatePicker
+                    // defaultValue={moment("01/01/2015", dateFormatList[0])}
+                    placeholder="DD/MM/YYYY"
+                    format={dateFormatList}
+                    style={{ width: "100%" }}
+                  />
+                  {/* <DatePicker
                     style={{ width: "100%" }}
                     // className="datepicker"
                     placeholder="DD/MM/YYYY"
-                  />
+                  /> */}
                 </Form.Item>
 
                 <Form.Item
@@ -576,10 +594,16 @@ useEffect(() => {
 
                 <Form.Item label="Exit Date" name="relievingDate">
                   <DatePicker
+                    // defaultValue={moment("01/01/2015", dateFormatList[0])}
+                    placeholder="DD/MM/YYYY"
+                    format={dateFormatList}
+                    style={{ width: "100%" }}
+                  />
+                  {/* <DatePicker
                     // className="datepicker"
                     style={{ width: "100%" }}
                     placeholder="DD/MM/YYYY"
-                  />
+                  /> */}
                 </Form.Item>
 
                 <Form.Item
